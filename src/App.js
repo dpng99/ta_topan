@@ -1,11 +1,20 @@
 import React from 'react';
 import './App.css';
 import Form from './Form';
-
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import FormLogin from './FormLogin';
 
 function App() {
-  <img className='form-img' src='img/mataair.jpeg' alt='spaceship' />
-  return <Form />;
+  
+  return(
+   <Router>
+     <Switch>
+     <Route path="/" exact component={() => <Form />} />
+          <Route path="/login" exact component={() => <FormLogin />} />
+     </Switch>
+   </Router>
+  ) ;
+  
   
 }
 
