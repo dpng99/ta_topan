@@ -10,6 +10,11 @@ const FormLogin = ({ submitForm }) => {
   );
 
   return (
+    <div className='form-container'>
+    <span className='close-btn'>×</span>
+    <div className='form-content-left'>
+      <img className='form-img' src='img/img.png' alt='spaceship' />
+    </div>
     <div className='form-content-right'>
       <form onSubmit={handleSubmit} className='form' noValidate>
         <h1>
@@ -47,6 +52,7 @@ const FormLogin = ({ submitForm }) => {
         <span className='form-input-login'>
         </span>
       </form>
+    </div>
     </div>
   );
 };
