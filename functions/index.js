@@ -1,6 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
 const functions = require('firebase-functions');
 
 // // Create and Deploy Your First Cloud Functions
@@ -10,10 +7,3 @@ const functions = require('firebase-functions');
 //   functions.logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
