@@ -1,7 +1,7 @@
-import { initializeApp } from 'firebase/app'
-import { getFirestore} from '@firebase/firestore'
-import 'firebase/auth'
-const config =  {
+import firebase from 'firebase/compat/app'
+import "firebase/compat/auth"
+
+const app =  firebase.initializeApp( {
 
     apiKey: "AIzaSyCJbBRTc7J_adsCHqUtBl8UW1PF1mlFfXo",
   
@@ -17,10 +17,9 @@ const config =  {
   
     appId: "1:371105516029:web:eb4e636ca6358b525cb194"
   
-  };
+  });
   
-const app = initializeApp(config);
-export const db = getFirestore(app);
-export const auth = app.auth();
+export const auth = app.auth()
+
 export default app;
 // signup router

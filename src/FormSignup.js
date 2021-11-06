@@ -1,16 +1,15 @@
 import React ,{useRef, useState}from 'react';
-import validate from './validateInfo';
-import useForm from './useForm';
 import './Form.css';
-import { useAuth } from './Handler/Handler'
+import {useAuth} from './Handler/AuthContext'
 const FormSignup = () => {
   const emailRef = useRef();
   const usernameRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const {signup} = useAuth();
+  const {signup , currentUser} = useAuth();
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+
   async function handlerSubmit(e){
     e.preventDefault();
     if(passwordRef !== passwordConfirmRef){
