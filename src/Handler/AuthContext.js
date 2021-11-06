@@ -1,21 +1,23 @@
 import React, {useContext, useEffect,useState} from 'react'
-import {auth} from './Firebase'
+import {auth} from '../Firebase'
 
-export function useAuth(){
-    return useContext(AuthContext)
-}
+
 const AuthContext = React.createContext();
-export default function AuthProvider({ children }) {
+export function useAuth(){
+    return useContext(AuthContext);
+}
+export function AuthProvider({ children }) {
+
     const [loading, setLoading] = useState(true);
     const [currentUser, setCurrentUser] = useState();
     function signup(email, password) {
-        auth.createUserWithEmailAndPassword(email, password)
+        return auth.createUserWithEmailAndPassword(email, password)
     }
     function login(email, password) {
-        return auth.singInWithEmailAndPassword(email, password)
+        return auth.signInWithEmailAndPassword(email, password)
     }
   useEffect(() => {
-   const unsubs = auth.onAuthStateChange(user =>{
+   const unsubs = auth.onAuthStateChanged(user =>{
     setLoading(false);    
     setCurrentUser(user)
 
@@ -30,7 +32,6 @@ export default function AuthProvider({ children }) {
     return (
         <AuthContext.Provider value={value} >
             {!loading  && children }
-             
         </AuthContext.Provider>
     )
 }

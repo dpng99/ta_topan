@@ -1,20 +1,21 @@
-import React,{useState, useEffect} from 'react';
+import React from 'react';
 import './App.css';
-import Form from './Form';
+import FormSignup from './FormSignup';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import FormLogin from './FormLogin';
 import Dashboard from './Page/Dashboard';
-import { collection, getDocs } from 'firebase/firestore'
+import {AuthProvider} from './Handler/AuthContext';
 function App() {
 
   return(
    <Router>
+     <AuthProvider>
      <Switch>
-     <Route path="/" exact component={() => <Form />} />
-          <Route path="/login" exact component={() => <FormLogin />} />
-          <Route path="/dashboard" exact component={() => <Dashboard />} />
-
+     <Route exact path="/" componrnt={Dashboard}/>
+     <Route path="/signup" component={FormSignup}/>
+    <Route path="/login" component={FormLogin}/>
      </Switch>
+     </AuthProvider>
    </Router>
   ) ;
   
