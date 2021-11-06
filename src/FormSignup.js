@@ -1,17 +1,33 @@
-import React from 'react';
+import React ,{useRef, useState}from 'react';
 import validate from './validateInfo';
 import useForm from './useForm';
 import './Form.css';
-
-const FormSignup = ({ submitForm }) => {
-  const { handleChange, handleSubmit, values, errors } = useForm(
-    submitForm,
-    validate
-  );
-
+import { useAuth } from './Handler/Handler'
+const FormSignup = () => {
+  const emailRef = useRef();
+  const usernameRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const {signup} = useAuth();
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  async function handlerSubmit(e){
+    e.preventDefault();
+    if(passwordRef !== passwordConfirmRef){
+      return setError('Passwword do not Match')
+    }
+    try {
+      setError('')
+      setLoading(true)
+      await signup(emailRef.current.value, passwordRef.current.value)
+    } catch {
+      setError('Failed to signUp')
+    }
+    setLoading(false)
+  }
   return (
     <div className='form-content-right'>
-      <form onSubmit={handleSubmit} className='form' noValidate>
+      <form onSubmit={handlerSubmit}className='form' noValidate>
         <h1>
           Selamat Datang! Dashboard Website PDAM Madiun 
         </h1>
@@ -22,10 +38,9 @@ const FormSignup = ({ submitForm }) => {
             type='text'
             name='username'
             placeholder='Masukan Nama'
-            value={values.username}
-            onChange={handleChange}
+            ref = {usernameRef}
           />
-          {errors.username && <p>{errors.username}</p>}
+
         </div>
         <div className='form-inputs'>
           <label className='form-label'>Email</label>
@@ -34,10 +49,9 @@ const FormSignup = ({ submitForm }) => {
             type='email'
             name='email'
             placeholder='Masukan Email'
-            value={values.email}
-            onChange={handleChange}
+            ref={emailRef}
           />
-          {errors.email && <p>{errors.email}</p>}
+
         </div>
         <div className='form-inputs'>
           <label className='form-label'>Password</label>
@@ -46,10 +60,9 @@ const FormSignup = ({ submitForm }) => {
             type='password'
             name='password'
             placeholder='Masukan Password'
-            value={values.password}
-            onChange={handleChange}
+            ref={passwordRef}
           />
-          {errors.password && <p>{errors.password}</p>}
+
         </div>
         <div className='form-inputs'>
           <label className='form-label'>Konfirmasi Password</label>
@@ -58,10 +71,9 @@ const FormSignup = ({ submitForm }) => {
             type='password'
             name='password2'
             placeholder='Konfirmasi Password'
-            value={values.password2}
-            onChange={handleChange}
+            ref={passwordConfirmRef}
           />
-          {errors.password2 && <p>{errors.password2}</p>}
+
         </div>
         <button className='form-input-btn' type='submit'>
           Sign up
