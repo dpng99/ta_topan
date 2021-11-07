@@ -8,7 +8,7 @@ const FormSignup = () => {
   const usernameRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const {signup , currentUser} = useAuth();
+  const {signup} = useAuth();
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory();
@@ -78,7 +78,7 @@ const FormSignup = () => {
             ref={passwordConfirmRef}
           />
         </div>
-        <button disable={loading} className='form-input-btn' type='submit'>
+        <button className='form-input-btn' type='submit'>
           Sign up
         </button>
         <span className='form-input-login'>
