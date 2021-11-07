@@ -11,17 +11,17 @@ const Dashboard = () => {
 
         return (
            <>
- <Navbar bg="primary" expand="lg">
-  <Container>
+ <Navbar bg="primary">
+  <Container fluid>
   <Navbar.Brand href="#home">
         <img
           alt=""
-          src="/pdam1.jpg"
-          width="30"
-          height="30"
+          src="img/pdam1.jpg"
+          width="40"
+          height="40"
           className="d-inline-block align-top"
         />{' '}
-      React Bootstrap
+      PDAM KABUPATEN MADIUN
       </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
@@ -35,6 +35,7 @@ const Dashboard = () => {
     </Navbar.Collapse>
   </Container>
 </Navbar>
+
 
  <div className= "leaflet-container ">
               <div className="leaflet-wrapper">
