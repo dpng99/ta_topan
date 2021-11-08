@@ -8,13 +8,8 @@ const Dashboard = () => {
 
         return (
            <>
-<<<<<<< HEAD
           <Navbarx />
           <div className= "leaflet-container ">
-=======
-
- <div className= "leaflet-container ">
->>>>>>> 298006a1e3252c80adef2d9b2b12f6b9ccb562e8
               <div className="leaflet-wrapper">
 <           MapContainer center={[-7.6300605, 111.4930317]} zoom={13} scrollWheelZoom={false}>
             <TileLayer
