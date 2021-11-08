@@ -5,13 +5,16 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import FormLogin from './FormLogin';
 import Dashboard from './Page/Dashboard';
 import {AuthProvider} from './Handler/AuthContext';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import PrivateRouter from './PrivateRouter';
 function App() {
 
   return(
    <Router>
      <AuthProvider>
      <Switch>
-     <Route exact path="/" component={Dashboard}/>
+     <PrivateRouter exact path="/" component={Dashboard}/>
      <Route path="/signup" component={FormSignup}/>
     <Route path="/login" component={FormLogin}/>
      </Switch>
