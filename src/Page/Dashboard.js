@@ -4,6 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import './Dashboard.css'
 import Navbarx from '../Component/Navbar';
 import CRUDHandler from '../Handler/CRUDHandler';
+import L from 'leaflet'
 
 const Dashboard = () => {
   const [newDataSet, setNewDataSet]= useState('');
@@ -22,6 +23,12 @@ const Dashboard = () => {
       console.log(newDataSet);
     })
 }, [])
+const greenIcon = L.icon({
+  iconUrl: 'img/marker.png',
+  iconSize:     [40, 80], // size of the icon
+  iconAnchor:   [50, 94], // point of the icon which will correspond to marker's location
+  popupAnchor:  [-1, -76] // point from which the popup should open relative to the iconAnchor
+});
         return (
            <>
           <Navbarx />
@@ -35,7 +42,8 @@ const Dashboard = () => {
            
            {newDataSet ? newDataSet.map((data) => 
         <>
-        <Marker position={[data.lat, data.lon]}>
+        <Marker icon={greenIcon} position={[data.lat, data.lon]}>
+
               <Popup>
                {data.ket}  
               </Popup>
