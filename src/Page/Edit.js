@@ -46,14 +46,14 @@ const Edit = () => {
     </tr>
     </thead>
      <tbody>
-      <tr>
+      
       
         {newDataSet ? newDataSet.map((data) => 
-        <><td>1</td><td>{data.lat}</td><td>{data.lon}</td><td>@mdo</td><td><Button>Edit</Button></td></>
+        <><tr><td>1</td><td>{data.lat}</td><td>{data.lon}</td><td>{data.ket}</td><td><Button>Edit</Button></td></tr></>
          ):'' }
          
       
-    </tr>
+    
   </tbody>
 </Table>
        </Container>

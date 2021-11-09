@@ -37,7 +37,7 @@ const Dashboard = () => {
         <>
         <Marker position={[data.lat, data.lon]}>
               <Popup>
-                <br />  
+               {data.ket}  
               </Popup>
             </Marker>
         </>
