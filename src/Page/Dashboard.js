@@ -21,9 +21,7 @@ const Dashboard = () => {
     })
 }, [])
 
-const position =[
-  [newDataSet.lat, newDataSet.lon]
-]
+
 
         return (
            <>
