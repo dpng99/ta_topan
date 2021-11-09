@@ -37,7 +37,7 @@ function Navbarx() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <NavDropdown title="Menu" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Edit</NavDropdown.Item>
+                <NavDropdown.Item href="/edit">Edit</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
               </NavDropdown>

@@ -3,27 +3,27 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import './Dashboard.css'
 import Navbarx from '../Component/Navbar';
-import { database } from '../Firebase'
+import CRUDHandler from '../Handler/CRUDHandler';
 
 const Dashboard = () => {
-  const [data, setData] = useState({});
-  const getMaker = () => {
-    database.ref('alat/id').on('value', snapshot => {
-      let values = [];
-      snapshot.forEach((child) => {
-        values.get(child.val());
-        setData( [...data, values.data ]);
-      });
-      console.log(values);
-      setData(values);
+  const [newDataSet, setNewDataSet]= useState('');
+  
+  useEffect(() => {
+    const readData = CRUDHandler.getAll();
+    
+    readData.on('value', (snapshot) => {
+      const dataSet = snapshot.val();
+      const newDataSet = []
+      for (let id in dataSet){
+          newDataSet.push(dataSet[id]);
+      }
+      setNewDataSet(newDataSet);
     })
-  }
-useEffect(() => {
-  getMaker();
 }, [])
 
-
-
+const position =[
+  [newDataSet.lat, newDataSet.lon]
+]
 
         return (
            <>
@@ -35,13 +35,14 @@ useEffect(() => {
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            { data && data.map( data=>{
-          <Marker position={[data.lat, data.lon]}>
+            { newDataSet ? newDataSet.map( (data)=>
+           
+          <Marker position={[<>{data.lat}</>, <>{data.lon}</>]}>
               <Popup>
                 <br />  
               </Popup>
             </Marker>
-            })
+            ) : ''
           }
           
           </MapContainer>

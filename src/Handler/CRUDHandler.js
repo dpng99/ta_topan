@@ -1,6 +1,6 @@
 import { database } from "../Firebase";
 
-const db = database.ref('alat/id');
+const db = database.ref('alat');
 class CrudHandler{
 
     getAll(){
