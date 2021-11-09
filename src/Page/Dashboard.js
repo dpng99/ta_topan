@@ -17,7 +17,9 @@ const Dashboard = () => {
       for (let id in dataSet){
           newDataSet.push(dataSet[id]);
       }
+      
       setNewDataSet(newDataSet);
+      console.log(newDataSet);
     })
 }, [])
         return (
@@ -30,15 +32,21 @@ const Dashboard = () => {
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            { newDataSet && newDataSet.map( (data)=>
            
-          <Marker position={[data.lat, data.lon]}>
+           {newDataSet ? newDataSet.map((data) => 
+        <>
+        <Marker position={[data.lat, data.lon]}>
               <Popup>
                 <br />  
               </Popup>
             </Marker>
-            ) 
-          }
+        </>
+         ):'' }
+         
+      
+           
+          
+       
           
           </MapContainer>
           </div>

@@ -51,9 +51,7 @@ const Edit = () => {
         {newDataSet ? newDataSet.map((data) => 
         <><td>1</td><td>{data.lat}</td><td>{data.lon}</td><td>@mdo</td><td><Button>Edit</Button></td></>
          ):'' }
-      
-      
-      
+         
       
     </tr>
   </tbody>
