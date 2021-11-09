@@ -22,16 +22,16 @@ function Navbarx() {
     return (
         <>
         <Navbar bg="primary" expand="lg">
-        <Container className="">
+        <Container fluid className="">
         <Navbar.Brand href="#home">
               <img
                 alt=""
-                src="../../public/img/pdam1.jpg"
+                src="img/pdam1.jpg"
                 width="30"
                 height="30"
                 className="d-inline-block align-top"
               />{' '}
-            React Bootstrap
+            DASHBOARD PDAM KABUPATEN MADIUN
             </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
