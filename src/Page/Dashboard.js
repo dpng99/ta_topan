@@ -20,9 +20,6 @@ const Dashboard = () => {
       setNewDataSet(newDataSet);
     })
 }, [])
-
-
-
         return (
            <>
           <Navbarx />
@@ -33,14 +30,14 @@ const Dashboard = () => {
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            { newDataSet ? newDataSet.map( (data)=>
+            { newDataSet && newDataSet.map( (data)=>
            
-          <Marker position={[<>{data.lat}</>, <>{data.lon}</>]}>
+          <Marker position={[data.lat, data.lon]}>
               <Popup>
                 <br />  
               </Popup>
             </Marker>
-            ) : ''
+            ) 
           }
           
           </MapContainer>
