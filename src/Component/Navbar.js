@@ -23,7 +23,7 @@ function Navbarx() {
         <>
         <Navbar bg="primary" expand="lg">
         <Container fluid className="">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
               <img
                 alt=""
                 src="img/pdam1.jpg"

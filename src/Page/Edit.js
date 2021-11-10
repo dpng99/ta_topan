@@ -1,6 +1,8 @@
 import React,{useState, useEffect} from 'react'
-import { Container, Button, Table } from 'react-bootstrap'
+import { Container, Button, Table, FormControl } from 'react-bootstrap'
+import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
+
 const Edit = () => {
   const [lon, setLon]= useState('');
   const [lat, setLat]= useState('');
@@ -33,8 +35,8 @@ const Edit = () => {
   }, [])
     return (
 <>
-    <Container>
-
+    <Container fluid>
+    <Navbarx />
     <Table striped bordered hover>
     <thead>
      <tr>

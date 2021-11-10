@@ -1,6 +1,7 @@
 import React ,{useRef, useState}from 'react';
 import './Form.css';
 import { useAuth } from './Handler/AuthContext'
+import {Alert} from 'react-bootstrap'
 import { Link, useHistory} from 'react-router-dom'
 const FormLogin = () => {
   const emailRef = useRef();
@@ -32,6 +33,7 @@ const FormLogin = () => {
     
     <div className='form-content-right'>
         <form onSubmit={handleSubmit} className='form' noValidate>
+        {error && <Alert variant="danger">{error}</Alert>}
           <h1>
             Selamat Datang!Dashboard Website PDAM Madiun
           </h1>
