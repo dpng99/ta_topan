@@ -1,12 +1,14 @@
 import React,{useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import { Container, Button, Table, FormControl } from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 const Edit = () => {
   const [lon, setLon]= useState('');
   const [lat, setLat]= useState('');
   const [newDataSet, setNewDataSet]= useState('');
+  const [editData, setEditData]= useState('');
   const handleOnChange = (e)=>{
       setLon(e.target.value);
       setLat(e.target.value);
@@ -33,9 +35,10 @@ const Edit = () => {
         setNewDataSet(newDataSet);
       })
   }, [])
+  
     return (
 <>
-    <Container fluid>
+    <Container fluid="xxl">
     <Navbarx />
     <Table striped bordered hover>
     <thead>
@@ -48,14 +51,9 @@ const Edit = () => {
     </tr>
     </thead>
      <tbody>
-      
-      
-        {newDataSet ? newDataSet.map((data) => 
-        <><tr><td>1</td><td>{data.lat}</td><td>{data.lon}</td><td>{data.ket}</td><td><Button>Edit</Button></td></tr></>
-         ):'' }
-         
-      
-    
+        {Object.keys(newDataSet).map((data, index) => 
+        <><tr key={data}><td>{index +1}</td><td>{newDataSet[data].lat}</td><td>{newDataSet[data].lon}</td><td>{newDataSet[data].ket}</td><td><Link to={`/update/${data}`}><Button >Edit</Button></Link></td></tr></>
+         )}
   </tbody>
 </Table>
        </Container>
