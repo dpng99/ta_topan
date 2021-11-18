@@ -38,6 +38,7 @@ function Navbarx() {
             <Nav className="me-auto">
               <NavDropdown title="Menu" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/edit">Edit</NavDropdown.Item>
+                <NavDropdown.Item href="/adddata">Add New Data</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
               </NavDropdown>
