@@ -33,6 +33,39 @@ export class Update extends Component {
             currentData: this.props.datum,
         });
     }
+    onChangeLatitude(e){
+        const lat = e.target.value;
+        this.setState(function(prevState){
+            return{
+                currentData: {
+                    ...prevState.currnetData,
+                    lat: lat,
+                },
+            };
+        });
+    }
+    onChangeLongitude(e){
+        const lon = e.target.value;
+        this.setState(function(prevState){
+            return{
+                currentData: {
+                    ...prevState.currentData,
+                    lon: lon,
+                },
+            };
+        });
+    };
+    onChangeKeterangan(e){
+        const ket = e.target.value;
+        this.setState(function(prevState){
+            return{
+                currentData: {
+                    ...prevState.currentData,
+                    ket: ket,
+                },
+            };
+        });
+    };
     updateData(){
         const dataCoord ={
             lat: this.state.currentData.lat,
