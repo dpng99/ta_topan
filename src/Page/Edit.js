@@ -1,4 +1,4 @@
-import { Container, Button, ListGroup, Card } from 'react-bootstrap'
+import { Container, ListGroup, Card } from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,7 +20,7 @@ export class Edit extends Component {
 componentDidMount(){
    CRUDHandler.getAll().on('value', this.onDataChange)
 }
-componentDidUnmount(){
+componentWillUnmount(){
    CRUDHandler.getAll().off('value', this.onDataChange)
 }
 onDataChange(items){

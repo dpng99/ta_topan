@@ -32,7 +32,7 @@ export class Update extends Component {
         this.setState({
             currentData: this.props.datum,
         });
-    }
+    };
     onChangeLatitude(e){
         const lat = e.target.value;
         this.setState(function(prevState){
@@ -43,7 +43,7 @@ export class Update extends Component {
                 },
             };
         });
-    }
+    };
     onChangeLongitude(e){
         const lon = e.target.value;
         this.setState(function(prevState){
@@ -94,15 +94,15 @@ export class Update extends Component {
                     <Form>
                         <Form.Group className="md-3">
                             <Form.Label style={{ color: '#000' }}>Latitude</Form.Label>
-                            <Form.Control type="text" value={currentData.lat} onChange={this.onChangeLatitude}/>
+                            <Form.Control type="text" defaultValue={currentData.lat} onChange={this.onChangeLatitude}/>
                         </Form.Group>
                         <Form.Group className="md-3">
-                            <Form.Label style={{ color: '#000' }}>Latitude</Form.Label>
-                            <Form.Control type="text" value={currentData.lon} onChange={this.onChangeLongitude}/>
+                            <Form.Label style={{ color: '#000' }}>Longitude</Form.Label>
+                            <Form.Control type="text" defaultValue={currentData.lon} onChange={this.onChangeLongitude}/>
                         </Form.Group>
                           <Form.Group className="md-3">
-                            <Form.Label style={{ color: '#000' }}>Latitude</Form.Label>
-                            <Form.Control type="text" value={currentData.ket} onChange={this.onChangeKeterangan}/>
+                            <Form.Label style={{ color: '#000' }}>Keterangan</Form.Label>
+                            <Form.Control type="text" defaultValue={currentData.ket} onChange={this.onChangeKeterangan}/>
                         </Form.Group>
                     </Form>
                     <Button onClick={this.updateData} >Save</Button>
