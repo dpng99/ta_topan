@@ -1,76 +1,85 @@
-import React,{useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
-import {Container, Form, Button, Card} from 'react-bootstrap'
-import CRUDHandler from '../Handler/CRUDHandler'
-import 'bootstrap/dist/css/bootstrap.min.css';  
-import {toast} from 'react-toastify'
-const initialState = {
-    lat: '',
-    lon:'',
-    ket: ''
-};
-const Update = () => {
-    const [newDataSet, setNewDataSet] = useState({})
-    
-   
-    const [state, setState] = useState(initialState);
-    const { lat, lon, ket } = state;
-    
-    
-    const handleSubmit =() =>{
+import React, { Component } from 'react'
+import CRUDHandler from '../Handler/CRUDHandler';
+import {Container, Form , Card, Button} from 'react-bootstrap'
+export class Update extends Component {
+    constructor(props) {
+        super(props);
+        this.onChangeLatitude = this.onChangeLatitude.bind(this)
+        this.onChangeLongitude = this.onChangeLongitude.bind(this)
+        this.onChangeKeterangan = this.onChangeKeterangan.bind(this)
+        this.updateData = this.updateData.bind(this)
+
+        this.state = {
+            currentData:{
+                key: null,
+                lat:"",
+                lon:"",
+                ket: ""
+            }
+        }
+    }
+    static getDerivedStateFromProps(nextProps, prevState) {
+        const {datum} = nextProps;
+        if(prevState.currentData.key !== datum.key){
+            return{
+                currentData: datum,
+
+            }
+        }
+        return prevState.currentData
+    }
+    componentDidMount() {
+        this.setState({
+            currentData: this.props.datum,
+        });
+    }
+    updateData(){
+        const dataCoord ={
+            lat: this.state.currentData.lat,
+            lon: this.state.currentData.lon,
+            ket: this.state.currentData.ket
+        };
+        CRUDHandler.update(this.state.currentData.key, dataCoord)
+        .then(() =>{
+            this.setState({
+                message: " UPDATE BERHASIL"
+            });
+        })
+        .catch((e) =>{
+            console.log(e)
+        });
 
     }
-    const {id} = useParams()
-    useEffect(() => {
-        const readData = CRUDHandler.getAll();
-        readData.on('value', (snapshot) => {
-          const dataSet = snapshot.val();
-          const newDataSet = []
-          for (let id in dataSet){
-              newDataSet.push(dataSet[id]);
-          }
-          console.log(newDataSet);
-          setNewDataSet(newDataSet);
-        })
-    }, [id])
-    useEffect(() =>{
-        if(id){
-            setState({...newDataSet[id]})
-        }else{
-            setState({...initialState})
-        }
-        return()=>{
-            setState({...initialState})
-        }
 
-    },[id, newDataSet])
-    const handleUpdate =(e) => {
-        e.preventDefault();
-        if(!lat || !lon || !ket){
-
-        }
-
-        
-    };
-    return (
-        <Container flex>
+    render() {
+        const { currentData } = this.state;
+        return (
+        <Container fluid>
             <Card>
+                {currentData ? (
                 <Card.Body>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3">
-                    <Form.Label>Latitude</Form.Label>
-                    <Form.Control value={lat || " "} onChange={handleUpdate} type="text"> </Form.Control>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label >Latitude</Form.Label>
-                    <Form.Control value={lon || " "} onChange={handleUpdate} type="text"> </Form.Control>
-                </Form.Group>
-                <Button variant="primary" type="submit"></Button>
-            </Form>
+                    <Form>
+                        <Form.Group className="md-3">
+                            <Form.Label style={{ color: '#000' }}>Latitude</Form.Label>
+                            <Form.Control type="text" value={currentData.lat} onChange={this.onChangeLatitude}/>
+                        </Form.Group>
+                        <Form.Group className="md-3">
+                            <Form.Label style={{ color: '#000' }}>Latitude</Form.Label>
+                            <Form.Control type="text" value={currentData.lon} onChange={this.onChangeLongitude}/>
+                        </Form.Group>
+                          <Form.Group className="md-3">
+                            <Form.Label style={{ color: '#000' }}>Latitude</Form.Label>
+                            <Form.Control type="text" value={currentData.ket} onChange={this.onChangeKeterangan}/>
+                        </Form.Group>
+                    </Form>
+                    <Button onClick={this.updateData} >Save</Button>
                 </Card.Body>
+                ): (" ") }
             </Card>
         </Container>
-    )
+            
+        )
+    }
 }
 
 export default Update

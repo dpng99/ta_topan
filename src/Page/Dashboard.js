@@ -1,4 +1,4 @@
-import React,{useState, useEffect, useContext} from 'react'
+import React,{useState, useEffect} from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import './Dashboard.css'
@@ -25,7 +25,7 @@ const Dashboard = () => {
 }, [])
 const greenIcon = L.icon({
   iconUrl: 'img/marker.png',
-  iconSize:     [40, 80], // size of the icon
+  iconSize:     [40, 40], // size of the icon
   iconAnchor:   [50, 94], // point of the icon which will correspond to marker's location
   popupAnchor:  [-1, -76] // point from which the popup should open relative to the iconAnchor
 });
@@ -34,7 +34,7 @@ const greenIcon = L.icon({
           <Navbarx />
           <div className= "leaflet-container ">
               <div className="leaflet-wrapper">
-<           MapContainer center={[-7.6300605, 111.4930317]} zoom={13} scrollWheelZoom={false}>
+<           MapContainer center={[-7.6300605, 111.4930317]} zoom={13} scrollWheelZoom={true}>
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
