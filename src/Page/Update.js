@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import CRUDHandler from '../Handler/CRUDHandler';
 import {Container, Form , Card, Button} from 'react-bootstrap'
 export class Update extends Component {
+   
     constructor(props) {
         super(props);
         this.onChangeLatitude = this.onChangeLatitude.bind(this)
@@ -76,7 +77,9 @@ export class Update extends Component {
         .then(() =>{
             this.setState({
                 message: " UPDATE BERHASIL"
+               
             });
+            window.location.reload(false);
         })
         .catch((e) =>{
             console.log(e)
