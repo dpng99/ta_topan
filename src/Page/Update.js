@@ -13,8 +13,8 @@ export class Update extends Component {
         this.state = {
             currentData:{
                 key: null,
-                lat:"",
-                lon:"",
+                lat:0,
+                lon:0,
                 ket: ""
             }
         }
