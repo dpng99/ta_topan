@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-import { GoogleMap, LoadScript, Marker} from '@react-google-maps/api'
+import { GoogleMap, LoadScript, Marker, InfoWindow} from '@react-google-maps/api'
 import CRUDHandler from '../Handler/CRUDHandler';
 
 const MapContainer = () => {
@@ -21,7 +21,7 @@ const MapContainer = () => {
     height: '500px'
   }
   return (
-    <LoadScript googleMapsApiKey={"AIzaSyC_H1NfVsAI6M3hlBbS696JtdK8Hb9CzHI"}>
+    <LoadScript googleMapsApiKey={"AIzaSyAE3h-DKyyi1NqTEJcxRAMCCHi7bmVsj2I"}>
       <GoogleMap
       center={{ lat: -7.6300605, lng: 111.4930318 }}
       mapContainerStyle={stylingMaps}
@@ -29,6 +29,7 @@ const MapContainer = () => {
         {dataSet ? dataSet.map((data) =>
         <>
         <Marker position= { {lat: data.lat, lng: data.lon} }/>
+
         </>
         ): ''}
           

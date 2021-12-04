@@ -68,13 +68,22 @@ export class Update extends Component {
         });
     };
     updateData(){
+        const timestamp = Date.now();
+        
         const dataCoord ={
             lat: this.state.currentData.lat,
             lon: this.state.currentData.lon,
             ket: this.state.currentData.ket
         };
+        const dataHistory ={
+            lat: this.state.currentData.lat,
+            lon: this.state.currentData.lon,
+            ket: this.state.currentData.ket,
+            kapan: new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp)
+        };
         CRUDHandler.update(this.state.currentData.key, dataCoord)
         .then(() =>{
+            CRUDHandler.historycal(dataHistory)
             this.setState({
                 message: " UPDATE BERHASIL"
                

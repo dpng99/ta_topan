@@ -39,6 +39,7 @@ function Navbarx() {
               <NavDropdown title="Menu" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/edit">Edit</NavDropdown.Item>
                 <NavDropdown.Item href="/adddata">Add New Data</NavDropdown.Item>
+                <NavDropdown.Item href="/history">History</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
               </NavDropdown>
