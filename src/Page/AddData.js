@@ -10,9 +10,9 @@ export class AddData extends Component {
         this.onChangeKeterangan = this.onChangeKeterangan.bind(this)
         this.saveData = this.saveData.bind(this)
         this.state ={
-            lat:'',
-            lon:'',
-            ket:''
+            lat:0,
+            lon:0,
+            ket:0
         }
     }
     onChangeLatitude(e){
@@ -56,11 +56,11 @@ export class AddData extends Component {
                                 <Form.Control type="text" value={this.state.lat} onChange={this.onChangeLatitude}/>
                             </Form.Group>
                             <Form.Group className="md-3">
-                                <Form.Label style={{ color: '#000' }}>Latitude</Form.Label>
+                                <Form.Label style={{ color: '#000' }}>Longitude</Form.Label>
                                 <Form.Control type="text" value={this.state.lon} onChange={this.onChangeLongitude}/>
                             </Form.Group>
                               <Form.Group className="md-3">
-                                <Form.Label style={{ color: '#000' }}>Latitude</Form.Label>
+                                <Form.Label style={{ color: '#000' }}>Keterangan</Form.Label>
                                 <Form.Control type="text" value={this.state.ket} onChange={this.onChangeKeterangan}/>
                             </Form.Group>
                         </Form>
