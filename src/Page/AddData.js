@@ -53,11 +53,11 @@ export class AddData extends Component {
                         <Form>
                             <Form.Group className="md-3">
                                 <Form.Label style={{ color: '#000' }}>Latitude</Form.Label>
-                                <Form.Control type="text" value={this.state.lat} onChange={this.onChangeLatitude}/>
+                                <Form.Control type="number" value={this.state.lat} onChange={this.onChangeLatitude}/>
                             </Form.Group>
                             <Form.Group className="md-3">
                                 <Form.Label style={{ color: '#000' }}>Longitude</Form.Label>
-                                <Form.Control type="text" value={this.state.lon} onChange={this.onChangeLongitude}/>
+                                <Form.Control type="number" value={this.state.lon} onChange={this.onChangeLongitude}/>
                             </Form.Group>
                               <Form.Group className="md-3">
                                 <Form.Label style={{ color: '#000' }}>Keterangan</Form.Label>
