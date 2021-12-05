@@ -25,8 +25,8 @@ const MapContainer = () => {
     })
   }, [])
   const stylingMaps = {
-    width: '100%',
-    height: '100%'
+    maxWidth: '1400px',
+    height: '600px'
   }
   const onLoad = infoWindow =>{
     console.log('infoWindows', infoWindow)
@@ -37,7 +37,7 @@ const MapContainer = () => {
     padding: 15
   }
   return (
-    <Container>
+
     <LoadScript googleMapsApiKey={"AIzaSyAE3h-DKyyi1NqTEJcxRAMCCHi7bmVsj2I"}>
       <GoogleMap
       center={{ lat: -7.6300605, lng: 111.4930318 }}
@@ -61,7 +61,6 @@ const MapContainer = () => {
           
       </GoogleMap>
     </LoadScript>
-    </Container>
   )
 }
 

@@ -8,14 +8,14 @@ import 'firebase/compat/firestore'
 
 // Your web app's Firebase configuration
 const app = firebase.initializeApp ({
-  apiKey: "AIzaSyBF04Q6Q8_wcetPnOZAWrMCqv4vQnL40Vw",
-  authDomain: "dashboardpdam.firebaseapp.com",
-  databaseURL: "https://dashboardpdam-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "dashboardpdam",
-  storageBucket: "dashboardpdam.appspot.com",
-  messagingSenderId: "452860758380",
-  appId: "1:452860758380:web:c920f02443ae82ddac0b49"
-
+  apiKey: "AIzaSyAE3h-DKyyi1NqTEJcxRAMCCHi7bmVsj2I",
+  authDomain: "pdam-iot-65ebf.firebaseapp.com",
+  databaseURL: "https://pdam-iot-65ebf-default-rtdb.firebaseio.com",
+  projectId: "pdam-iot-65ebf",
+  storageBucket: "pdam-iot-65ebf.appspot.com",
+  messagingSenderId: "730063556872",
+  appId: "1:730063556872:web:2e1a49bc5747ad57b49cbd",
+  measurementId: "G-GTY6CK3HRP"
 });
 
 // Initialize Firebase
