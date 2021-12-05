@@ -4,6 +4,13 @@ import CRUDHandler from '../Handler/CRUDHandler';
 
 const MapContainer = () => {
   const [dataSet, setDataSet] = useState('');
+  const [activeMarker, setActiveMarker] = useState(null)
+  const handleActiveMarker = (marker) => {
+    if (marker === activeMarker) {
+      return;
+    }
+    setActiveMarker(marker);
+  };
   useEffect(() => {
     const getData = CRUDHandler.getAll();
     getData.on('value', (snapshot) =>{
@@ -20,6 +27,14 @@ const MapContainer = () => {
     width: '500px',
     height: '500px'
   }
+  const onLoad = infoWindow =>{
+    console.log('infoWindows', infoWindow)
+  }
+  const divStyle = {
+    background: `white`,
+    border: `1px solid #ccc`,
+    padding: 15
+  }
   return (
     <LoadScript googleMapsApiKey={"AIzaSyAE3h-DKyyi1NqTEJcxRAMCCHi7bmVsj2I"}>
       <GoogleMap
@@ -28,8 +43,17 @@ const MapContainer = () => {
       zoom={13}>
         {dataSet ? dataSet.map((data) =>
         <>
-        <Marker position= { {lat: data.lat, lng: data.lon} }/>
-
+        <Marker position= { {lat: data.lat, lng: data.lon} }
+        onClick={() => handleActiveMarker(data)}
+        >
+          {activeMarker === data ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
+          ><div style={divStyle}>
+          <h1>{data.ket}</h1>
+        </div>
+            
+          </InfoWindow>) : null}
+          
+          </Marker>
         </>
         ): ''}
           
