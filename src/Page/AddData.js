@@ -10,8 +10,8 @@ export class AddData extends Component {
         this.onChangeKeterangan = this.onChangeKeterangan.bind(this)
         this.saveData = this.saveData.bind(this)
         this.state ={
-            lat:0,
-            lon:0,
+            lat: 0,
+            lon: 0,
             ket:''
         }
     }
