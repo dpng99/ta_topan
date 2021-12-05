@@ -52,8 +52,8 @@ export class Update extends Component {
                 currentData: {
                     ...prevState.currentData,
                     lon: lon,
-                },
-            };
+                }
+            }
         });
     };
     onChangeKeterangan(e){
@@ -106,11 +106,11 @@ export class Update extends Component {
                     <Form>
                         <Form.Group className="md-3">
                             <Form.Label style={{ color: '#000' }}>Latitude</Form.Label>
-                            <Form.Control type="number" defaultValue={currentData.lat} onChange={this.onChangeLatitude}/>
+                            <Form.Control type="float" defaultValue={currentData.lat} onChange={this.onChangeLatitude}/>
                         </Form.Group>
                         <Form.Group className="md-3">
                             <Form.Label style={{ color: '#000' }}>Longitude</Form.Label>
-                            <Form.Control type="number" defaultValue={currentData.lon} onChange={this.onChangeLongitude}/>
+                            <Form.Control type="float" defaultValue={currentData.lon} onChange={this.onChangeLongitude}/>
                         </Form.Group>
                           <Form.Group className="md-3">
                             <Form.Label style={{ color: '#000' }}>Keterangan</Form.Label>
@@ -119,7 +119,7 @@ export class Update extends Component {
                     </Form>
                     <Button onClick={this.updateData} >Save</Button>
                 </Card.Body>
-                ): (" ") }
+                ): ('') }
             </Card>
         </Container>
             

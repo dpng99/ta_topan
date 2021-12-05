@@ -1,6 +1,6 @@
 import { database } from "../Firebase";
 
-const db = database.ref('dashboard');
+const db = database.ref('ewsApp/flow-meter');
 const dbh= database.ref('history')
 class CrudHandler{
 

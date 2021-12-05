@@ -50,7 +50,9 @@ const MapContainer = () => {
         >
           {activeMarker === data ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
           ><div style={divStyle}>
-          <h1>{data.ket}</h1>
+             <p>Nama : {data.nama}</p>
+          <p> Energy Flow :{data.energyFlow}</p>
+          <p>Negatuve Acc : {data.negativeAcc}</p>
         </div>
             
           </InfoWindow>) : null}
