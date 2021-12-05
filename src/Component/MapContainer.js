@@ -25,8 +25,8 @@ const MapContainer = () => {
     })
   }, [])
   const stylingMaps = {
-    width: '900px',
-    height: '500px'
+    width: '100%',
+    height: '100%'
   }
   const onLoad = infoWindow =>{
     console.log('infoWindows', infoWindow)
