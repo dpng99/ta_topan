@@ -11,10 +11,7 @@ const Dashboard = () => {
         return (
            <>
           <Navbarx />
-          <Container className='center'>
           <MapContainer/>
-          </Container>
-        
             </>
             
 

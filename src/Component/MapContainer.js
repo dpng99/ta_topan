@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import { GoogleMap, LoadScript, Marker, InfoWindow} from '@react-google-maps/api'
 import CRUDHandler from '../Handler/CRUDHandler';
+import { Container } from 'react-bootstrap';
 
 const MapContainer = () => {
   const [dataSet, setDataSet] = useState('');
@@ -24,7 +25,7 @@ const MapContainer = () => {
     })
   }, [])
   const stylingMaps = {
-    width: '500px',
+    width: '900px',
     height: '500px'
   }
   const onLoad = infoWindow =>{
@@ -36,6 +37,7 @@ const MapContainer = () => {
     padding: 15
   }
   return (
+    <Container>
     <LoadScript googleMapsApiKey={"AIzaSyAE3h-DKyyi1NqTEJcxRAMCCHi7bmVsj2I"}>
       <GoogleMap
       center={{ lat: -7.6300605, lng: 111.4930318 }}
@@ -59,6 +61,7 @@ const MapContainer = () => {
           
       </GoogleMap>
     </LoadScript>
+    </Container>
   )
 }
 
