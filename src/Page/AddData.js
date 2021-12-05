@@ -12,7 +12,7 @@ export class AddData extends Component {
         this.state ={
             lat:0,
             lon:0,
-            ket:0
+            ket:''
         }
     }
     onChangeLatitude(e){
