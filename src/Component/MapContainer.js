@@ -25,8 +25,8 @@ const MapContainer = () => {
     })
   }, [])
   const stylingMaps = {
-    maxWidth: '1400px',
-    height: '600px'
+    maxWidth: '1420px',
+    height: '640px'
   }
   const onLoad = infoWindow =>{
     console.log('infoWindows', infoWindow)
@@ -52,7 +52,8 @@ const MapContainer = () => {
           ><div style={divStyle}>
              <p>Nama : {data.nama}</p>
           <p> Energy Flow :{data.energyFlow}</p>
-          <p>Negatuve Acc : {data.negativeAcc}</p>
+          <p>Negative Acc : {data.negativeAcc}</p>
+          <p>Positive Acc : {data.positiveAcc}</p>
         </div>
             
           </InfoWindow>) : null}

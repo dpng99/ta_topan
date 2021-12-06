@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CRUDHandler from '../Handler/CRUDHandler'
+import Navbarx from '../Component/Navbar'
 import {Card, Container, Form, Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';  
 export class AddData extends Component {
@@ -47,6 +48,7 @@ export class AddData extends Component {
     render() {
         return (
             <>
+             <Navbarx/>
             <Container fluid>
                 <Card>
                     <Card.Body>
