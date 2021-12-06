@@ -50,18 +50,19 @@ export class AddData extends Component {
             <>
              <Navbarx/>
             <Container fluid>
-                <Card>
-                    <Card.Body>
-                        <Form>
-                            <Form.Group className="md-3">
+                <Card >
+                    <Card.Body >
+                        <Form >
+                            
+                            <Form.Group className="form-group col-md-4" >
                                 <Form.Label style={{ color: '#000' }}>Latitude</Form.Label>
                                 <Form.Control type="number" value={this.state.lat} onChange={this.onChangeLatitude}/>
                             </Form.Group>
-                            <Form.Group className="md-3">
+                            <Form.Group className="form-group col-md-4">
                                 <Form.Label style={{ color: '#000' }}>Longitude</Form.Label>
                                 <Form.Control type="number" value={this.state.lon} onChange={this.onChangeLongitude}/>
                             </Form.Group>
-                              <Form.Group className="md-3">
+                              <Form.Group className="form-group col-md-4">
                                 <Form.Label style={{ color: '#000' }}>Keterangan</Form.Label>
                                 <Form.Control type="text" value={this.state.ket} onChange={this.onChangeKeterangan}/>
                             </Form.Group>
