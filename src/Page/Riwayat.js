@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-import { Container, Table } from 'react-bootstrap'
+import { Container, Image, Table } from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
 
@@ -21,7 +21,8 @@ const Riwayat = () => {
     return (
         <>
         <Navbarx/>
-        <Container >
+       
+        <Container fluid>
             <Table striped bordered hover>
                 <thead>
                     <tr>

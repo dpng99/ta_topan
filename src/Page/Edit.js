@@ -18,7 +18,8 @@ export class Edit extends Component {
     };
 }
 componentDidMount(){
-   CRUDHandler.getAll().on('value', this.onDataChange)
+CRUDHandler.getAll().on('value', this.onDataChange)
+
 }
 componentWillUnmount(){
    CRUDHandler.getAll().off('value', this.onDataChange)
@@ -30,9 +31,7 @@ onDataChange(items){
         let data = item.val();
         dataset.push({
             key: key,
-            lat: data.lat,
-            lon: data.lon,
-            ket: data.ket
+         
         })
     })
     this.setState({dataset: dataset})
@@ -63,7 +62,7 @@ setDataEdit(datum, index){
                            onClick={() => this.setDataEdit(datum, index)}
                            key={index}
                            >
-                               {datum.ket}
+                               {datum.key}
                            </ListGroup.Item>
                            ))}
                        </ListGroup>

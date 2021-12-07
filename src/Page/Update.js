@@ -13,9 +13,7 @@ export class Update extends Component {
         this.state = {
             currentData:{
                 key: null,
-                lat:0,
-                lon:0,
-                ket: ""
+               nama: ''
             }
         }
     }
@@ -57,12 +55,12 @@ export class Update extends Component {
         });
     };
     onChangeKeterangan(e){
-        const ket = e.target.value;
+        const nama = e.target.value;
         this.setState(function(prevState){
             return{
                 currentData: {
                     ...prevState.currentData,
-                    ket: ket,
+                    nama: nama,
                 },
             };
         });
@@ -71,14 +69,11 @@ export class Update extends Component {
         const timestamp = Date.now();
         
         const dataCoord ={
-            lat: this.state.currentData.lat,
-            lon: this.state.currentData.lon,
-            ket: this.state.currentData.ket
+            nama: this.state.currentData.nama
         };
         const dataHistory ={
-            lat: this.state.currentData.lat,
-            lon: this.state.currentData.lon,
-            ket: this.state.currentData.ket,
+  
+            nama: this.state.currentData.nama,
             kapan: new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp)
         };
         CRUDHandler.update(this.state.currentData.key, dataCoord)
@@ -104,17 +99,11 @@ export class Update extends Component {
                 {currentData ? (
                 <Card.Body>
                     <Form>
-                        <Form.Group className="md-3">
-                            <Form.Label style={{ color: '#000' }}>Latitude</Form.Label>
-                            <Form.Control type="float" defaultValue={currentData.lat} onChange={this.onChangeLatitude}/>
-                        </Form.Group>
-                        <Form.Group className="md-3">
-                            <Form.Label style={{ color: '#000' }}>Longitude</Form.Label>
-                            <Form.Control type="float" defaultValue={currentData.lon} onChange={this.onChangeLongitude}/>
-                        </Form.Group>
+                    
+                        
                           <Form.Group className="md-3">
                             <Form.Label style={{ color: '#000' }}>Keterangan</Form.Label>
-                            <Form.Control type="text" defaultValue={currentData.ket} onChange={this.onChangeKeterangan}/>
+                            <Form.Control type="text" defaultValue={currentData.nama} onChange={this.onChangeKeterangan}/>
                         </Form.Group>
                     </Form>
                     <Button onClick={this.updateData} >Save</Button>

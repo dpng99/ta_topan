@@ -1,11 +1,15 @@
 import { database } from "../Firebase";
 
-const db = database.ref('ewsApp');
+const db = database.ref('/MonitoringDebitQualityApp/MonitoringDebit');
+const dblocation =  database.ref('MonitoringDebitQualityApp/LokasiQuality')
 const dbh= database.ref('history')
 class CrudHandler{
 
     getAll(){
         return db;
+    }
+    getLocation(){
+        return dblocation;
     }
     getHistory(){
         return dbh;

@@ -13,7 +13,7 @@ const MapContainer = () => {
     setActiveMarker(marker);
   };
   useEffect(() => {
-    const getData = CRUDHandler.getAll();
+    const getData = CRUDHandler.getLocation();
     getData.on('value', (snapshot) =>{
       const dataValue = snapshot.val()
       const dataSet = []
@@ -45,15 +45,11 @@ const MapContainer = () => {
       zoom={13}>
         {dataSet ? dataSet.map((data) =>
         <>
-        <Marker position= { {lat: data.lat, lng: data.lon} }
+        <Marker position= { {lat: data.latitude, lng: data.longitude} }
         onClick={() => handleActiveMarker(data)}
         >
           {activeMarker === data ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
           ><div style={divStyle}>
-             <p>Nama : {data.nama}</p>
-          <p> Energy Flow :{data.energyFlow}</p>
-          <p>Negative Acc : {data.negativeAcc}</p>
-          <p>Positive Acc : {data.positiveAcc}</p>
         </div>
             
           </InfoWindow>) : null}

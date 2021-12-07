@@ -54,7 +54,6 @@ export class AddData extends Component {
                 <Card >
                     <Card.Body >
                         <Form >
-                            
                             <Form.Group >
                                 <Form.Label style={{ color: '#000' }}>Latitude</Form.Label>
                                 <Form.Control type="number" value={this.state.lat} onChange={this.onChangeLatitude}/>
