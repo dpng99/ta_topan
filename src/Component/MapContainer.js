@@ -43,9 +43,9 @@ const MapContainer = () => {
       center={{ lat: -7.6300605, lng: 111.4930318 }}
       mapContainerStyle={stylingMaps}
       zoom={13}>
-        {dataSet ? dataSet.map((data) =>
+        {dataSet ? dataSet.map((data, index) =>
         <>
-        <Marker position= { {lat: data.latitude, lng: data.longitude} }
+        <Marker key={index} position= { {lat: parseFloat(data.latitude), lng: parseFloat(data.longitude)} }
         onClick={() => handleActiveMarker(data)}
         >
           {activeMarker === data ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}

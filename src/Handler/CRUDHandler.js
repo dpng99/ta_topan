@@ -1,10 +1,11 @@
 import { database } from "../Firebase";
-
+import React,{useState, useEffect} from 'react'
 const db = database.ref('/MonitoringDebitQualityApp/MonitoringDebit');
 const dblocation =  database.ref('MonitoringDebitQualityApp/LokasiQuality')
-const dbh= database.ref('history')
-class CrudHandler{
+const dbh= database.ref('MonitoringDebitQualityApp/LokasiQuality').orderByChild('Submitted')
 
+class CrudHandler{
+    
     getAll(){
         return db;
     }
@@ -12,7 +13,10 @@ class CrudHandler{
         return dblocation;
     }
     getHistory(){
-        return dbh;
+        
+        
+        return dbh 
+        
     }
     create(data){
         return db.push(data);
