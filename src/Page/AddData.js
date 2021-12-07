@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CRUDHandler from '../Handler/CRUDHandler'
 import Navbarx from '../Component/Navbar'
-import {Card, Container, Form, Button} from 'react-bootstrap'
+import {Card, Container, Form, Button, Image} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';  
 export class AddData extends Component {
     constructor(props) {
@@ -49,7 +49,8 @@ export class AddData extends Component {
         return (
             <>
              <Navbarx/>
-            <Container fluid className='align-content-center justify-content-center d-grid grid-content'>
+                 <Image src='/img/bg2.jpg' style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'absolute'}}/>
+            <Container fluid className='align-content-center justify-content-center d-grid grid-content' style={{ margin: '20px 20px 20px 20px', padding: '20px  20px 20px 20px' }}>
                 <Card >
                     <Card.Body >
                         <Form >
@@ -70,6 +71,7 @@ export class AddData extends Component {
                         <Button onClick={this.saveData} >Save</Button>
                     </Card.Body>
                 </Card>
+             
             </Container>
             </>
         )
