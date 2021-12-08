@@ -6,23 +6,26 @@ import CRUDHandler from '../Handler/CRUDHandler'
 const Riwayat = () => {
     const [DataSet, setDataSet] = useState('');
     const [DataHistory, setDataHistory] = useState('');
-    useEffect(() => {
+    useEffect(() => { 
         const readData = CRUDHandler.getHistory();
         readData.on('value', (snapshot) => {
           const dataset = snapshot.val();
+          
           const DataSet = []
           const DataHistory = []
           for (let id in dataset){
               DataSet.push(dataset[id]);
-              const NewDataSet = snapshot.child('Submitted')
-              for(let NewDataSet in DataSet){
-                  DataHistory.push(DataSet[NewDataSet]);
+              const NewDataSet = snapshot.child(id).child('/Submitted').val();
+              for(let id in NewDataSet){
+                  DataHistory.push(NewDataSet[id])
               }
           }
-          setDataHistory(DataHistory);
-          console.log(DataHistory);
-          console.log(DataSet);
+          setDataHistory(DataHistory)
+          console.log(DataHistory)
+        
+          
           setDataSet(DataSet);
+          console.log(DataSet);
         })
     }, [])
 
@@ -35,20 +38,20 @@ const Riwayat = () => {
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Lokasi</th>
-                        <th>Latitude</th>
-                        <th>Longitude</th>
-                        <th>LastEdit</th>
+                        <th>Nama</th>
+                        <th>Temperature</th>
+                        <th>TDS</th>
+                        <th>Time</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {Object.keys(DataSet).map((data, index) => 
+                    {Object.keys(DataHistory).map((data, index) => 
                     <tr key={data}>
                         <td>{index+1}</td>
-                        <td>{DataSet[data].nama}</td>
-                        <td>{DataSet[data].latitude}</td>
-                        <td>{DataSet[data].longitude}</td>
-                        <td>{DataSet[data].kapan}</td>
+                        <td>{DataHistory[data].sumur}</td>
+                        <td>{DataHistory[data].temperature}</td>
+                        <td>{DataHistory[data].tds}</td>
+                        <td>{DataHistory[data].time}</td>
                     </tr>
                     )}
                 </tbody>
