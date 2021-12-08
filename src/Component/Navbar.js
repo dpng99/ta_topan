@@ -40,6 +40,7 @@ function Navbarx() {
                 <NavDropdown.Item href="/edit">Edit</NavDropdown.Item>
                 <NavDropdown.Item href="/adddata">Add New Data</NavDropdown.Item>
                 <NavDropdown.Item href="/history">History</NavDropdown.Item>
+                <NavDropdown.Item href="/monitoring">Monitoring</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
               </NavDropdown>

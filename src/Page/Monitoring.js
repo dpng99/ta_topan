@@ -30,19 +30,18 @@ const Monitoring = () => {
         <>
         <Navbarx/>
         <Container>
-            <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
+            <Dropdown fluid className='align-content-left justify-content-left d-grid grid-content' style={{ margin: '10px 50px 50px 50px', padding: '50px  50px 50px 50px' }}>
+            <Dropdown.Toggle  variant="success" id="dropdown-basic">
              Lokasi Debit
              </Dropdown.Toggle>
 
-         <Dropdown.Menu>{DataSet ? DataSet.map((item, index) => (
+         <Dropdown.Menu >{DataSet ? DataSet.map((item, index) => (
              <Dropdown.Item key={index}>{item.nama}</Dropdown.Item>
          )): null}
-        
-        
         </Dropdown.Menu>
         </Dropdown>
-        <Dropdown>
+
+        <Dropdown fluid className='align-content-right justify-content-right d-grid grid-content' style={{ margin: '50px 50px 50px 50px', padding: '50px  50px 50px 50px' }}>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
              Lokasi Quality
              </Dropdown.Toggle>
