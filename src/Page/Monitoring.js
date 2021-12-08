@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-import { Container, Dropdown } from 'react-bootstrap'
+import { Container, Dropdown, Image} from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
 
@@ -29,6 +29,7 @@ const Monitoring = () => {
     return (
         <>
         <Navbarx/>
+        <Image src='/img/bg2.jpg' style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'absolute'}}/>
         <Container>
             <Dropdown fluid className='align-content-left justify-content-left d-grid grid-content' style={{ margin: '10px 50px 50px 50px', padding: '50px  50px 50px 50px' }}>
             <Dropdown.Toggle  variant="success" id="dropdown-basic">
