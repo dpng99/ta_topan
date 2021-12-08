@@ -10,6 +10,7 @@ import PrivateRouter from './PrivateRouter';
 import Edit from './Page/Edit';
 import AddData from './Page/AddData';
 import Riwayat from './Page/Riwayat';
+import Monitoring from './Page/Monitoring';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
       <PrivateRouter path="/edit" component={Edit} />
       <PrivateRouter path="/adddata" component={AddData} />
       <PrivateRouter path="/history" component={Riwayat} />
+      <PrivateRouter path="/monitoring" component={Monitoring} />
      <Route path="/signup" component={FormSignup}/>
     <Route path="/login" component={FormLogin}/>
      </Switch>

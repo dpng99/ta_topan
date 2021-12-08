@@ -22,7 +22,7 @@ CRUDHandler.getLocation().on('value', this.onDataChange)
 
 }
 componentWillUnmount(){
-   CRUDHandler.getAll().off('value', this.onDataChange)
+   CRUDHandler.getLoca().off('value', this.onDataChange)
 }
 onDataChange(items){
    let dataset =[];

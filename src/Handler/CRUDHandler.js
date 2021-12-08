@@ -3,11 +3,14 @@ import React,{useState, useEffect} from 'react'
 const db = database.ref('/MonitoringDebitQualityApp/MonitoringDebit');
 const dblocation =  database.ref('MonitoringDebitQualityApp/LokasiQuality')
 const dbh= database.ref('MonitoringDebitQualityApp/LokasiQuality')
-
+const monitoring = database.ref('MonitoringDebitQualityApp')
 class CrudHandler{
     
     getAll(){
         return db;
+    }
+    getMonitor(){
+        return monitoring;
     }
     getLocation(){
         return dblocation;
