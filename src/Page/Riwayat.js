@@ -5,14 +5,22 @@ import CRUDHandler from '../Handler/CRUDHandler'
 
 const Riwayat = () => {
     const [DataSet, setDataSet] = useState('');
+    const [DataHistory, setDataHistory] = useState('');
     useEffect(() => {
         const readData = CRUDHandler.getHistory();
         readData.on('value', (snapshot) => {
           const dataset = snapshot.val();
           const DataSet = []
+          const DataHistory = []
           for (let id in dataset){
               DataSet.push(dataset[id]);
+              const NewDataSet = snapshot.child('Submitted')
+              for(let NewDataSet in DataSet){
+                  DataHistory.push(DataSet[NewDataSet]);
+              }
           }
+          setDataHistory(DataHistory);
+          console.log(DataHistory);
           console.log(DataSet);
           setDataSet(DataSet);
         })
@@ -27,7 +35,7 @@ const Riwayat = () => {
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Alat</th>
+                        <th>Lokasi</th>
                         <th>Latitude</th>
                         <th>Longitude</th>
                         <th>LastEdit</th>
@@ -37,9 +45,9 @@ const Riwayat = () => {
                     {Object.keys(DataSet).map((data, index) => 
                     <tr key={data}>
                         <td>{index+1}</td>
-                        <td>{DataSet[data].ket}</td>
-                        <td>{DataSet[data].lat}</td>
-                        <td>{DataSet[data].lon}</td>
+                        <td>{DataSet[data].nama}</td>
+                        <td>{DataSet[data].latitude}</td>
+                        <td>{DataSet[data].longitude}</td>
                         <td>{DataSet[data].kapan}</td>
                     </tr>
                     )}
