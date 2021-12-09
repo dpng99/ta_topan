@@ -6,26 +6,40 @@ import CRUDHandler from '../Handler/CRUDHandler'
 const Monitoring = () => {
     
     const [DataSet, setDataSet] = useState('')
-    const [ DataChild, setDataChild] = useState('')
     const [ DataKey, setDataKey] = useState('')
-    const [ currentData, setcurrentData] = useState('')
-    const [currentIndex, setCurrentIndex] = useState([])
+    const [currentIndex, setCurrentIndex] = useState('')
 
     const settDataEdit = (index) => {
-    
+        
         const dataBind = CRUDHandler.getMonitor()
         dataBind.on('value', (snapshot) => {
             const DataBinning = snapshot.child('LokasiDebit').child(index).child('Submitted').val()
+           const currentIndex = []
             for(let id in DataBinning) {
                     currentIndex.push(DataBinning[id])      
             }
-                     
+            setCurrentIndex(currentIndex)
             
         })
         
         
-        setCurrentIndex(currentIndex)
-        console.log(currentIndex)   
+        
+    }
+    const settingDataEdit = (index) => {
+        
+        const dataBind = CRUDHandler.getMonitor()
+        dataBind.on('value', (snapshot) => {
+            const DataBinning = snapshot.child('LokasiQuality').child(index).child('Submitted').val()
+           const currentIndex = []
+            for(let id in DataBinning) {
+                    currentIndex.push(DataBinning[id])      
+            }
+            setCurrentIndex(currentIndex)
+            
+        })
+        
+        
+        
     }
  
      
@@ -81,13 +95,13 @@ const Monitoring = () => {
              </Dropdown.Toggle>
 
          <Dropdown.Menu>
-             {DataKey ? DataKey.map((item, index) => (
-                <Dropdown.Item key={index} >{item.nama}</Dropdown.Item>
-             )): null}
+             {Object.keys(DataKey).map((item, index) => (
+                <Dropdown.Item key={index} onClick={() => settingDataEdit(DataKey[item].nama)
+                } >{DataKey[item].nama}</Dropdown.Item>
+             ))}
         
         </Dropdown.Menu>
         </Dropdown>
-        <Button className="btn btn-primary" style={{ position: 'relative' }} onClick={() => window.location.reload(false)}> Tombol</Button>
         </Container>
         <Container>
                 <Card>
