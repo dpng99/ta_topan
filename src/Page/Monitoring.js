@@ -109,12 +109,13 @@ const Monitoring = () => {
                              <Card fluid key={i} >
                              <Card.Body>
                                  <Card.Title>
-                                 {item.pipa}
+                                 {item.pipa || item.sumur}
                                  </Card.Title>
                                  <Card.Text>
-                                     {item.date}
+                                     {item.date || item.tds}
                                      {item.time}
-                                     {item.flowrate}
+                                     {item.temperature || item.fss}
+                                     {item.flowrate || item.ph}
                                  </Card.Text>
                              </Card.Body>
                          </Card>
