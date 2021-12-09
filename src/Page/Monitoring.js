@@ -8,6 +8,7 @@ const Monitoring = () => {
     const [DataSet, setDataSet] = useState('')
     const [ DataKey, setDataKey] = useState('')
     const [currentIndex, setCurrentIndex] = useState('')
+    const [ currentIndex2, setCurrentIndex2] = useState('')
 
     const settDataEdit = (index) => {
         
@@ -30,11 +31,11 @@ const Monitoring = () => {
         const dataBind = CRUDHandler.getMonitor()
         dataBind.on('value', (snapshot) => {
             const DataBinning = snapshot.child('LokasiQuality').child(index).child('Submitted').val()
-           const currentIndex = []
+           const currentIndex2 = []
             for(let id in DataBinning) {
-                    currentIndex.push(DataBinning[id])      
+                    currentIndex2.push(DataBinning[id])      
             }
-            setCurrentIndex(currentIndex)
+            setCurrentIndex2(currentIndex2)
             
         })
         
@@ -88,7 +89,7 @@ const Monitoring = () => {
          ))}
         </Dropdown.Menu>
         </Dropdown>
-
+        <Button style={{ position: 'relative'}}onClick={() => window.location.reload(false)}>Refresh</Button>
         <Dropdown fluid  >
             <Dropdown.Toggle variant="success" id="dropdown-basic">
              Lokasi Quality
@@ -102,6 +103,7 @@ const Monitoring = () => {
         
         </Dropdown.Menu>
         </Dropdown>
+       
         </Container>
         <Container>
                 <Card>
@@ -111,12 +113,28 @@ const Monitoring = () => {
                                  <Card.Title>
                                  {item.pipa || item.sumur}
                                  </Card.Title>
-                                 <Card.Text>
-                                     {item.date || item.tds}
-                                     {item.time}
-                                     {item.temperature || item.fss}
-                                     {item.flowrate || item.ph}
-                                 </Card.Text>
+                                 <Card.Text>{item.date || item.tds}</Card.Text>
+                                     <Card.Text>Waktu: {item.time}</Card.Text>
+                                    <Card.Text> {item.temperature || item.fss}</Card.Text>
+                                    <Card.Text> {item.flowrate || item.ph}</Card.Text>
+                                 
+                             </Card.Body>
+                         </Card>
+                               
+                           ))}
+                </Card>
+                <Card>
+                           {currentIndex2 && currentIndex2.map((item, i) => (
+                             <Card fluid key={i} >
+                             <Card.Body>
+                                 <Card.Title>
+                                 {item.sumur}
+                                 </Card.Title>
+                                 <Card.Text>Tanggal : {item.date}</Card.Text>
+                                     <Card.Text>Waktu: {item.time}</Card.Text>
+                                    <Card.Text> Temperatur: {item.temperature}</Card.Text>
+                                    <Card.Text>PH: {item.ph}</Card.Text>
+                                 
                              </Card.Body>
                          </Card>
                                
