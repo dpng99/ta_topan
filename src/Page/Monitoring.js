@@ -74,9 +74,9 @@ const Monitoring = () => {
         <>
         <Navbarx/>
         
-        <Container className='align-content-right justify-content-right d-flex flex-center'>
+        <Container className='align-content-center justify-content-center d-flex flex-center'>
             <Dropdown fluid >
-            <Dropdown.Toggle  variant="success" id="dropdown-basic" style={{margin: '5px 10px 10px 10px'}}>
+            <Dropdown.Toggle  variant="success" id="dropdown-basic" style={{width: '150px', height: '40px',margin: '5px 10px 10px 10px'}}>
              Lokasi Debit
              </Dropdown.Toggle>
 
@@ -89,9 +89,9 @@ const Monitoring = () => {
          ))}
         </Dropdown.Menu>
         </Dropdown>
-        <Button style={{ position: 'relative', padding: '5px  5px 3px 10px', margin: '5px 10px 10px 10px'}}onClick={() => window.location.reload(false)}>↔️</Button>
+        <Button style={{ position: 'relative', padding: '5px  5px 3px 10px', margin: '5px 10px 10px 10px', width: '150px', height: '40px' }}onClick={() => window.location.reload(false)}>↔️</Button>
         <Dropdown fluid  >
-            <Dropdown.Toggle variant="success" id="dropdown-basic" style={{margin: '5px 10px 10px 10px'}}>
+            <Dropdown.Toggle variant="success" id="dropdown-basic" style={{width: '150px', height: '40px', margin: '5px 10px 10px 10px'}}>
              Lokasi Quality
              </Dropdown.Toggle>
 
