@@ -76,7 +76,7 @@ const Monitoring = () => {
         
         <Container className='align-content-right justify-content-right d-flex flex-center'>
             <Dropdown fluid >
-            <Dropdown.Toggle  variant="success" id="dropdown-basic">
+            <Dropdown.Toggle  variant="success" id="dropdown-basic" style={{margin: '5px 10px 10px 10px'}}>
              Lokasi Debit
              </Dropdown.Toggle>
 
@@ -89,9 +89,9 @@ const Monitoring = () => {
          ))}
         </Dropdown.Menu>
         </Dropdown>
-        <Button style={{ position: 'relative'}}onClick={() => window.location.reload(false)}>Refresh</Button>
+        <Button style={{ position: 'relative', padding: '5px  5px 3px 10px', margin: '5px 10px 10px 10px'}}onClick={() => window.location.reload(false)}>↔️</Button>
         <Dropdown fluid  >
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
+            <Dropdown.Toggle variant="success" id="dropdown-basic" style={{margin: '5px 10px 10px 10px'}}>
              Lokasi Quality
              </Dropdown.Toggle>
 
