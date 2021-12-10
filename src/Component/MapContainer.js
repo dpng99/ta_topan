@@ -5,6 +5,7 @@ import { Container } from 'react-bootstrap';
 
 const MapContainer = () => {
   const [dataSet, setDataSet] = useState('');
+  const [dataSet2, setDataSet2] = useState('');
   const [activeMarker, setActiveMarker] = useState(null)
   const handleActiveMarker = (marker) => {
     if (marker === activeMarker) {
@@ -15,13 +16,18 @@ const MapContainer = () => {
   useEffect(() => {
     const getData = CRUDHandler.getLocation();
     getData.on('value', (snapshot) =>{
-      const dataValue = snapshot.val()
+      const dataValue = snapshot.child('LokasiDebit').val()
+      const DataValue2 = snapshot.child('LokasiQuality').val()
+      const dataSet2 = []
       const dataSet = []
       for(let id in dataValue){
         dataSet.push(dataValue[id])
       }
+      for(let id in DataValue2){
+        dataSet2.push(DataValue2[id])
+      }
+      setDataSet2(dataSet2)
       setDataSet(dataSet)
-      console.log(dataSet)
     })
   }, [])
   const stylingMaps = {
@@ -43,20 +49,42 @@ const MapContainer = () => {
       center={{ lat: -7.6300605, lng: 111.4930318 }}
       mapContainerStyle={stylingMaps}
       zoom={13}>
-        {dataSet ? dataSet.map((data, index) =>
+        {Object.keys(dataSet).map((data) =>
+          
         <>
-        <Marker key={index} position= { {lat: parseFloat(data.latitude), lng: parseFloat(data.longitude)} }
+        <Marker key={data} position={{lat: parseFloat(dataSet[data].latitude), lng: parseFloat(dataSet[data].longitude)}}
         onClick={() => handleActiveMarker(data)}
         >
           {activeMarker === data ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
           ><div style={divStyle}>
+            <p>{dataSet[data].nama}</p>
+            
         </div>
             
           </InfoWindow>) : null}
           
           </Marker>
         </>
-        ): ''}
+        
+        )}
+        {Object.keys(dataSet2).map((data) =>
+          
+          <>
+          <Marker key={data} position={{lat: parseFloat(dataSet2[data].latitude), lng: parseFloat(dataSet2[data].longitude)}}
+          onClick={() => handleActiveMarker(data)}
+          >
+            {activeMarker === data ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
+            ><div style={divStyle}>
+              <p>{dataSet2[data].nama}</p>
+              
+          </div>
+              
+            </InfoWindow>) : null}
+            
+            </Marker>
+          </>
+          
+          )}
           
       </GoogleMap>
     </LoadScript>
