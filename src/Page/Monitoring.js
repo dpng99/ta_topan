@@ -105,18 +105,20 @@ const Monitoring = () => {
         </Dropdown>
        
         </Container>
-        <Container>
-                <Card>
+        <Container style={{ width: '500px', height: '500px'}} >
+                <Card >
                            {currentIndex && currentIndex.map((item, i) => (
                              <Card fluid key={i} >
-                             <Card.Body>
+                             <Card.Body >
                                  <Card.Title>
-                                 {item.pipa || item.sumur}
+                                 PIPA {item.pipa}
                                  </Card.Title>
-                                 <Card.Text>{item.date || item.tds}</Card.Text>
-                                     <Card.Text>Waktu: {item.time}</Card.Text>
-                                    <Card.Text> {item.temperature || item.fss}</Card.Text>
-                                    <Card.Text> {item.flowrate || item.ph}</Card.Text>
+                                 <Card.Text>Tanggal : {item.date}</Card.Text>
+                                     <Card.Text>Waktu : {item.time}</Card.Text>
+                                     <Card.Text>Flowrate : {item.flowrate}</Card.Text>
+                                     <Card.Text>FSS : {item.fss}</Card.Text>
+                                    <Card.Text>Temperature : {item.temperature}</Card.Text>
+                                    <Card.Text>Flowrate : {item.flowrate}</Card.Text>
                                  
                              </Card.Body>
                          </Card>
@@ -128,12 +130,15 @@ const Monitoring = () => {
                              <Card fluid key={i} >
                              <Card.Body>
                                  <Card.Title>
-                                 {item.sumur}
+                                 SUMUR {item.sumur}
                                  </Card.Title>
                                  <Card.Text>Tanggal : {item.date}</Card.Text>
                                      <Card.Text>Waktu: {item.time}</Card.Text>
-                                    <Card.Text> Temperatur: {item.temperature}</Card.Text>
-                                    <Card.Text>PH: {item.ph}</Card.Text>
+                                     <Card.Text>ORP : {item.orp}</Card.Text>
+                                     <Card.Text>PH  : {item.ph}</Card.Text>
+                                     <Card.Text>TDS : {item.tds}</Card.Text>
+                                    <Card.Text> Temperatur : {item.temperature}</Card.Text>
+                                    <Card.Text>Turbidty : {item.turbidity}</Card.Text>
                                  
                              </Card.Body>
                          </Card>
