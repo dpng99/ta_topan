@@ -46,7 +46,7 @@ const Monitoring = () => {
      
   
     useEffect(() => {
-        const enumerate = CRUDHandler.getMonitor()
+        const enumerate = CRUDHandler.getLocation()
         enumerate.on('value', (snapshot) => {
             const dataSnip = snapshot.child('LokasiDebit').val();
             const dataSnip2 = snapshot.child('LokasiQuality').val();
