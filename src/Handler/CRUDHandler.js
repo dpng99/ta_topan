@@ -25,7 +25,7 @@ class CrudHandler{
         return db.push(data);
     }
     update(key, value){
-        return db.child(key).update(value);
+        return dbh.child(key).update(value);
     }
     historycal(value){
         return dbh.push(value);

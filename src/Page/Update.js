@@ -18,10 +18,10 @@ export class Update extends Component {
         }
     }
     static getDerivedStateFromProps(nextProps, prevState) {
-        const {datum} = nextProps;
-        if(prevState.currentData.key !== datum.key){
+        const {getNama} = nextProps;
+        if(prevState.currentData.key !== getNama.key){
             return{
-                currentData: datum,
+                currentData: getNama,
 
             }
         }
@@ -29,7 +29,7 @@ export class Update extends Component {
     }
     componentDidMount() {
         this.setState({
-            currentData: this.props.datum,
+            currentData: this.props.getNama,
         });
     };
     onChangeLatitude(e){
@@ -106,7 +106,7 @@ export class Update extends Component {
                             <Form.Control type="text" defaultValue={currentData.nama} onChange={this.onChangeKeterangan}/>
                         </Form.Group>
                     </Form>
-                    <Button onClick={this.updateData} >Save</Button>
+                    <Button onClick={this.updateData}>Save</Button>
                 </Card.Body>
                 ): ('') }
             </Card>
