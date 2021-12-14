@@ -8,7 +8,8 @@ const Edit = () => {
     const [getKota, setGetKota] = useState('')
     const [ getNama, setGetNama ] = useState(null)
     const [getData, setGetData ] = useState('')
-    const [updateNama, setUpdateNama] = useState()
+    const [setChild, setGetChild] = useState('')
+    const [updateNama, setUpdateNama] = useState([])
     const [ updateAll, setUpdateAll] = useState([])
 
     const [formData, setFormData] = useState({
@@ -23,27 +24,30 @@ const Edit = () => {
             const Data = snapshot.child(getAlat).val()
             const getKota = []
             const getData = []
+            const updateAll = []
             for(let id in Data) {
                 getKota.push(Data[id])
             }
             setGetKota(getKota)
-            if(getNama != null){
-            getData.push(getNama)
-        }
-            setGetData(getData)
             
+            setGetData(getData)
+            if(getNama != null){
+                getData.push(getNama)
+              
+            }
+           
             
         })
-        if(updateNama != null){
-      CRUDHandler.update(getData, updateNama)
-    }
+     
+        
+        
         
     
         
              
         
     
-    }, [getAlat, getNama, updateNama]);
+    }, [getAlat, getNama]);
     
     return (
         <>
@@ -54,7 +58,7 @@ const Edit = () => {
            
                     <Card fluid='lg'>
                            {getKota && getKota.map((item, i) => (
-                             <Card fluid key={i} onClick={() => setGetNama(item)}>
+                             <Card fluid key={i} onClick={() => setGetNama(item,setGetChild(item.nama))}>
                              <Card.Body>
                                  <Card.Title>
                                      {item.nama}
@@ -66,31 +70,7 @@ const Edit = () => {
                                
                            ))}
                      </Card>
-                     <Card fluid>
-                         <Card.Body>
-                         {Object.keys(getData) ? Object.keys(getData).map((i, key) => ( 
-                             <>
-                         <Form>
-                         <Form.Group className="md-3">
-                        <Form.Label style={{ color: '#000' }}>Keterangan</Form.Label>
-                        <Form.Control key={key}  type="text" value={getData[i].nama}/>
-                        </Form.Group>
-                        <Form.Group className="md-3">
-                        <Form.Label style={{ color: '#000' }}>Latitude</Form.Label>
-                        <Form.Control  key={key} type="text" onChange={(e)=> setFormData({...formData, latitude: e.target.value})} defaultValue={getData[i].latitude} />
-                        </Form.Group>
-                        <Form.Group className="md-3">
-                        <Form.Label style={{ color: '#000' }}>Longitude</Form.Label>
-                        <Form.Control key={key} type="text" onChange={(e)=> setFormData({...formData, longitude: e.target.value})} defaultValue={getData[i].longitude} />
-                        </Form.Group>
-                        <Button onClick={()=>setUpdateNama(formData)}>Update</Button>
-                         </Form>
-                         </>
-                         )): null}
-                         
-                         </Card.Body>
-
-                     </Card>
+                
        </Container>
        </>
     )
