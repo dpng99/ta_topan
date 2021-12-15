@@ -1,80 +1,73 @@
-import React, { Component } from 'react'
-import CRUDHandler from '../Handler/CRUDHandler'
+/* eslint-disable no-const-assign */
+import React,{useState, useEffect} from 'react'
+import { Container, Card, Form, Button } from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
-import {Card, Container, Form, Button, Image} from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css';  
-export class AddData extends Component {
-    constructor(props) {
-        super(props);
-        this.onChangeLatitude = this.onChangeLatitude.bind(this)
-        this.onChangeLongitude = this.onChangeLongitude.bind(this)
-        this.onChangeKeterangan = this.onChangeKeterangan.bind(this)
-        this.saveData = this.saveData.bind(this)
-        this.state ={
-            lat: 0,
-            lon: 0,
-            ket:''
-        }
-    }
-    onChangeLatitude(e){
-        this.setState({
-            lat: e.target.value,
-        });
-    }
-    onChangeLongitude(e){
-        this.setState({
-            lon: e.target.value,
-        });
-    }
-    onChangeKeterangan(e){
-        this.setState({
-            ket: e.target.value
-        });
-    }
-    saveData(){
-        let data ={
-            lat: this.state.lat,
-            lon: this.state.lon,
-            ket: this.state.ket
-        }
-        CRUDHandler.create(data)
-        .then(() =>{
-            console.log("data berhasil dimasukkan")
-        }).catch((e) =>{
-            console.log(e)
-        })
-    }
+import CRUDHandler from '../Handler/CRUDHandler'
 
-    render() {
-        return (
-            <>
-             <Navbarx/>
-                 <Image src='/img/bg2.jpg' style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'absolute'}}/>
-            <Container fluid className='align-content-center justify-content-center d-grid grid-content' style={{ margin: '20px 20px 20px 20px', padding: '20px  20px 20px 20px' }}>
-                <Card >
-                    <Card.Body >
-                        <Form >
-                            <Form.Group >
-                                <Form.Label style={{ color: '#000' }}>Latitude</Form.Label>
-                                <Form.Control type="number" value={this.state.lat} onChange={this.onChangeLatitude}/>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label style={{ color: '#000' }}>Longitude</Form.Label>
-                                <Form.Control type="number" value={this.state.lon} onChange={this.onChangeLongitude}/>
-                            </Form.Group>
-                              <Form.Group>
-                                <Form.Label style={{ color: '#000' }}>Keterangan</Form.Label>
-                                <Form.Control type="text" value={this.state.ket} onChange={this.onChangeKeterangan}/>
-                            </Form.Group>
-                        </Form>
-                        <Button onClick={this.saveData} >Save</Button>
-                    </Card.Body>
-                </Card>
-             
-            </Container>
-            </>
-        )
+const AddData = () => {
+    const [ getAlat, setGetAlat] = useState (null)
+    const [formData, setFormData ]  = useState ({
+        latitude: '',
+        longitude: ''
+    })   
+    const [ latitude, setLatitude] = useState ('')
+    const [ longitude, setLongitude] = useState ('')
+    const [listData, setListData] = useState ([])
+    const [setChild, setChildData] = useState(null)
+    useEffect(() => {
+        const getAll = CRUDHandler.getEws()
+        getAll.on('value', snapshot => {
+           const Isi = snapshot.child(getAlat).val()
+            const listData = []
+            for(let child in Isi) {
+                listData.push(Isi[child])
+            }
+            setListData(listData)
+            console.log(listData)
+        })
+       
+       
+    }, [getAlat, setChild])
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+        CRUDHandler.create(getAlat, setChild, formData)
+        
     }
+    return (
+        <>
+        <Navbarx/>
+        <Container>
+            <Container className="align-item-center justify-content-center d-flex">
+                <Button onClick={() => setGetAlat('flow-meter')}>Flow meter</Button>
+                <Button onClick={() => setGetAlat('panel-pompa')}>Panel Pompa</Button>
+                <Button onClick={() => setGetAlat('pressure-solar')}>Pressure Solar</Button>
+                <Button onClick={() => setGetAlat('pressurePoint')}>Pressure Point</Button>
+                <Button onClick={() => setGetAlat('pressureSensor')}>Pressure Sensor</Button>
+            </Container>
+            {listData ? listData.map((item, index) =>
+            <>
+            <Container className="align-item-center justify-content-center d-flex">
+            <Button key={index} onClick={()=> setChildData(`${item.nama}`)}>{item.nama}</Button>
+            </Container>
+            
+            </>
+            ): null}
+            <Card fluid>
+             <Form onSubmit={handleSubmit}>
+                 <Form.Group>
+                     <Form.Label className='text-black font-monospace size-2'>Latitude</Form.Label>
+                     <Form.Control type="text"  onChange={(e)=> setFormData({...formData, latitude: e.target.value})} value={formData.latitude} />
+                 </Form.Group>
+                 <Form.Group>
+                     <Form.Label className='text-black font-monospace size-2'>Longitude</Form.Label>
+                     <Form.Control type="text"  onChange={(e)=> setFormData({...formData, longitude: e.target.value})} value={formData.longitude}/>
+                 </Form.Group>
+                 <Button type='submit' value="submit">Submit</Button>
+             </Form>
+             </Card>
+        </Container>
+        </>
+    )
 }
 
 export default AddData

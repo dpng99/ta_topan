@@ -25,8 +25,8 @@ class CrudHandler{
         return dbh 
         
     }
-    create(data){
-        return db.push(data);
+    create(key1,key2,data){
+        return Ews.child(key1).child(key2).set(data);
     }
     update(key1,key2, value){
         return dbh.child(key1).child(key2).child('Submitted').update(value)
