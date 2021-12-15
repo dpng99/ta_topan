@@ -40,14 +40,14 @@ const Riwayat = () => {
                 <Card.Title>
                     {getData[item].nama}
                 </Card.Title>
-                <Card.Text>{getData[item].energyFlow ||getData[item].currentR || getData[item].current}</Card.Text>
-                <Card.Text>{getData[item].flowRate || getData[item].currentS || getData[item].pressureBar}</Card.Text>
-                <Card.Text>{getData[item].fluidSoundSpeed || getData[item].currentT || getData[item].pressurePsi}</Card.Text>
-                <Card.Text>{getData[item].negativeAcc || getData[item].power || getData[item].voltage}</Card.Text> 
-                <Card.Text>{getData[item].positiveAcc || getData[item].powerFactor}</Card.Text>
-                <Card.Text>{getData[item].tempInlet || getData[item].voltR}</Card.Text>
-                <Card.Text>{getData[item].tempOutlet || getData[item].voltS}</Card.Text>
-                <Card.Text>{getData[item].velocity || getData[item].voltT}</Card.Text>
+                <Card.Text>Energy Flow : {getData[item].energyFlow ||  getData[item].currentR || getData[item].current}</Card.Text>
+                <Card.Text>Flow Rate :{getData[item].flowRate || getData[item].currentS || getData[item].pressureBar}</Card.Text>
+                <Card.Text>Fluid Sound Speed :{getData[item].fluidSoundSpeed || getData[item].currentT || getData[item].pressurePsi}</Card.Text>
+                <Card.Text>Negative Acc : {getData[item].negativeAcc || getData[item].power || getData[item].voltage}</Card.Text> 
+                <Card.Text>Positif Acc : {getData[item].positiveAcc || getData[item].powerFactor}</Card.Text>
+                <Card.Text>Temperatur InLet : {getData[item].tempInlet || getData[item].voltR}</Card.Text>
+                <Card.Text>Temperature Outlet : {getData[item].tempOutlet || getData[item].voltS}</Card.Text>
+                <Card.Text>Velocity : {getData[item].velocity || getData[item].voltT}</Card.Text>
                   {getData[item].led1 && getData[item].led2 && getData[item].led3 && getData[item].led4 && getData[item].led5 && getData[item].led6 ? 
                   <>
                 <Card.Text>{'Nama : '+ getData[item].led1.nama +' Status : '+ getData[item].led1.value}</Card.Text>

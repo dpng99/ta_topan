@@ -37,10 +37,10 @@ function Navbarx() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <NavDropdown title="Menu" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/edit">Edit</NavDropdown.Item>
+                <NavDropdown.Item href="/edit">Data Lokasi Portable APP</NavDropdown.Item>
                 <NavDropdown.Item href="/adddata">Add New Data</NavDropdown.Item>
-                <NavDropdown.Item href="/history">History</NavDropdown.Item>
-                <NavDropdown.Item href="/monitoring">Monitoring</NavDropdown.Item>
+                <NavDropdown.Item href="/history">Monitoring EWS APP</NavDropdown.Item>
+                <NavDropdown.Item href="/monitoring">Monitoring Portable APP</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
               </NavDropdown>
