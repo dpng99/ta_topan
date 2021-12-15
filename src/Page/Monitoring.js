@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-import { Container, Dropdown, Image, ListGroup, Button, Card} from 'react-bootstrap'
+import { Container, Dropdown, Row,Col, Button, Card} from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
 
@@ -31,11 +31,11 @@ const Monitoring = () => {
         const dataBind = CRUDHandler.getMonitor()
         dataBind.on('value', (snapshot) => {
             const DataBinning = snapshot.child('LokasiQuality').child(index).child('Submitted').val()
-           const currentIndex2 = []
+           const currentIndex = []
             for(let id in DataBinning) {
-                    currentIndex2.push(DataBinning[id])      
+                    currentIndex.push(DataBinning[id])      
             }
-            setCurrentIndex2(currentIndex2)
+            setCurrentIndex(currentIndex)
             
         })
         
@@ -89,7 +89,6 @@ const Monitoring = () => {
          ))}
         </Dropdown.Menu>
         </Dropdown>
-        <Button style={{ position: 'relative', padding: '5px  5px 3px 10px', margin: '5px 10px 10px 10px', width: '150px', height: '40px' }}onClick={() => window.location.reload(false)}>↔️</Button>
         <Dropdown fluid  >
             <Dropdown.Toggle variant="success" id="dropdown-basic" style={{width: '150px', height: '40px', margin: '5px 10px 10px 10px'}}>
              Lokasi Quality
@@ -106,45 +105,42 @@ const Monitoring = () => {
        
         </Container>
         <Container style={{ width: '500px', height: '500px'}} >
-                <Card >
-                           {currentIndex && currentIndex.map((item, i) => (
+        <Row xs={1} md={2} xl={'auto'} xxl={'auto'} className="g-4" style={{ marginTop:'10px' }}>
+                           {currentIndex ? currentIndex.map((item, i) => (
+                               <Col>
                              <Card fluid key={i} >
                              <Card.Body >
                                  <Card.Title>
-                                 PIPA {item.pipa}
+                                 {item.pipa||item.sumur}
                                  </Card.Title>
+                             
                                  <Card.Text>Tanggal : {item.date}</Card.Text>
                                      <Card.Text>Waktu : {item.time}</Card.Text>
-                                     <Card.Text>Flowrate : {item.flowrate}</Card.Text>
-                                     <Card.Text>FSS : {item.fss}</Card.Text>
-                                    <Card.Text>Temperature : {item.temperature}</Card.Text>
-                                    <Card.Text>Flowrate : {item.flowrate}</Card.Text>
-                                 
+                                     <Card.Text>Temperature : {item.temperature }</Card.Text>
+                                     { item.flowrate && item.fss && item.velocity && item.flowestimasi ?
+                                     <>
+                                     <Card.Text>Flowrate: {item.flowrate}</Card.Text>
+                                     <Card.Text>FFS : {item.fss }</Card.Text>
+                                    <Card.Text>Velocity : {item.velocity}</Card.Text>
+                                    <Card.Text>Flowestimasi : {item.flowestimasi}</Card.Text>
+                                    </>
+                                : null}
+                                 {  item.orp && item.ph && item.tds ? 
+                                 <>
+                                  <Card.Text>PH : { item.ph}</Card.Text>
+                                  <Card.Text> TDS : { item.tds}</Card.Text>
+                                  <Card.Text>ORP : { item.orp}</Card.Text>
+                                  <Card.Text>Turbidity : { item.turbidity}</Card.Text>
+                                    
+                                 </>
+                                 :''}
                              </Card.Body>
                          </Card>
-                               
-                           ))}
-                </Card>
-                <Card>
-                           {currentIndex2 && currentIndex2.map((item, i) => (
-                             <Card fluid key={i} >
-                             <Card.Body>
-                                 <Card.Title>
-                                 SUMUR {item.sumur}
-                                 </Card.Title>
-                                 <Card.Text>Tanggal : {item.date}</Card.Text>
-                                     <Card.Text>Waktu: {item.time}</Card.Text>
-                                     <Card.Text>ORP : {item.orp}</Card.Text>
-                                     <Card.Text>PH  : {item.ph}</Card.Text>
-                                     <Card.Text>TDS : {item.tds}</Card.Text>
-                                    <Card.Text> Temperatur : {item.temperature}</Card.Text>
-                                    <Card.Text>Turbidty : {item.turbidity}</Card.Text>
-                                 
-                             </Card.Body>
-                         </Card>
-                               
-                           ))}
-                </Card>
+                         </Col>
+                           )): ''}
+                           </Row>
+              
+                
         </Container>
         
         </>
