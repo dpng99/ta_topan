@@ -22,27 +22,31 @@ const Riwayat = () => {
     return (
         <>
         <Navbarx/>
-        <Container>
-        <Container className='align-content-center justify-content-center d-flex' >
-        <Button className='shadow ' style={{ margin: '10px 10px 10px 10px' }} onClick={() =>setGetChild('flow-meter')}>Flow Meter</Button>
-        <Button style={{ margin: '10px 10px 10px 10px' }} onClick={() =>setGetChild('panel-pompa')}>Panel Pompa</Button>
-        <Button style={{ margin: '10px 10px 10px 10px' }} onClick={() =>setGetChild('pressure-solar')}>Pressure Solar</Button>
-        <Button style={{ margin: '10px 10px 10px 10px' }} onClick={() =>setGetChild('pressurePoint')}>Pressure Point</Button>
-        <Button style={{ margin: '10px 10px 10px 10px' }} onClick={() =>setGetChild('pressureSensor')}>Pressure Sensor</Button>
+        <Container >
+     <Card className="p-4 shadow" style={{ marginTop: '20px' , background: 'white'}}>
+        <Container className="d-flex align-content-start justify-content-start position-relative "> 
+         <h1 className="fs-3 text">Ews Monitoring</h1>       
+         </Container>
+         <Container className="d-flex align-content-end justify-content-end">
+        <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px' }} onClick={() =>setGetChild('flow-meter')}>Flow Meter</Button>
+        <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px' }} onClick={() =>setGetChild('panel-pompa')}>Panel Pompa</Button>
+        <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px' }} onClick={() =>setGetChild('pressure-solar')}>Pressure Solar</Button>
+        <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px' }} onClick={() =>setGetChild('pressurePoint')}>Pressure Point</Button>
+        <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px' }} onClick={() =>setGetChild('pressureSensor')}>Pressure Sensor</Button>
         </Container>
-        <Container>     
-        <Row xs={1} md={2} xl={4} xxl={4} className="g-4" style={{ marginTop:'10px' }}>
+       
+        <Row xs={1} md={2} xl={'auto'} xxl={'auto'} className="g-4 " style={{ marginTop:'10px' }}>
             {Object.keys(getData) ? Object.keys(getData).map((item,index) => ( 
-            <Col>
+            <Col >
               
-            <Card key={index}>
+            <Card key={index} className='border-2 border-primary p-3 shadow rounded-3 ' >
            
                 <Card.Title>
                     {getData[item].nama}
                 </Card.Title>
                 {setChild === 'flow-meter'  ?
                 <>
-                <Card.Text>Energy Flow : {getData[item].energyFlow }</Card.Text>
+                <Card.Text>Energy Flow  :{getData[item].energyFlow }</Card.Text>
                 <Card.Text>Flow Rate :{getData[item].flowRate}</Card.Text>
                 <Card.Text>Fluid Sound Speed :{getData[item].fluidSoundSpeed }</Card.Text>
                 <Card.Text>Negative Acc : {getData[item].negativeAcc}</Card.Text> 
@@ -94,8 +98,11 @@ const Riwayat = () => {
          
         )) : null}
            </Row>
+    
+           </Card>
+           
         </Container>
-        </Container>
+   
         </>
     )
 }

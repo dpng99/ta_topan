@@ -11,6 +11,7 @@ import Edit from './Page/Edit';
 import AddData from './Page/AddData';
 import Riwayat from './Page/Riwayat';
 import Monitoring from './Page/Monitoring';
+import { Container } from 'react-bootstrap';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
      </Switch>
      </AuthProvider>
    </Router>
+
   ) ;
   
   

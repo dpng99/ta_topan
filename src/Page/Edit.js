@@ -1,5 +1,5 @@
 import React,{useState, useEffect, useRef} from 'react'
-import {Container, Card,Button, Form} from 'react-bootstrap'
+import {Container, Card,Button, Form, Image} from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
 
@@ -52,10 +52,11 @@ const Edit = () => {
     return (
         <>
        <Navbarx/>
-       <Container>
-           <Button onClick={() => setGetAlat('LokasiDebit')}>Debit</Button>
+       <Container className='btn-info h-100 w-100'>
+           <Container className='align-content-center justify-content-center d-flex'>
+           <Button className='' onClick={() => setGetAlat('LokasiDebit')}>Debit</Button>
            <Button onClick={() => setGetAlat('LokasiQuality')}>Quality</Button>
-           
+           </Container>
                     <Card fluid='lg'>
                            {getKota && getKota.map((item, i) => (
                              <Card fluid key={i} onClick={() => setGetNama(item,setGetChild(item.nama))}>

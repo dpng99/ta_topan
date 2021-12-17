@@ -1,6 +1,6 @@
 /* eslint-disable no-const-assign */
 import React,{useState, useEffect} from 'react'
-import { Container, Card, Form, Button } from 'react-bootstrap'
+import { Container, Card, Form, Button, ToggleButton, Modal  } from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
 const AddData = () => {
@@ -14,6 +14,7 @@ const AddData = () => {
     const [listData, setListData] = useState (null)
     const [setChild, setChildData] = useState('')
     const [ key, getKey] = useState(null)
+    const [ isOpen, setIsOpen] = useState(false)
     const x = null
     useEffect(() => {
         const getAll = CRUDHandler.getEws().orderByKey()
@@ -45,21 +46,49 @@ const AddData = () => {
         <>
         <Navbarx/>
         <Container>
+        
             <Container className="align-item-center justify-content-center d-flex">
-                <Button onClick={() => setGetAlat('flow-meter')}>Flow meter</Button>
-                <Button onClick={() => setGetAlat('panel-pompa')}>Panel Pompa</Button>
-                <Button onClick={() => setGetAlat('pressure-solar')}>Pressure Solar</Button>
-                <Button onClick={() => setGetAlat('pressurePoint')}>Pressure Point</Button>
-                <Button onClick={() => setGetAlat('pressureSensor')}>Pressure Sensor</Button>
+                <Button  style={{ margin: '10px 10px 10px 10px' }} onClick={() => setGetAlat('flow-meter')}>Flow meter</Button>
+                <Button style={{ margin: '10px 10px 10px 10px' }}  onClick={() => setGetAlat('panel-pompa')}>Panel Pompa</Button>
+                <Button style={{ margin: '10px 10px 10px 10px' }}  onClick={() => setGetAlat('pressure-solar')}>Pressure Solar</Button>
+                <Button style={{ margin: '10px 10px 10px 10px' }}  onClick={() => setGetAlat('pressurePoint')}>Pressure Point</Button>
+                <Button style={{ margin: '10px 10px 10px 10px' }}  onClick={() => setGetAlat('pressureSensor')}>Pressure Sensor</Button>
             </Container>
             {key ? key.map((item) =>
             
             <>
             <Container className="align-item-center justify-content-center d-flex">
-            <Button key={item} onClick={()=> setChildData(`${item}`)}>{item}</Button>
+            <ToggleButton
+            key={item}
+            type="radio"
+            variant={item % 2 ? 'outline-success' : 'outline-danger'}
+            name="radio"
+            onClick={(e) => setChildData(item)}
+          >
+            {item}
+          </ToggleButton>
             </Container>
             </>
         ): null}
+        
+       <Modal show={isOpen} onHide={isOpen}>
+             <Modal.Dialog className="alert overflow-auto position-sticky">
+                    <Modal.Header closeButton onClick={()=> setIsOpen(false)}>
+                      <Modal.Title>{getAlat}</Modal.Title>
+                     </Modal.Header>
+
+                    <Modal.Body>
+                            <p>{setChild}</p>
+                            <p>{formData.latitude}</p>
+                            <p>{formData.longitude}</p>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button  variant="primary" onClick={()=>setIsOpen(false)}>Save changes</Button>
+                        </Modal.Footer>
+                        </Modal.Dialog>
+                        </Modal>
+                    
+                      
             <Card fluid>
              <Form onSubmit={handleSubmit}>
                  <Form.Group>
@@ -70,9 +99,10 @@ const AddData = () => {
                      <Form.Label className='text-black font-monospace size-2'>Longitude</Form.Label>
                      <Form.Control type="text"  onChange={(e)=> setFormData({...formData, longitude: e.target.value})} value={formData.longitude}/>
                  </Form.Group>
-                 <Button type='submit' value="submit">Submit</Button>
+                 <Button type='submit' value="submit" onClick={() => setIsOpen(true)}>Submit</Button>
              </Form>
              </Card>
+             
         </Container>
         </>
     )
