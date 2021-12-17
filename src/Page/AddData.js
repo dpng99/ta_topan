@@ -3,8 +3,6 @@ import React,{useState, useEffect} from 'react'
 import { Container, Card, Form, Button } from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
-import ReactLogger from 'react-terminal-logger/console-logger'
-import { database } from '../Firebase'
 const AddData = () => {
     const [ getAlat, setGetAlat] = useState (null)
     const [formData, setFormData ]  = useState ({
@@ -20,30 +18,15 @@ const AddData = () => {
     useEffect(() => {
         const getAll = CRUDHandler.getEws().orderByKey()
         getAll.on('value', snapshot => {
-        
             const allData = snapshot.child(getAlat).val()
-        
             const listData = []
-            
-          
             listData.push(allData)
             setListData(listData)
-             const x = Object.keys(Object.assign({}, ...listData));
+            const x = Object.keys(Object.assign({}, ...listData));
             getKey(x)
             console.log(key)
             
-           // console.log(listData)
-            
-            // listData.map(x => {
-            //     const flowMeter1 = x.flowMeter1
-            //    // console.log(x)
-            //    setFlowMeter1(flowMeter1)
-            //    setFlowMeter2(x.flowMeter1)
-            //    console.log(flowMeter1)
-            // })
-            //console.log(listData)
-            
-         // ReactLogger.start(listData) 
+          
         })
        
         

@@ -7,6 +7,7 @@ const MapContainer = () => {
   const [dataSet, setDataSet] = useState('');
   const [dataSet2, setDataSet2] = useState('');
   const [activeMarker, setActiveMarker] = useState(null)
+  const [ews, setEwsEvents] = useState('')
   const handleActiveMarker = (marker) => {
     if (marker === activeMarker) {
       return;
@@ -14,6 +15,7 @@ const MapContainer = () => {
     setActiveMarker(marker);
   };
   useEffect(() => {
+    const Ews = CRUDHandler.getEws()
     const getData = CRUDHandler.getLocation();
     getData.on('value', (snapshot) =>{
       const dataValue = snapshot.child('LokasiDebit').val()
@@ -29,6 +31,31 @@ const MapContainer = () => {
       setDataSet2(dataSet2)
       setDataSet(dataSet)
     })
+    Ews.on('value', snapshot =>{
+      const flowMeter = snapshot.child('flow-meter').val()
+      const panelPompa = snapshot.child('panel-pompa').val()
+      const pressureSolar = snapshot.child('pressure-solar').val()
+      const pressurePoint = snapshot.child('pressurePoint').val()
+      const pressureSensor = snapshot.child('pressureSensor').val()
+      const ews = []
+      for(let id in flowMeter){
+          ews.push(flowMeter[id])
+      }
+      for(let id in panelPompa){
+          ews.push(panelPompa[id])
+      }
+      for(let id in pressureSolar){
+          ews.push(pressureSolar[id])
+      }
+      for(let id in pressurePoint){
+          ews.push(pressurePoint[id])
+      }
+      for(let id in pressureSensor){
+          ews.push(pressureSensor[id])
+      }
+      setEwsEvents(ews)
+  })
+  
   }, [])
   const stylingMaps = {
     maxWidth: '1420px',
@@ -76,6 +103,24 @@ const MapContainer = () => {
             {activeMarker === data ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
             ><div style={divStyle}>
               <p>{dataSet2[data].nama}</p>
+              
+          </div>
+              
+            </InfoWindow>) : null}
+            
+            </Marker>
+          </>
+          
+          )}
+          {Object.keys(ews).map((data) =>
+          
+          <>
+          <Marker key={data} position={{lat: parseFloat(ews[data].latitude), lng: parseFloat(ews[data].longitude)}}
+          onClick={() => handleActiveMarker(data)}
+          >
+            {activeMarker === data ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
+            ><div style={divStyle}>
+              <p>{ews[data].nama}</p>
               
           </div>
               

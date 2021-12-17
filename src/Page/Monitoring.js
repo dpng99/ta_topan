@@ -8,7 +8,6 @@ const Monitoring = () => {
     const [DataSet, setDataSet] = useState('')
     const [ DataKey, setDataKey] = useState('')
     const [currentIndex, setCurrentIndex] = useState('')
-    const [ currentIndex2, setCurrentIndex2] = useState('')
 
     const settDataEdit = (index) => {
         
@@ -47,6 +46,7 @@ const Monitoring = () => {
   
     useEffect(() => {
         const enumerate = CRUDHandler.getLocation()
+        
         enumerate.on('value', (snapshot) => {
             const dataSnip = snapshot.child('LokasiDebit').val();
             const dataSnip2 = snapshot.child('LokasiQuality').val();
