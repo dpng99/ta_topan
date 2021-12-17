@@ -3,7 +3,7 @@ import React,{useState, useEffect} from 'react'
 import { Container, Card, Form, Button } from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
-
+import ReactLogger from 'react-terminal-logger/console-logger'
 const AddData = () => {
     const [ getAlat, setGetAlat] = useState (null)
     const [formData, setFormData ]  = useState ({
@@ -12,25 +12,46 @@ const AddData = () => {
     })   
     const [ latitude, setLatitude] = useState ('')
     const [ longitude, setLongitude] = useState ('')
-    const [listData, setListData] = useState ([])
+    const [listData, setListData] = useState (null)
     const [setChild, setChildData] = useState(null)
+    const [dataIsi, setDataIsi] = useState([])
+    const [ key, getKey] = useState(null)
+  
     useEffect(() => {
-        const getAll = CRUDHandler.getEws()
-        getAll.on('value', snapshot => {
-           const Isi = snapshot.child(getAlat).val()
-            const listData = []
-            for(let child in Isi) {
-                listData.push(Isi[child])
-            }
-            setListData(listData)
-            console.log(listData)
+        const getAll = CRUDHandler.getEws().orderByKey()
+        getAll.once('value', snapshot => {
+             const Oalah = snapshot.child(getAlat)
+             const KeyState = snapshot.child(getAlat).forEach(function (data){
+                const key = data.key
+                getKey(key)
+                
+             })
+             const allData = Oalah.val()
+             const listData = []
+             const arrayKosong = []
+             for(let id in allData) {
+                listData.push(allData[id])
+           }
+           
+     console.log(arrayKosong)
+        setListData(listData)
+         // ReactLogger.start(listData)
+         console.log(listData)
+ 
         })
        
-       
-    }, [getAlat, setChild])
+        
+        
+                
+    }, [getAlat])
+ 
+
     const handleSubmit = (e) =>{
         e.preventDefault()
-        CRUDHandler.create(getAlat, setChild, formData)
+         
+        
+        CRUDHandler.create(getAlat,setChild,formData)
+      
         
     }
     return (
@@ -44,12 +65,12 @@ const AddData = () => {
                 <Button onClick={() => setGetAlat('pressurePoint')}>Pressure Point</Button>
                 <Button onClick={() => setGetAlat('pressureSensor')}>Pressure Sensor</Button>
             </Container>
-            {listData ? listData.map((item, index) =>
+            {listData && key ? listData.map((item, index) =>
+         
             <>
             <Container className="align-item-center justify-content-center d-flex">
-            <Button key={index} onClick={()=> setChildData(`${item.nama}`)}>{item.nama}</Button>
+            <Button key={key} onClick={()=> setChildData(`${key}`)}>{item.nama}</Button>
             </Container>
-            
             </>
             ): null}
             <Card fluid>
