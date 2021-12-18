@@ -69,8 +69,8 @@ const Edit = () => {
                                  <Card.Title>
                                      {item.nama}
                                  </Card.Title>
-                                 <Card.Text>Latitude : {item.latitude}</Card.Text>
-                                 <Card.Text>Longitude : {item.longitude}</Card.Text>
+                                 <Card.Text>Latitude = {item.latitude}</Card.Text>
+                                 <Card.Text>Longitude = {item.longitude}</Card.Text>
                              </Card.Body>
                          </Card>
                                 

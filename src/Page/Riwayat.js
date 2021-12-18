@@ -46,27 +46,27 @@ const Riwayat = () => {
                 </Card.Title>
                 {setChild === 'flow-meter'  ?
                 <>
-                <Card.Text>Energy Flow  :{getData[item].energyFlow }</Card.Text>
-                <Card.Text>Flow Rate :{getData[item].flowRate}</Card.Text>
-                <Card.Text>Fluid Sound Speed :{getData[item].fluidSoundSpeed }</Card.Text>
-                <Card.Text>Negative Acc : {getData[item].negativeAcc}</Card.Text> 
-                <Card.Text>Positif Acc : {getData[item].positiveAcc}</Card.Text>
-                <Card.Text>Temperatur InLet : {getData[item].tempInlet}</Card.Text>
-                <Card.Text>Temperature Outlet : {getData[item].tempOutlet}</Card.Text>
-                <Card.Text>Velocity : {getData[item].velocity}</Card.Text>
+                <Card.Text>Energy Flow = {getData[item].energyFlow }</Card.Text>
+                <Card.Text>Flow Rate = {getData[item].flowRate}</Card.Text>
+                <Card.Text>Fluid Sound Speed = {getData[item].fluidSoundSpeed }</Card.Text>
+                <Card.Text>Negative Acc = {getData[item].negativeAcc}</Card.Text> 
+                <Card.Text>Positif Acc  {getData[item].positiveAcc}</Card.Text>
+                <Card.Text>Temperatur InLet = {getData[item].tempInlet}</Card.Text>
+                <Card.Text>Temperature Outlet = {getData[item].tempOutlet}</Card.Text>
+                <Card.Text>Velocity = {getData[item].velocity}</Card.Text>
                 </>
                  : null}
                 {setChild === 'panel-pompa' ? 
                   <>
-                <Card.Text>Current R : {getData[item].currentR}</Card.Text>
-                <Card.Text>Current S : {getData[item].currentS}</Card.Text>
-                <Card.Text>CurrentT : { getData[item].currentT}</Card.Text>
-                <Card.Text>Frequency : {getData[item].frequency}</Card.Text>
-                <Card.Text>Power : {getData[item].power}</Card.Text>
-                <Card.Text>Power Factor : {getData[item].powerFactor}</Card.Text>
-                <Card.Text> Volt R : {getData[item].voltR}</Card.Text> 
-                <Card.Text>Volt S : {getData[item].voltS}</Card.Text> 
-                <Card.Text>Volt T : {getData[item].voltT}</Card.Text> 
+                <Card.Text>Current R = {getData[item].currentR}</Card.Text>
+                <Card.Text>Current S = {getData[item].currentS}</Card.Text>
+                <Card.Text>CurrentT = { getData[item].currentT}</Card.Text>
+                <Card.Text>Frequency = {getData[item].frequency}</Card.Text>
+                <Card.Text>Power = {getData[item].power}</Card.Text>
+                <Card.Text>Power Factor = {getData[item].powerFactor}</Card.Text>
+                <Card.Text> Volt R = {getData[item].voltR}</Card.Text> 
+                <Card.Text>Volt S = {getData[item].voltS}</Card.Text> 
+                <Card.Text>Volt T = {getData[item].voltT}</Card.Text> 
                 { getData[item].led1 && getData[item].led2 && getData[item].led3 && getData[item].led4 && getData[item].led5 && getData[item].led6 ?
                     <>
                 <Card.Text>{'Nama : '+ getData[item].led1.nama +' Status : '+ getData[item].led1.value}</Card.Text>
@@ -83,10 +83,10 @@ const Riwayat = () => {
                 { setChild === 'pressure-solar' 
                 ? 
                   <>
-                <Card.Text>Current : {getData[item].current}</Card.Text>
-                <Card.Text>Pressure Bar : {getData[item].pressureBar}</Card.Text>
-                <Card.Text>Pressure Psi : { getData[item].pressurePsi}</Card.Text>
-                <Card.Text>Voltage : {getData[item].voltage}</Card.Text>
+                <Card.Text>Current = {getData[item].current}</Card.Text>
+                <Card.Text>Pressure Bar = {getData[item].pressureBar}</Card.Text>
+                <Card.Text>Pressure Psi = { getData[item].pressurePsi}</Card.Text>
+                <Card.Text>Voltage = {getData[item].voltage}</Card.Text>
                 
                 </>
                 : null}         

@@ -120,21 +120,21 @@ const Monitoring = () => {
                              
                                  <Card.Text>Tanggal : {item.date}</Card.Text>
                                      <Card.Text>Waktu : {item.time}</Card.Text>
-                                     <Card.Text>Temperature : {item.temperature }</Card.Text>
+                                     <Card.Text>Temperature = {item.temperature }</Card.Text>
                                      { item.flowrate && item.fss && item.velocity && item.flowestimasi ?
                                      <>
-                                     <Card.Text>Flowrate: {item.flowrate}</Card.Text>
-                                     <Card.Text>FFS : {item.fss }</Card.Text>
-                                    <Card.Text>Velocity : {item.velocity}</Card.Text>
-                                    <Card.Text>Flowestimasi : {item.flowestimasi}</Card.Text>
+                                     <Card.Text>Flowrate = {item.flowrate}</Card.Text>
+                                     <Card.Text>FFS = {item.fss }</Card.Text>
+                                    <Card.Text>Velocity = {item.velocity}</Card.Text>
+                                    <Card.Text>Flowestimasi = {item.flowestimasi}</Card.Text>
                                     </>
                                 : null}
                                  {  item.orp && item.ph && item.tds ? 
                                  <>
-                                  <Card.Text>PH : { item.ph}</Card.Text>
-                                  <Card.Text> TDS : { item.tds}</Card.Text>
-                                  <Card.Text>ORP : { item.orp}</Card.Text>
-                                  <Card.Text>Turbidity : { item.turbidity}</Card.Text>
+                                  <Card.Text>PH = { item.ph}</Card.Text>
+                                  <Card.Text> TDS = { item.tds}</Card.Text>
+                                  <Card.Text>ORP = { item.orp}</Card.Text>
+                                  <Card.Text>Turbidity = { item.turbidity}</Card.Text>
                                     
                                  </>
                                  :''}
