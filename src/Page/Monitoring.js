@@ -73,10 +73,14 @@ const Monitoring = () => {
     return (
         <>
         <Navbarx/>
-        
-        <Container className='align-content-center justify-content-center d-flex flex-center'>
+        <Container >
+    <Card className="p-4 shadow" style={{ marginTop: '20px' , background: 'white'}}>
+        <Container className="d-flex align-content-start justify-content-start position-relative ">
+   <h1 className="fs-3 text">Portable Monitoring</h1> 
+   </Container>
+   <Container className="d-flex align-content-end justify-content-end">
             <Dropdown fluid >
-            <Dropdown.Toggle  variant="success" id="dropdown-basic" style={{width: '150px', height: '40px',margin: '5px 10px 10px 10px'}}>
+            <Dropdown.Toggle  variant="primary" id="dropdown-basic" style={{width: '150px', height: '40px',margin: '5px 10px 10px 10px'}}>
              Lokasi Debit
              </Dropdown.Toggle>
 
@@ -90,7 +94,7 @@ const Monitoring = () => {
         </Dropdown.Menu>
         </Dropdown>
         <Dropdown fluid  >
-            <Dropdown.Toggle variant="success" id="dropdown-basic" style={{width: '150px', height: '40px', margin: '5px 10px 10px 10px'}}>
+            <Dropdown.Toggle variant="primary" id="dropdown-basic" style={{width: '150px', height: '40px', margin: '5px 10px 10px 10px'}}>
              Lokasi Quality
              </Dropdown.Toggle>
 
@@ -104,11 +108,11 @@ const Monitoring = () => {
         </Dropdown>
        
         </Container>
-        <Container style={{ width: '500px', height: '500px'}} >
+       
         <Row xs={1} md={2} xl={'auto'} xxl={'auto'} className="g-4" style={{ marginTop:'10px' }}>
                            {currentIndex ? currentIndex.map((item, i) => (
                                <Col>
-                             <Card fluid key={i} >
+                             <Card fluid key={i} className='shadow rounded-3 border-2 border-primary' style={{ margin: '10px 10px 10px 10px' , width:'20rem' }} >
                              <Card.Body >
                                  <Card.Title>
                                  {item.pipa||item.sumur}
@@ -141,8 +145,9 @@ const Monitoring = () => {
                            </Row>
               
                 
-        </Container>
         
+        </Card>
+        </Container>
         </>
     )
 }

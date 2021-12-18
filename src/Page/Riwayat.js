@@ -39,7 +39,7 @@ const Riwayat = () => {
             {Object.keys(getData) ? Object.keys(getData).map((item,index) => ( 
             <Col >
               
-            <Card key={index} className='border-2 border-primary p-3 shadow rounded-3 ' >
+            <Card key={index} className='border-2 border-primary p-3 shadow rounded-3 ' style={{ margin: '10px 10px 10px 10px' , width:'20rem' }} >
            
                 <Card.Title>
                     {getData[item].nama}

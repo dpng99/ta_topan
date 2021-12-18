@@ -1,5 +1,5 @@
 import React,{useState, useEffect, useRef} from 'react'
-import {Container, Card,Button, Form, Image} from 'react-bootstrap'
+import {Container, Card,Button, Form, Image, Row, Col} from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
 
@@ -58,12 +58,13 @@ const Edit = () => {
            <h1 className="fs-3 text">Data Lokasi Portable</h1>    
            </Container>
            <Container className="d-flex align-content-end justify-content-end">
-           <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px' }}  onClick={() => setGetAlat('LokasiDebit')}>Debit</Button>
-           <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px' }}  onClick={() => setGetAlat('LokasiQuality')}>Quality</Button>
+           <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px', width: '150px', height: '40px',margin: '5px 10px 10px 10px' }}  onClick={() => setGetAlat('LokasiDebit')}>Debit</Button>
+           <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px', width: '150px', height: '40px',margin: '5px 10px 10px 10px'}}  onClick={() => setGetAlat('LokasiQuality')}>Quality</Button>
            </Container>
                     <Card fluid='lg' >
                            {getKota && getKota.map((item, i) => (
-                             <Card className='border-2 border-primary p-3 shadow rounded-3 ' style={{ margin: '10px 10px 10px 10px' }} fluid key={i} onClick={() => setGetNama(item,setGetChild(item.nama))}>
+                             <Card className='border-2 border-primary p-3 shadow rounded-3 ' style={{ margin: '10px 10px 10px 10px' , width:'20rem' }} fluid key={i} onClick={() => setGetNama(item,setGetChild(item.nama))}>
+                               
                              <Card.Body>
                                  <Card.Title>
                                      {item.nama}
@@ -72,11 +73,15 @@ const Edit = () => {
                                  <Card.Text>Longitude : {item.longitude}</Card.Text>
                              </Card.Body>
                          </Card>
-                               
+                                
                            ))}
-                           </Card>
-                     </Card>
+
+                           </Card> 
+                          
+                      
                 
+                     </Card>
+                   
        </Container>
        </>
     )
