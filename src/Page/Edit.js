@@ -52,24 +52,29 @@ const Edit = () => {
     return (
         <>
        <Navbarx/>
-       <Container className='btn-info h-100 w-100'>
-           <Container className='align-content-center justify-content-center d-flex'>
-           <Button className='' onClick={() => setGetAlat('LokasiDebit')}>Debit</Button>
-           <Button onClick={() => setGetAlat('LokasiQuality')}>Quality</Button>
+       <Container>
+       <Card className="p-4 shadow" style={{ marginTop: '20px' , background: 'white'}}>
+           <Container className="d-flex align-content-start justify-content-start position-relative ">
+           <h1 className="fs-3 text">Data Lokasi Portable</h1>    
            </Container>
-                    <Card fluid='lg'>
+           <Container className="d-flex align-content-end justify-content-end">
+           <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px' }}  onClick={() => setGetAlat('LokasiDebit')}>Debit</Button>
+           <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px' }}  onClick={() => setGetAlat('LokasiQuality')}>Quality</Button>
+           </Container>
+                    <Card fluid='lg' >
                            {getKota && getKota.map((item, i) => (
-                             <Card fluid key={i} onClick={() => setGetNama(item,setGetChild(item.nama))}>
+                             <Card className='border-2 border-primary p-3 shadow rounded-3 ' style={{ margin: '10px 10px 10px 10px' }} fluid key={i} onClick={() => setGetNama(item,setGetChild(item.nama))}>
                              <Card.Body>
                                  <Card.Title>
                                      {item.nama}
                                  </Card.Title>
-                                 <Card.Text>{item.latitude}</Card.Text>
-                                 <Card.Text>{item.longitude}</Card.Text>
+                                 <Card.Text>Latitude : {item.latitude}</Card.Text>
+                                 <Card.Text>Longitude : {item.longitude}</Card.Text>
                              </Card.Body>
                          </Card>
                                
                            ))}
+                           </Card>
                      </Card>
                 
        </Container>
