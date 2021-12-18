@@ -3,6 +3,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth'
 import 'firebase/compat/database'
 import 'firebase/compat/firestore'
+import dotenv from 'dotenv'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -16,6 +17,7 @@ const app = firebase.initializeApp ({
   messagingSenderId: "730063556872",
   appId: "1:730063556872:web:2e1a49bc5747ad57b49cbd",
   measurementId: "G-GTY6CK3HRP"
+
 });
 
 // Initialize Firebase

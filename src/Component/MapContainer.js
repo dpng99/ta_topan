@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react'
 import { GoogleMap, LoadScript, Marker, InfoWindow} from '@react-google-maps/api'
 import CRUDHandler from '../Handler/CRUDHandler';
 import { Container } from 'react-bootstrap';
-
+import dotenv from 'dotenv'
 const MapContainer = () => {
   const [dataSet, setDataSet] = useState('');
   const [dataSet2, setDataSet2] = useState('');
