@@ -61,8 +61,10 @@ const Edit = () => {
            <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px', width: '150px', height: '40px',margin: '5px 10px 10px 10px' }}  onClick={() => setGetAlat('LokasiDebit')}>Debit</Button>
            <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px', width: '150px', height: '40px',margin: '5px 10px 10px 10px'}}  onClick={() => setGetAlat('LokasiQuality')}>Quality</Button>
            </Container>
-                    <Card fluid='lg' >
+                    <Card fluid='xxl' >
+                        <Row  xs={'auto'} md={'auto'} xl={'auto'} xxl={'auto'} className="g-4 " style={{ marginTop:'10px' }}>
                            {getKota && getKota.map((item, i) => (
+                               <Col>
                              <Card className='border-2 border-primary p-3 shadow rounded-3 ' style={{ margin: '10px 10px 10px 10px' , width:'20rem' }} fluid key={i} onClick={() => setGetNama(item,setGetChild(item.nama))}>
                                
                              <Card.Body>
@@ -73,9 +75,9 @@ const Edit = () => {
                                  <Card.Text>Longitude = {item.longitude}</Card.Text>
                              </Card.Body>
                          </Card>
-                                
+                         </Col>
                            ))}
-
+                            </Row>
                            </Card> 
                           
                       
