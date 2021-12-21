@@ -2,12 +2,12 @@ import React,{useState, useEffect} from 'react'
 import { GoogleMap, LoadScript, Marker, InfoWindow} from '@react-google-maps/api'
 import CRUDHandler from '../Handler/CRUDHandler';
 import { Container } from 'react-bootstrap';
-import dotenv from 'dotenv'
+
 const MapContainer = () => {
-  const [dataSet, setDataSet] = useState('');
-  const [dataSet2, setDataSet2] = useState('');
+  const [dataSet, setDataSet] = useState([]);
+  const [dataSet2, setDataSet2] = useState([]);
   const [activeMarker, setActiveMarker] = useState(null)
-  const [ews, setEwsEvents] = useState('')
+  const [ews, setEwsEvents] = useState([])
   const handleActiveMarker = (marker) => {
     if (marker === activeMarker) {
       return;
@@ -76,15 +76,15 @@ const MapContainer = () => {
       center={{ lat: -7.6300605, lng: 111.4930318 }}
       mapContainerStyle={stylingMaps}
       zoom={13}>
-        {Object.keys(dataSet).map((data) =>
-          
+        {Object.keys(dataSet).map((data, index) =>
         <>
-        <Marker key={data} position={{lat: parseFloat(dataSet[data].latitude), lng: parseFloat(dataSet[data].longitude)}}
+        <Marker key={index} position={{lat: parseFloat(dataSet[data].latitude), lng: parseFloat(dataSet[data].longitude)}}
         onClick={() => handleActiveMarker(data)}
         >
           {activeMarker === data ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
           ><div style={divStyle}>
             <p>{dataSet[data].nama}</p>
+            <p>{dataSet[data].alamat}</p>
             
         </div>
             
@@ -94,16 +94,16 @@ const MapContainer = () => {
         </>
         
         )}
-        {Object.keys(dataSet2).map((data) =>
+        {Object.keys(dataSet2).map((data, index) =>
           
           <>
-          <Marker key={data} position={{lat: parseFloat(dataSet2[data].latitude), lng: parseFloat(dataSet2[data].longitude)}}
+          <Marker key={index} position={{lat: parseFloat(dataSet2[data].latitude), lng: parseFloat(dataSet2[data].longitude)}}
           onClick={() => handleActiveMarker(data)}
           >
             {activeMarker === data ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
             ><div style={divStyle}>
               <p>{dataSet2[data].nama}</p>
-              
+              <p>{dataSet2[data].alamat}</p>
           </div>
               
             </InfoWindow>) : null}
@@ -112,10 +112,10 @@ const MapContainer = () => {
           </>
           
           )}
-          {Object.keys(ews).map((data) =>
+          {Object.keys(ews).map((data, index) =>
           
           <>
-          <Marker key={data} position={{lat: parseFloat(ews[data].latitude), lng: parseFloat(ews[data].longitude)}}
+          <Marker key={index} position={{lat: parseFloat(ews[data].latitude), lng: parseFloat(ews[data].longitude)}}
           onClick={() => handleActiveMarker(data)}
           >
             {activeMarker === data ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
