@@ -2,6 +2,7 @@ import React,{useState, useEffect, useRef} from 'react'
 import {Container, Card,Button, Form, Image, Row, Col} from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Edit = () => {
     const [getAlat,setGetAlat ] = useState(null)

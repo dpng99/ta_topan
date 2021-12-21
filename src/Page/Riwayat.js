@@ -3,9 +3,12 @@ import { Button, Card, Container, Row, Col } from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
 import 'bootstrap/dist/css/bootstrap.min.css'
+
+import {Chart} from 'react-google-charts'
 const Riwayat = () => {
     const [getData, setGetData] = useState([])
     const [setChild, setGetChild] = useState(null)
+    const [dataGauge, setDataGauge] = useState([])
 
     useEffect(() => {
         const ewsApp = CRUDHandler.getEws()
@@ -16,9 +19,10 @@ const Riwayat = () => {
                 getData.push(DataIsi[id])
             }
             setGetData(getData)
-            console.log(getData)
+
         })
-    }, [setChild])
+        
+    }, [setChild, dataGauge])
     return (
         <>
         <Navbarx/>
@@ -37,9 +41,9 @@ const Riwayat = () => {
        
         <Row xs={1} md={2} xl={'auto'} xxl={'auto'} className="g-4 " style={{ marginTop:'10px' }}>
             {Object.keys(getData) ? Object.keys(getData).map((item,index) => ( 
-            <Col >
+            <Col>
               
-            <Card key={index} className='border-2 border-primary p-3 shadow rounded-3 ' style={{ margin: '10px 10px 10px 10px' , width:'20rem' }} >
+            <Card key={index} className='border-2 border-primary p-3 shadow rounded-3 ' style={{ margin: '10px 10px 10px 10px' , width:'30rem' }} onClick={() => setDataGauge(getData[item])}>
            
                 <Card.Title>
                     {getData[item].nama}
@@ -54,6 +58,46 @@ const Riwayat = () => {
                 <Card.Text>Temperatur InLet = {getData[item].tempInlet}</Card.Text>
                 <Card.Text>Temperature Outlet = {getData[item].tempOutlet}</Card.Text>
                 <Card.Text>Velocity = {getData[item].velocity}</Card.Text>
+                <Chart 
+                                    width={350}
+                                    height={200}
+                                    chartType="Gauge"
+                                    data={[
+                                        ['Label', 'Value'],
+                                    ['temperature Inlet', parseFloat(getData[item].tempInlet)],
+                                    ['temperature Outlet', parseFloat(getData[item].tempOutlet)],
+                                    ['flow Rate', parseFloat(getData[item].flowRate)],
+                                    ]}
+                                    options={{
+                                        redFrom: 90,
+                                        redTo: 100,
+                                        yellowFrom: 75,
+                                        yellowTo: 90,
+                                        minorTicks: 5,
+                                    }}
+                                    />
+                                     <Chart 
+                                    width={300}
+                                    height={200}
+                                    chartType="Gauge"
+                                    data={[
+                                        ['Label', 'Value'],
+                                    ['Energy flow', parseFloat(getData[item].energyFlow)],
+                                    ['Fluid Soud', parseFloat(getData[item].fluidSoundSpeed)],
+                                    
+                                   
+                                    ]}
+                                    options={{
+                                        max: 300,
+                                        redFrom: 250,
+                                        redTo: 300,
+                                        yellowFrom: 225,
+                                        yellowTo: 250,
+                                        minorTicks: 100,
+                                        min: 100
+                                    }}
+                                    />
+                
                 </>
                  : null}
                 {setChild === 'panel-pompa' ? 
@@ -77,6 +121,51 @@ const Riwayat = () => {
                 <Card.Text>{'Nama : '+ getData[item].led6.nama +' Status : '+ getData[item].led6.value}</Card.Text>  
                     </>
             : null }
+            <Chart 
+                                    width={350}
+                                    height={200}
+                                    chartType="Gauge"
+                                    data={[
+                                        ['Label', 'Value'],
+                                    ['Power', parseFloat(getData[item].power) ],
+                                    ['volt R', parseFloat(getData[item].voltR) ],
+                                    ['volt S', parseFloat(getData[item].voltS) ],
+                                    ['volt T', parseFloat(getData[item].voltT) ],
+                              
+                                    ]}
+                                    options={{
+                                        max: 300,
+                                        redFrom: 275,
+                                        redTo: 300,
+                                        yellowFrom: 250,
+                                        yellowTo: 275,
+                                        minorTicks: 100,
+                                        min: 100,
+                                    }}
+                                    />
+                                    <Chart 
+                                    width={350}
+                                    height={200}
+                                    chartType="Gauge"
+                                    data={[
+                                        ['Label', 'Value'],
+                                    ['current T', parseFloat(getData[item].currentT)],
+                                    ['current S', parseFloat(getData[item].currentS)],
+                                    ['current R', parseFloat(getData[item].currentR)],
+                                    ]}
+                                    options={{
+                                        max: 3000,
+                                        min: 100,
+                                        redFrom: 2750,
+                                        redTo: 3000,
+                                        yellowFrom: 2500,
+                                        yellowTo: 2750,
+                                        minorTicks: 100,
+                                    }}
+                                    />
+                                     
+
+
                 </>
 
                 : null}
@@ -87,7 +176,41 @@ const Riwayat = () => {
                 <Card.Text>Pressure Bar = {getData[item].pressureBar}</Card.Text>
                 <Card.Text>Pressure Psi = { getData[item].pressurePsi}</Card.Text>
                 <Card.Text>Voltage = {getData[item].voltage}</Card.Text>
-                
+                <Chart              width={200}
+                                    height={200}
+                                    chartType="Gauge"
+                                    data={[
+                                    ['Label', 'Value'],
+                                    ['pressure Bar', parseFloat(getData[item].pressureBar)],
+                                    ]}
+                                    options={{
+                                        max: 10.0,
+                                        redFrom: 9.0,
+                                        redTo: 10.0,
+                                        yellowFrom: 8.0,
+                                        yellowTo: 9.0,
+                                        minorTicks: 0.0,
+                                        min: 0.0,
+                                    }}
+                                    />
+                                    <Chart 
+                                    width={200}
+                                    height={200}
+                                    chartType="Gauge"
+                                    data={[
+                                    ['Label', 'Value'],
+                                    ['pressure Psi', parseFloat(getData[item].pressurePsi)],
+                                    ]}
+                                    options={{
+                                        max: 200,
+                                        redFrom: 175,
+                                        redTo: 200,
+                                        yellowFrom: 150,
+                                        yellowTo: 175,
+                                        minorTicks: 0,
+                                        min: 0.0,
+                                    }}
+                                    />
                 </>
                 : null}         
                   
@@ -100,7 +223,7 @@ const Riwayat = () => {
            </Row>
     
            </Card>
-           
+
         </Container>
    
         </>

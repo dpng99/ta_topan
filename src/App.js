@@ -13,6 +13,7 @@ import Riwayat from './Page/Riwayat';
 import Monitoring from './Page/Monitoring';
 import { Container } from 'react-bootstrap';
 
+
 function App() {
 
   return(
@@ -24,6 +25,7 @@ function App() {
       <PrivateRouter path="/adddata" component={AddData} />
       <PrivateRouter path="/history" component={Riwayat} />
       <PrivateRouter path="/monitoring" component={Monitoring} />
+
      <Route path="/signup" component={FormSignup}/>
     <Route path="/login" component={FormLogin}/>
      </Switch>

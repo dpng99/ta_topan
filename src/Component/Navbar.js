@@ -3,6 +3,7 @@ import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from '../Handler/AuthContext';
 import { useHistory } from 'react-router';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Navbarx() {
     const[error, setError]= useState();
@@ -21,7 +22,7 @@ function Navbarx() {
 
     return (
         <>
-        <Navbar bg="primary" expand="lg">
+        <Navbar className="bg-primary" expand="lg">
         <Container fluid className="">
         <Navbar.Brand href="/">
               <img
