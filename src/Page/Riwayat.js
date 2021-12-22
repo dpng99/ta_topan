@@ -26,7 +26,7 @@ const Riwayat = () => {
     return (
         <>
         <Navbarx/>
-        <Container >
+        <Container>
      <Card className="p-4 shadow" style={{ marginTop: '20px' , background: 'white'}}>
         <Container className="d-flex align-content-start justify-content-start position-relative "> 
          <h1 className="fs-3 text">Ews Monitoring</h1>       
@@ -36,7 +36,7 @@ const Riwayat = () => {
         <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px' }} onClick={() =>setGetChild('panel-pompa')}>Panel Pompa</Button>
         <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px' }} onClick={() =>setGetChild('pressure-solar')}>Pressure Solar</Button>
         </Container>
-       
+       <Container>
         <Row xs={1} md={2} xl={'auto'} xxl={'auto'} className="g-4 " style={{ marginTop:'10px' }}>
             {Object.keys(getData) ? Object.keys(getData).map((item,index) => ( 
             <Col>
@@ -219,7 +219,7 @@ const Riwayat = () => {
          
         )) : null}
            </Row>
-    
+           </Container>
            </Card>
 
         </Container>

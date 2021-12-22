@@ -8,7 +8,6 @@ const MapContainer = () => {
   const [dataSet2, setDataSet2] = useState([]);
   const [dataSet3, setDataSet3] = useState([]);
   const [activeMarker, setActiveMarker] = useState(null)
-  const [activeMarker2, setActiveMarker2] = useState(null)
   const [ews, setEwsEvents] = useState([])
   const handleActiveMarker = (marker) => {
     if (marker === activeMarker) {
