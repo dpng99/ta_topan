@@ -6,7 +6,9 @@ import { Container } from 'react-bootstrap';
 const MapContainer = () => {
   const [dataSet, setDataSet] = useState([]);
   const [dataSet2, setDataSet2] = useState([]);
+  const [dataSet3, setDataSet3] = useState([]);
   const [activeMarker, setActiveMarker] = useState(null)
+  const [activeMarker2, setActiveMarker2] = useState(null)
   const [ews, setEwsEvents] = useState([])
   const handleActiveMarker = (marker) => {
     if (marker === activeMarker) {
@@ -14,6 +16,7 @@ const MapContainer = () => {
     }
     setActiveMarker(marker);
   };
+
   useEffect(() => {
     const Ews = CRUDHandler.getEws()
     const getData = CRUDHandler.getLocation();
@@ -21,6 +24,7 @@ const MapContainer = () => {
       const dataValue = snapshot.child('LokasiDebit').val()
       const DataValue2 = snapshot.child('LokasiQuality').val()
       const dataSet2 = []
+      const dataSet3 = []
       const dataSet = []
       for(let id in dataValue){
         dataSet.push(dataValue[id])
@@ -28,8 +32,10 @@ const MapContainer = () => {
       for(let id in DataValue2){
         dataSet2.push(DataValue2[id])
       }
+     
       setDataSet2(dataSet2)
       setDataSet(dataSet)
+      console.log(dataSet2)
     })
     Ews.on('value', snapshot =>{
       const flowMeter = snapshot.child('flow-meter').val()
@@ -79,12 +85,13 @@ const MapContainer = () => {
         {Object.keys(dataSet).map((data, index) =>
         <>
         <Marker key={index} position={{lat: parseFloat(dataSet[data].latitude), lng: parseFloat(dataSet[data].longitude)}}
-        onClick={() => handleActiveMarker(data)}
+        onClick={() => handleActiveMarker(dataSet[data])}
         >
-          {activeMarker === data ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
+          {activeMarker === dataSet[data] ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
           ><div style={divStyle}>
             <p>{dataSet[data].nama}</p>
             <p>{dataSet[data].alamat}</p>
+            
             
         </div>
             
@@ -98,9 +105,9 @@ const MapContainer = () => {
           
           <>
           <Marker key={index} position={{lat: parseFloat(dataSet2[data].latitude), lng: parseFloat(dataSet2[data].longitude)}}
-          onClick={() => handleActiveMarker(data)}
+          onClick={() => handleActiveMarker(dataSet2[data])}
           >
-            {activeMarker === data ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
+            {activeMarker === dataSet2[data] ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
             ><div style={divStyle}>
               <p>{dataSet2[data].nama}</p>
               <p>{dataSet2[data].alamat}</p>
@@ -116,10 +123,17 @@ const MapContainer = () => {
           
           <>
           <Marker key={index} position={{lat: parseFloat(ews[data].latitude), lng: parseFloat(ews[data].longitude)}}
-          onClick={() => handleActiveMarker(data)}
+          onClick={() => handleActiveMarker(ews[data])}
           >
-            {activeMarker === data ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
+            {activeMarker === ews[data] ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
             ><div style={divStyle}>
+              <p>{ews[data].nama}</p>
+              <p>{ews[data].nama}</p>
+              <p>{ews[data].nama}</p>
+              <p>{ews[data].nama}</p>
+              <p>{ews[data].nama}</p>
+              <p>{ews[data].nama}</p>
+              <p>{ews[data].nama}</p>
               <p>{ews[data].nama}</p>
               
           </div>

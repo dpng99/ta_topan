@@ -51,8 +51,6 @@ const AddData = () => {
                 <Button  style={{ margin: '10px 10px 10px 10px' }} onClick={() => setGetAlat('flow-meter')}>Flow meter</Button>
                 <Button style={{ margin: '10px 10px 10px 10px' }}  onClick={() => setGetAlat('panel-pompa')}>Panel Pompa</Button>
                 <Button style={{ margin: '10px 10px 10px 10px' }}  onClick={() => setGetAlat('pressure-solar')}>Pressure Solar</Button>
-                <Button style={{ margin: '10px 10px 10px 10px' }}  onClick={() => setGetAlat('pressurePoint')}>Pressure Point</Button>
-                <Button style={{ margin: '10px 10px 10px 10px' }}  onClick={() => setGetAlat('pressureSensor')}>Pressure Sensor</Button>
             </Container>
             {key ? key.map((item) =>
             
@@ -71,7 +69,7 @@ const AddData = () => {
             </>
         ): null}
         
-       <Modal show={isOpen} onHide={isOpen}>
+       <Modal className='p-0' show={isOpen} onHide={isOpen}>
              <Modal.Dialog className="alert overflow-auto position-sticky">
                     <Modal.Header closeButton onClick={()=> setIsOpen(false)}>
                       <Modal.Title>{getAlat}</Modal.Title>
