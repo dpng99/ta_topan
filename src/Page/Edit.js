@@ -1,5 +1,5 @@
-import React,{useState, useEffect, useRef} from 'react'
-import {Container, Card,Button, Form, Image, Row, Col} from 'react-bootstrap'
+import React,{useState, useEffect} from 'react'
+import {Container, Card,Button, Row, Col} from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,16 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Edit = () => {
     const [getAlat,setGetAlat ] = useState(null)
     const [getKota, setGetKota] = useState('')
-    const [ getNama, setGetNama ] = useState(null)
-    const [getData, setGetData ] = useState('')
-    const [setChild, setGetChild] = useState('')
-    const [updateNama, setUpdateNama] = useState([])
-    const [ updateAll, setUpdateAll] = useState([])
 
-    const [formData, setFormData] = useState({
-        latitude: "",
-        longitude: ""
-    })
     
     useEffect(() => {
         const Alat = CRUDHandler.getLocation()
@@ -24,18 +15,12 @@ const Edit = () => {
         Alat.on('value', snapshot =>{
             const Data = snapshot.child(getAlat).val()
             const getKota = []
-            const getData = []
-            const updateAll = []
+   
             for(let id in Data) {
                 getKota.push(Data[id])
             }
             setGetKota(getKota)
-            
-            setGetData(getData)
-            if(getNama != null){
-                getData.push(getNama)
-              
-            }
+       
            
             
         })
@@ -48,7 +33,7 @@ const Edit = () => {
              
         
     
-    }, [getAlat, getNama]);
+    }, [getAlat]);
     
     return (
         <>
@@ -66,7 +51,7 @@ const Edit = () => {
                         <Row  xs={'auto'} md={'auto'} xl={'auto'} xxl={'auto'} className="g-4 " style={{ marginTop:'10px' }}>
                            {getKota && getKota.map((item, i) => (
                                <Col>
-                             <Card className='border-2 border-primary p-3 shadow rounded-3 ' style={{ margin: '10px 10px 10px 10px' , width:'20rem' }} fluid key={i} onClick={() => setGetNama(item,setGetChild(item.nama))}>
+                             <Card className='border-2 border-primary p-3 shadow rounded-3 ' style={{ margin: '10px 10px 10px 10px' , width:'20rem' }} fluid key={i}>
                                
                              <Card.Body>
                                  <Card.Title>

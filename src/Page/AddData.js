@@ -9,13 +9,10 @@ const AddData = () => {
         latitude: '',
         longitude: ''
     })   
-    const [ latitude, setLatitude] = useState ('')
-    const [ longitude, setLongitude] = useState ('')
     const [listData, setListData] = useState (null)
     const [setChild, setChildData] = useState('')
     const [ key, getKey] = useState(null)
     const [ isOpen, setIsOpen] = useState(false)
-    const x = null
     useEffect(() => {
         const getAll = CRUDHandler.getEws().orderByKey()
         getAll.on('value', snapshot => {

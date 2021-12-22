@@ -1,7 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import { GoogleMap, LoadScript, Marker, InfoWindow} from '@react-google-maps/api'
 import CRUDHandler from '../Handler/CRUDHandler';
-import { Container } from 'react-bootstrap';
 
 const MapContainer = () => {
   const [dataSet, setDataSet] = useState([]);

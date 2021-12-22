@@ -27,7 +27,7 @@ const Riwayat = () => {
         <>
         <Navbarx/>
         <Container>
-     <Card className="p-4 shadow" style={{ marginTop: '20px' , background: 'white'}}>
+     <Card fluid className="p-4 shadow" style={{ marginTop: '20px' , background: 'white'}}>
         <Container className="d-flex align-content-start justify-content-start position-relative "> 
          <h1 className="fs-3 text">Ews Monitoring</h1>       
          </Container>
@@ -41,7 +41,7 @@ const Riwayat = () => {
             {Object.keys(getData) ? Object.keys(getData).map((item,index) => ( 
             <Col>
               
-            <Card key={index} className='border-2 border-primary p-3 shadow rounded-3 ' style={{ margin: '10px 10px 10px 10px' , width:'30rem' }} onClick={() => setDataGauge(getData[item])}>
+            <Card key={index} className='border-2 border-primary p-3 shadow rounded-3 ' onClick={() => setDataGauge(getData[item])}>
            
                 <Card.Title>
                     {getData[item].nama}
@@ -56,8 +56,9 @@ const Riwayat = () => {
                 <Card.Text>Temperatur InLet = {getData[item].tempInlet}</Card.Text>
                 <Card.Text>Temperature Outlet = {getData[item].tempOutlet}</Card.Text>
                 <Card.Text>Velocity = {getData[item].velocity}</Card.Text>
+                <Container>
                 <Chart 
-                                    width={350}
+                                    width={200}
                                     height={200}
                                     chartType="Gauge"
                                     data={[
@@ -75,7 +76,7 @@ const Riwayat = () => {
                                     }}
                                     />
                                      <Chart 
-                                    width={300}
+                                    width={200}
                                     height={200}
                                     chartType="Gauge"
                                     data={[
@@ -95,6 +96,7 @@ const Riwayat = () => {
                                         min: 100
                                     }}
                                     />
+                                    </Container>
                 
                 </>
                  : null}
@@ -119,8 +121,9 @@ const Riwayat = () => {
                 <Card.Text>{'Nama : '+ getData[item].led6.nama +' Status : '+ getData[item].led6.value}</Card.Text>  
                     </>
             : null }
+            <Container>
             <Chart 
-                                    width={350}
+                                    width={200}
                                     height={200}
                                     chartType="Gauge"
                                     data={[
@@ -142,7 +145,7 @@ const Riwayat = () => {
                                     }}
                                     />
                                     <Chart 
-                                    width={350}
+                                    width={200}
                                     height={200}
                                     chartType="Gauge"
                                     data={[
@@ -161,7 +164,7 @@ const Riwayat = () => {
                                         minorTicks: 100,
                                     }}
                                     />
-                                     
+                                     </Container>
 
 
                 </>
@@ -174,6 +177,7 @@ const Riwayat = () => {
                 <Card.Text>Pressure Bar = {getData[item].pressureBar}</Card.Text>
                 <Card.Text>Pressure Psi = { getData[item].pressurePsi}</Card.Text>
                 <Card.Text>Voltage = {getData[item].voltage}</Card.Text>
+                <Container>
                 <Chart              width={200}
                                     height={200}
                                     chartType="Gauge"
@@ -209,6 +213,7 @@ const Riwayat = () => {
                                         min: 0.0,
                                     }}
                                     />
+                                    </Container>
                 </>
                 : null}         
                   

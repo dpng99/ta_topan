@@ -2,7 +2,7 @@ import React ,{useRef, useState}from 'react';
 import './Form.css';
 import { useAuth } from './Handler/AuthContext'
 import { useHistory } from 'react-router-dom';
-import {Alert } from 'react-bootstrap'
+import {Alert, Container } from 'react-bootstrap'
 const FormSignup = () => {
   const emailRef = useRef();
   const usernameRef = useRef();
@@ -30,6 +30,7 @@ const FormSignup = () => {
   }
   return (
     <>
+    <Container>
     <div className='form-container'>
     <span className='close-btn'>×</span>
     <div className='form-content-left'>
@@ -88,6 +89,7 @@ const FormSignup = () => {
       </form>
     </div>
     </div>
+    </Container>
     </>
   );
 };

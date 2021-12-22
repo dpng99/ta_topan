@@ -1,7 +1,7 @@
 import React ,{useRef, useState}from 'react';
 import './Form.css';
 import { useAuth } from './Handler/AuthContext'
-import {Alert} from 'react-bootstrap'
+import {Alert, Container} from 'react-bootstrap'
 import { useHistory} from 'react-router-dom'
 const FormLogin = () => {
   const emailRef = useRef();
@@ -25,7 +25,9 @@ const FormLogin = () => {
   }
   return (
     
-    <><div className='form-container'>
+    <>
+    <Container fluid='sm'>
+    <div className='form-container'>
       <span className='close-btn'>×</span>
       <div className='form-content-left'>
         <img className='form-img' src='img/pdam1.jpg' alt='spaceship' />
@@ -67,6 +69,7 @@ const FormLogin = () => {
         </form>
       </div>
       </div>
+      </Container>
       </>
     
   )

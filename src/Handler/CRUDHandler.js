@@ -1,5 +1,5 @@
 import { database } from "../Firebase";
-import React,{useState, useEffect} from 'react'
+
 const db = database.ref('/MonitoringDebitQualityApp/MonitoringDebit');
 const dblocation =  database.ref('MonitoringDebitQualityApp')
 const dbh= database.ref('MonitoringDebitQualityApp')
