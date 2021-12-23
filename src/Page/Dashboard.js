@@ -4,6 +4,7 @@ import Navbarx from '../Component/Navbar';
 import MapContainer from '../Component/MapContainer';
 
 import "bootstrap/dist/css/bootstrap.min.css"
+import { Container } from 'react-bootstrap';
 const Dashboard = () => {
 
 

@@ -11,6 +11,7 @@ import Edit from './Page/Edit';
 import AddData from './Page/AddData';
 import Riwayat from './Page/Riwayat';
 import Monitoring from './Page/Monitoring';
+import FormLogin2 from './FormLogin2';
 
 
 
@@ -26,7 +27,7 @@ function App() {
       <PrivateRouter path="/history" component={Riwayat} />
       <PrivateRouter path="/monitoring" component={Monitoring} />
      <Route path="/signup" component={FormSignup}/>
-    <Route path="/login" component={FormLogin}/>
+    <Route path="/login" component={FormLogin2}/>
      </Switch>
      </AuthProvider>
    </Router>

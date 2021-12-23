@@ -3,6 +3,7 @@ import './Form.css';
 import { useAuth } from './Handler/AuthContext'
 import { useHistory } from 'react-router-dom';
 import {Alert, Container } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 const FormSignup = () => {
   const emailRef = useRef();
   const usernameRef = useRef();
@@ -31,15 +32,15 @@ const FormSignup = () => {
   return (
     <>
     <Container>
-    <div className='form-container'>
+    <div className='form-container container-fluid'>
     <span className='close-btn'>×</span>
-    <div className='form-content-left'>
+    <div className='form-content-left '>
       <img className='form-img' src='img/pdam1.jpg' alt='spaceship' />
     </div>
     
     <div className='form-content-right'>
       {error && <Alert variant="danger">{error}</Alert>}
-      <form onSubmit={handleSubmit} className='form' noValidate>
+      <form onSubmit={handleSubmit} className='form ' noValidate>
         <h1>
           Selamat Datang! Dashboard Website PDAM Madiun 
         </h1>

@@ -61,7 +61,7 @@ const FormLogin = () => {
           </div>
 
           <button className='form-input-btn' type='submit'>
-            Sign up
+            Sign In
           </button>
           <span className='form-input-login'>
             Belum punya akun?SignUp <a href='/signup'>disini</a>
