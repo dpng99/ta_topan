@@ -25,13 +25,15 @@ const FormLogin2 = () => {
     }
     return (
         <>
-        <Container fluid className='p-5 m-auto d-flex flex-row'>
-            <Container className='positon-relative rounded-start'>
-                <Image className='img-fluid rounded img-thumbnail h-75 w-75' src='img/pdam3.png' alt='image/png'/>
+        <Container fluid className='p-5 m-auto shadow-lg'>
+            <Container className='position-relative rounded-3 p-5 shadow-lg align-align-items-center justify-content-center' style={{ background: 'linear-gradient(90deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%)'}} >
+            <Container className='align-items-center justify-content-center d-flex'>
+            <Image className='img-fluid w-25' src='img/pdam4.png' alt='image/png'/>
             </Container>
-            <Container className='position-relative rounded-end' style={{ background: 'linear-gradient(90deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%)'}}>
                 <Form onSubmit={handleSubmit}>
-                    <h1 className='text-white'> Selamat Datang!Dashboard Website PDAM Madiun</h1>
+                {error && <Alert variant="danger">{error}</Alert>}
+                    <h1 className='text-white text-center m-3'> Selamat Datang!</h1>
+                    <h1 className='text-white text-center'>Dashboard Website PDAM Madiun</h1>
                     <Form.Group className='m-3'>
                         <Form.Label>Email</Form.Label>
                         <Form.Control type='email' placeholder='Masukan Email' ref={emailRef}/>
@@ -40,8 +42,13 @@ const FormLogin2 = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type='password' placeholder='Masukan Password' ref={passwordRef}/>
                     </Form.Group>
-                    <Button type='submit' className='btn-outline-info m-auto'>Login</Button>
+                    <Form.Group className='m-3'>
+                    <Button type='submit' className='m-auto h-100 w-100' style={{ background: 'linear-gradient(90deg,rgb(39, 176, 255) 0%,rgb(0, 232, 236) 100%)' }}>Login</Button>
+                    </Form.Group>
                 </Form>
+                <span className=' text-white justify-content-center align-items-center d-flex fs-5'>
+                        Belum punya akun?SignUp<a href='/signup'>disini</a>
+                         </span>
             </Container>
         </Container>
         </>

@@ -1,8 +1,9 @@
 /* eslint-disable no-const-assign */
 import React,{useState, useEffect} from 'react'
-import { Container, Card, Form, Button, ToggleButton, Modal  } from 'react-bootstrap'
+import { Container, Card, Form, Button, ToggleButton, Modal, Row, Col  } from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
+import 'bootstrap/dist/css/bootstrap.min.css'
 const AddData = () => {
     const [ getAlat, setGetAlat] = useState (null)
     const [formData, setFormData ]  = useState ({
@@ -43,48 +44,47 @@ const AddData = () => {
         <>
         <Navbarx/>
         <Container>
-        
-            <Container className="align-item-center justify-content-center d-flex">
+        <Modal show={isOpen} onHide={isOpen}>
+                    <Modal.Header closeButton onClick={()=> setIsOpen(false)}>
+                      <Modal.Title>{getAlat}</Modal.Title>
+                     </Modal.Header>
+                    <Modal.Body>
+                            <p>{setChild}</p>
+                            <p>Latitude : {formData.latitude}</p>
+                            <p>Longitude : {formData.longitude}</p>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button  variant="primary" onClick={()=>setIsOpen(false)}>Save changes</Button>
+                        </Modal.Footer>
+                        </Modal>
+            <Container className="align-items-center justify-content-center d-flex">
                 <Button  style={{ margin: '10px 10px 10px 10px' }} onClick={() => setGetAlat('flow-meter')}>Flow meter</Button>
                 <Button style={{ margin: '10px 10px 10px 10px' }}  onClick={() => setGetAlat('panel-pompa')}>Panel Pompa</Button>
                 <Button style={{ margin: '10px 10px 10px 10px' }}  onClick={() => setGetAlat('pressure-solar')}>Pressure Solar</Button>
             </Container>
+            <Row xs={1} md={2} xl={'auto'} xxl={'auto'} className="justify-content-center align-items-center d-flex">   
             {key ? key.map((item) =>
-            
             <>
-            <Container className="align-item-center justify-content-center d-flex">
+                    <Col>
             <ToggleButton
             key={item}
             type="radio"
             variant={item % 2 ? 'outline-success' : 'outline-danger'}
             name="radio"
             onClick={(e) => setChildData(item)}
-          >
+            style={{ margin: '10px 10px 10px 10px' }}
+           >
             {item}
           </ToggleButton>
-            </Container>
+          </Col>
+       
+            
             </>
         ): null}
-        
-       <Modal className='p-0' show={isOpen} onHide={isOpen}>
-             <Modal.Dialog className="alert overflow-auto position-sticky">
-                    <Modal.Header closeButton onClick={()=> setIsOpen(false)}>
-                      <Modal.Title>{getAlat}</Modal.Title>
-                     </Modal.Header>
-
-                    <Modal.Body>
-                            <p>{setChild}</p>
-                            <p>{formData.latitude}</p>
-                            <p>{formData.longitude}</p>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button  variant="primary" onClick={()=>setIsOpen(false)}>Save changes</Button>
-                        </Modal.Footer>
-                        </Modal.Dialog>
-                        </Modal>
-                    
-                      
-            <Card fluid>
+           </Row>
+       
+                        <Container className='justify-content-center align-items-center d-flex'>
+            <Card className="p-3 h-50 w-50">
              <Form onSubmit={handleSubmit}>
                  <Form.Group>
                      <Form.Label className='text-black font-monospace size-2'>Latitude</Form.Label>
@@ -97,7 +97,7 @@ const AddData = () => {
                  <Button type='submit' value="submit" onClick={() => setIsOpen(true)}>Submit</Button>
              </Form>
              </Card>
-             
+             </Container>
         </Container>
         </>
     )

@@ -27,7 +27,7 @@ function Navbarx() {
         <Navbar.Brand href="/">
               <img
                 alt=""
-                src="img/pdam1.jpg"
+                src="img/pdam4.png"
                 width="30"
                 height="30"
                 className="d-inline-block align-top"
