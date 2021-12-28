@@ -44,19 +44,6 @@ const AddData = () => {
         <>
         <Navbarx/>
         <Container>
-        <Modal show={isOpen} onHide={isOpen}>
-                    <Modal.Header closeButton onClick={()=> setIsOpen(false)}>
-                      <Modal.Title>{getAlat}</Modal.Title>
-                     </Modal.Header>
-                    <Modal.Body>
-                            <p>{setChild}</p>
-                            <p>Latitude : {formData.latitude}</p>
-                            <p>Longitude : {formData.longitude}</p>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button  variant="primary" onClick={()=>setIsOpen(false)}>Save changes</Button>
-                        </Modal.Footer>
-                        </Modal>
             <Container className="align-items-center justify-content-center d-flex">
                 <Button  style={{ margin: '10px 10px 10px 10px' }} onClick={() => setGetAlat('flow-meter')}>Flow meter</Button>
                 <Button style={{ margin: '10px 10px 10px 10px' }}  onClick={() => setGetAlat('panel-pompa')}>Panel Pompa</Button>
@@ -94,6 +81,19 @@ const AddData = () => {
                      <Form.Label className='text-black font-monospace size-2'>Longitude</Form.Label>
                      <Form.Control type="text"  onChange={(e)=> setFormData({...formData, longitude: e.target.value})} value={formData.longitude}/>
                  </Form.Group>
+                 <Modal show={isOpen} onHide={isOpen}>
+                    <Modal.Header closeButton onClick={()=> setIsOpen(false)}>
+                      <Modal.Title>{getAlat}</Modal.Title>
+                     </Modal.Header>
+                    <Modal.Body>
+                            <p>{setChild}</p>
+                            <p>Latitude : {formData.latitude}</p>
+                            <p>Longitude : {formData.longitude}</p>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button  variant="primary" onClick={()=>setIsOpen(false,  window.location.reload(false))}>Save changes</Button>
+                        </Modal.Footer>
+                        </Modal>
                  <Button type='submit' value="submit" onClick={() => setIsOpen(true)}>Submit</Button>
              </Form>
              </Card>
