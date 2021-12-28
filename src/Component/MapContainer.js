@@ -130,13 +130,7 @@ const MapContainer = () => {
             {activeMarker === ews[data] ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
             ><div style={divStyle}>
               <p>{ews[data].nama}</p>
-              <p>{ews[data].nama}</p>
-              <p>{ews[data].nama}</p>
-              <p>{ews[data].nama}</p>
-              <p>{ews[data].nama}</p>
-              <p>{ews[data].nama}</p>
-              <p>{ews[data].nama}</p>
-              <p>{ews[data].nama}</p>
+         
               
           </div>
               
