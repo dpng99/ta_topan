@@ -122,38 +122,40 @@ const MapContainer = () => {
           onClick={() => handleActiveMarker(ews[data])}
           >
             {activeMarker === ews[data] ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
-            ><div style={divStyle}>
-              <p>{ews[data].nama}</p>
-              <p>{ews[data].energyFlow}</p>
-              <p>{ews[data].flowRate}</p>
-              <p>{ews[data].fluidSoundSpeed}</p>
-              <p>{ews[data].negativeAcc}</p>
-              <p>{ews[data].positiveAcc}</p>
-              <p>{ews[data].tempInlet}</p>
-              <p>{ews[data].tempOutlet}</p>
-              <p>{ews[data].velocity}</p>
+            >
+              <div style={divStyle}>
+              <p>Nama : {ews[data].nama}</p>
+              <p>EnergyFlow : {ews[data].energyFlow}</p>
+              <p>Flow Rate  : {ews[data].flowRate}</p>
+              <p>Fluid Sound Speed : {ews[data].fluidSoundSpeed}</p>
+              <p>Negative Acc      : {ews[data].negativeAcc}</p>
+              <p>Postive Acc       : {ews[data].positiveAcc}</p>
+              <p>TempInlet  : {ews[data].tempInlet}</p>
+              <p>TempOutlet :{ews[data].tempOutlet}</p>
+              <p>Velocity          :{ews[data].velocity}</p>
               { ews[data].currentR ? 
             <>
-        <p>{ews[data].currentR}</p>
-        <p>{ews[data].currentS}</p>
-        <p>{ews[data].currentT}</p>
-        <p>{ews[data].frequency}</p>
-        <p>{ews[data].power}</p>
-        <p>{ews[data].powerFactor}</p>
-        <p>{ews[data].voltR}</p>
-        <p>{ews[data].voltS}</p>
-        <p>{ews[data].voltT}</p>
+            
+        <p>Current R : {ews[data].currentR}</p>
+        <p>Current S : {ews[data].currentS}</p>
+        <p>Current T :{ews[data].currentT}</p>
+        <p>Frequency : {ews[data].frequency}</p>
+        <p>Power     : {ews[data].power}</p>
+        <p>Power Factor : {ews[data].powerFactor}</p>
+        <p>Volt R    : {ews[data].voltR}</p>
+        <p>Volt S    : {ews[data].voltS}</p>
+        <p>Volt T    : {ews[data].voltT}</p>
         {ews[data].led1 && ews[data].led2 && ews[data].led3 && ews[data].led4 && ews[data].led5 && ews[data].led6 ? <> 
-         <p>{'Nama : '+ ews[data].led1.nama +' Status : '+ ews[data].led1.value}</p>
-         <p>{'Nama : '+ ews[data].led2.nama +' Status : '+ ews[data].led2.value}</p>
-         <p>{'Nama : '+ ews[data].led3.nama +' Status : '+ ews[data].led3.value}</p>
-         <p>{'Nama : '+ ews[data].led4.nama +' Status : '+ ews[data].led4.value}</p>
-         <p>{'Nama : '+ ews[data].led5.nama +' Status : '+ ews[data].led5.value}</p>
-         <p>{'Nama : '+ ews[data].led6.nama +' Status : '+ ews[data].led6.value}</p>
+         <p>{'Nama : '+ ews[data].led1.nama +' & Status : '+ ews[data].led1.value}</p>
+         <p>{'Nama : '+ ews[data].led2.nama +' & Status : '+ ews[data].led2.value}</p>
+         <p>{'Nama : '+ ews[data].led3.nama +' & Status : '+ ews[data].led3.value}</p>
+         <p>{'Nama : '+ ews[data].led4.nama +' & Status : '+ ews[data].led4.value}</p>
+         <p>{'Nama : '+ ews[data].led5.nama +' & Status : '+ ews[data].led5.value}</p>
+         <p>{'Nama : '+ ews[data].led6.nama +' & Status : '+ ews[data].led6.value}</p>
         </> : null}
         {ews[data].relay1 && ews[data].relay2 ? <> 
-         <p>{'Nama : '+ ews[data].relay1.nama +' Status : '+ ews[data].led1.trigger}</p>
-         <p>{'Nama : '+ ews[data].relay2.nama +' Status : '+ ews[data].led2.trigger}</p>
+         <p>{'Nama : '+ ews[data].relay1.nama +' & Status : '+ ews[data].led1.trigger}</p>
+         <p>{'Nama : '+ ews[data].relay2.nama +' & Status : '+ ews[data].led2.trigger}</p>
         </> : null}
  
         </>
@@ -161,11 +163,11 @@ const MapContainer = () => {
        : null }
        { ews[data].pressureBar ? 
             <>
-        <p>{ews[data].current}</p>
-        <p>{ews[data].pressureBar}</p>
-        <p>{ews[data].pressurePascal}</p>
-        <p>{ews[data].pressurePsi}</p>
-        <p>{ews[data].voltage}</p> 
+        <p>Current :{ews[data].current}</p>
+        <p>Pressure Bar :{ews[data].pressureBar}</p>
+        <p>Pressure Pascal :{ews[data].pressurePascal}</p>
+        <p>Pressure PSI :{ews[data].pressurePsi}</p>
+        <p>Voltage : {ews[data].voltage}</p> 
         </>
 
        : null }
