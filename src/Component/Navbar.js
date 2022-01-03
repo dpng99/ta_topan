@@ -24,7 +24,7 @@ function Navbarx() {
         <>
         <Navbar className="bg-primary" expand="lg">
         <Container fluid className="">
-        <Navbar.Brand href="/">
+        <Navbar.Brand href="/" className='text-white'>
               <img
                 alt=""
                 src="img/pdam4.png"

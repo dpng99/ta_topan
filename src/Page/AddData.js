@@ -23,7 +23,6 @@ const AddData = () => {
             setListData(listData)
             const x = Object.keys(Object.assign({}, ...listData));
             getKey(x)
-            console.log(key)
             
           
         })

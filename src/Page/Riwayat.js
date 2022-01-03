@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import { Button, Card, Container, Row, Col } from 'react-bootstrap'
+import { Button, Card, Container, Accordion } from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -19,7 +19,7 @@ const Riwayat = () => {
                 getData.push(DataIsi[id])
             }
             setGetData(getData)
-
+            
         })
         
     }, [setChild, dataGauge])
@@ -37,17 +37,19 @@ const Riwayat = () => {
         <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px' }} onClick={() =>setGetChild('pressure-solar')}>Pressure Solar</Button>
         </Container>
        <Container>
-        <Row xs={1} md={2} xl={'auto'} xxl={'auto'} className="g-4 " style={{ marginTop:'10px' }}>
             {Object.keys(getData) ? Object.keys(getData).map((item,index) => ( 
-            <Col>
-              
-            <Card key={index} className='border-2 border-primary p-3 shadow rounded-3 ' onClick={() => setDataGauge(getData[item])}>
-           
+            
+              <Accordion defaultActiveKey={index}>
+                  <Accordion.Item eventKey={index}>
+                  <Accordion.Header>{getData[item].nama}</Accordion.Header>
+                  <Accordion.Body>
+            <Card className='border-2 border-primary p-3 shadow rounded-3 d-flex'>
                 <Card.Title>
                     {getData[item].nama}
                 </Card.Title>
                 {setChild === 'flow-meter'  ?
                 <>
+                <Container className='align-items-start justify-form-content-right'>
                 <Card.Text>Energy Flow = {getData[item].energyFlow }</Card.Text>
                 <Card.Text>Flow Rate = {getData[item].flowRate}</Card.Text>
                 <Card.Text>Fluid Sound Speed = {getData[item].fluidSoundSpeed }</Card.Text>
@@ -56,7 +58,8 @@ const Riwayat = () => {
                 <Card.Text>Temperatur InLet = {getData[item].tempInlet}</Card.Text>
                 <Card.Text>Temperature Outlet = {getData[item].tempOutlet}</Card.Text>
                 <Card.Text>Velocity = {getData[item].velocity}</Card.Text>
-                <Container>
+                </Container>
+                <Container className='align-items-end justify-content-left'>
                 <Chart 
                                     width={200}
                                     height={200}
@@ -96,7 +99,7 @@ const Riwayat = () => {
                                         min: 100
                                     }}
                                     />
-                                    </Container>
+                </Container>
                 
                 </>
                  : null}
@@ -217,16 +220,15 @@ const Riwayat = () => {
                 </>
                 : null}         
                   
-           
             </Card>
-          
-            </Col>
+            </Accordion.Body>
+            </Accordion.Item>
+            </Accordion>
          
         )) : null}
-           </Row>
+
            </Container>
            </Card>
-
         </Container>
    
         </>

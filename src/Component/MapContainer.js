@@ -11,6 +11,7 @@ const MapContainer = () => {
   const [dataSet3, setDataSet3] = useState([]);
   const [activeMarker, setActiveMarker] = useState(null)
   const [ews, setEwsEvents] = useState([])
+  const anjing = [] 
   const handleActiveMarker = (marker) => {
     if (marker === activeMarker) {
       return;
@@ -54,6 +55,7 @@ const MapContainer = () => {
       }
       setEwsEvents(ews)
       console.log(ews)
+      
   })
   
   }, [])
@@ -87,9 +89,21 @@ const MapContainer = () => {
           ><div style={divStyle}>
             <p>{dataSet[data].nama}</p>
             <p>{dataSet[data].alamat}</p>
-            
-            
-        </div>
+            {dataSet[data].LastSubmit ?
+           <>
+        
+            <p>{dataSet[data].LastSubmit.date}</p>
+            <p>{dataSet[data].LastSubmit.flowestimasi}</p>
+            <p>{dataSet[data].LastSubmit.flowRate}</p>
+            <p>{dataSet[data].LastSubmit.fss}</p>
+            <p>{dataSet[data].LastSubmit.pipa}</p>
+            <p>{dataSet[data].LastSubmit.temperature}</p>
+            <p>{dataSet[data].LastSubmit.time}</p>
+            <p>{dataSet[data].LastSubmit.velocity}</p>
+            <p>{dataSet[data].LastSubmit.dynamicpressure}</p>
+                </>
+           : null }
+            </div>
             
           </InfoWindow>) : null}
           
@@ -107,6 +121,19 @@ const MapContainer = () => {
             ><div style={divStyle}>
               <p>{dataSet2[data].nama}</p>
               <p>{dataSet2[data].alamat}</p>
+              {dataSet2[data].LastSubmit ?
+           <>
+        
+            <p>Tanggal  :{dataSet2[data].LastSubmit.date}</p>
+            <p>Klorin   :{dataSet2[data].LastSubmit.klorin}</p>
+            <p>ORP      :{dataSet2[data].LastSubmit.orp}</p>
+            <p>Sumur    :{dataSet2[data].LastSubmit.sumur}</p>
+            <p>TDS      :{dataSet2[data].LastSubmit.tds}</p>
+            <p>temperature:{dataSet2[data].LastSubmit.temperature}</p>
+            <p>Waktu    :{dataSet2[data].LastSubmit.time}</p>
+            <p>Turbidity:{dataSet2[data].LastSubmit.turbidity}</p>
+                </>
+           : null }
           </div>
               
             </InfoWindow>) : null}

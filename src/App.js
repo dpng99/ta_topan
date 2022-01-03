@@ -10,6 +10,7 @@ import PrivateRouter from './PrivateRouter';
 import Edit from './Page/Edit';
 import AddData from './Page/AddData';
 import Riwayat from './Page/Riwayat';
+import Riwayat2 from './Page/Riwayat2';
 import Monitoring from './Page/Monitoring';
 import FormLogin2 from './FormLogin2';
 
