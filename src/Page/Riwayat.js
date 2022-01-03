@@ -43,29 +43,21 @@ const Riwayat = () => {
                   <Accordion.Item eventKey={index}>
                   <Accordion.Header>{getData[item].nama}</Accordion.Header>
                   <Accordion.Body>
+                  
             <Card className='border-2 border-primary p-3 shadow rounded-3 d-flex'>
+                
                 <Card.Title>
                     {getData[item].nama}
                 </Card.Title>
                 {setChild === 'flow-meter'  ?
                 <>
-                <Container className='align-items-start justify-form-content-right'>
-                <Card.Text>Energy Flow = {getData[item].energyFlow }</Card.Text>
-                <Card.Text>Flow Rate = {getData[item].flowRate}</Card.Text>
-                <Card.Text>Fluid Sound Speed = {getData[item].fluidSoundSpeed }</Card.Text>
-                <Card.Text>Negative Acc = {getData[item].negativeAcc}</Card.Text> 
-                <Card.Text>Positif Acc  {getData[item].positiveAcc}</Card.Text>
-                <Card.Text>Temperatur InLet = {getData[item].tempInlet}</Card.Text>
-                <Card.Text>Temperature Outlet = {getData[item].tempOutlet}</Card.Text>
-                <Card.Text>Velocity = {getData[item].velocity}</Card.Text>
-                </Container>
-                <Container className='align-items-end justify-content-left'>
-                <Chart 
+                <Container className='align-items-center justify-content-center d-flex'>
+                    <Chart 
                                     width={200}
                                     height={200}
                                     chartType="Gauge"
                                     data={[
-                                        ['Label', 'Value'],
+                                    ['Label', 'Value'],
                                     ['temperature Inlet', parseFloat(getData[item].tempInlet)],
                                     ['temperature Outlet', parseFloat(getData[item].tempOutlet)],
                                     ['flow Rate', parseFloat(getData[item].flowRate)],
@@ -100,6 +92,17 @@ const Riwayat = () => {
                                     }}
                                     />
                 </Container>
+                <Container className='align-items-start justify-form-content-right '>
+                <Card.Text>Energy Flow = {getData[item].energyFlow }</Card.Text>
+                <Card.Text>Flow Rate = {getData[item].flowRate}</Card.Text>
+                <Card.Text>Fluid Sound Speed = {getData[item].fluidSoundSpeed }</Card.Text>
+                <Card.Text>Negative Acc = {getData[item].negativeAcc}</Card.Text> 
+                <Card.Text>Positif Acc  {getData[item].positiveAcc}</Card.Text>
+                <Card.Text>Temperatur InLet = {getData[item].tempInlet}</Card.Text>
+                <Card.Text>Temperature Outlet = {getData[item].tempOutlet}</Card.Text>
+                <Card.Text>Velocity = {getData[item].velocity}</Card.Text>
+                </Container>
+               
                 
                 </>
                  : null}
