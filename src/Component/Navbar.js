@@ -5,6 +5,7 @@ import { useAuth } from '../Handler/AuthContext';
 import { useHistory } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 function Navbarx() {
     const[error, setError]= useState();
     const{currentUser, logout} = useAuth();
@@ -19,6 +20,7 @@ function Navbarx() {
             setError('logout failed');
         }
     }
+    
 
     return (
         <>
@@ -34,6 +36,7 @@ function Navbarx() {
               />{' '}
             DASHBOARD PDAM KABUPATEN MADIUN
             </Navbar.Brand>
+           
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -46,7 +49,19 @@ function Navbarx() {
                 <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
               </NavDropdown>
             </Nav>
+            
           </Navbar.Collapse>
+          <Navbar.Brand onClick={handleLogout} className='text-white'>
+              <img
+                alt=""
+                src="img/logout.png"
+                width="30"
+                height="30"
+                className="d-inline-block align-top"
+              />{' '}
+              Logout
+            </Navbar.Brand>
+            
         </Container>
       </Navbar>
       </>
