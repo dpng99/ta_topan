@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import { Button, Card, Container, Accordion } from 'react-bootstrap'
+import { Button, Card, Container, Accordion, Table } from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -51,6 +51,35 @@ const Riwayat = () => {
                 </Card.Title>
                 {setChild === 'flow-meter'  ?
                 <>
+                
+                <Container className='align-items-start justify-form-content-right '>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                        <th>Energy Flow</th>
+                        <th>FlowRate</th>
+                        <th>Fluid Sound</th>
+                        <th>Negative Acc</th>
+                        <th>Positive Acc</th>
+                        <th>Temp Inlet</th>
+                        <th>Temp Outlet</th>
+                        <th>Velocity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>{getData[item].energyFlow }</td>
+                        <td>{getData[item].flowRate}</td>
+                        <td>{getData[item].fluidSoundSpeed }</td>
+                        <td>{getData[item].negativeAcc}</td>
+                        <td>{getData[item].positiveAcc}</td>
+                        <td>{getData[item].tempInlet}</td>
+                        <td>{getData[item].tempOutlet}</td>
+                        <td>{getData[item].velocity}</td>
+                        </tr>
+                    </tbody>
+                    </Table>
+                </Container>
                 <Container className='align-items-center justify-content-center d-flex'>
                     <Chart 
                                     width={200}
@@ -92,41 +121,86 @@ const Riwayat = () => {
                                     }}
                                     />
                 </Container>
-                <Container className='align-items-start justify-form-content-right '>
-                <Card.Text>Energy Flow = {getData[item].energyFlow }</Card.Text>
-                <Card.Text>Flow Rate = {getData[item].flowRate}</Card.Text>
-                <Card.Text>Fluid Sound Speed = {getData[item].fluidSoundSpeed }</Card.Text>
-                <Card.Text>Negative Acc = {getData[item].negativeAcc}</Card.Text> 
-                <Card.Text>Positif Acc  {getData[item].positiveAcc}</Card.Text>
-                <Card.Text>Temperatur InLet = {getData[item].tempInlet}</Card.Text>
-                <Card.Text>Temperature Outlet = {getData[item].tempOutlet}</Card.Text>
-                <Card.Text>Velocity = {getData[item].velocity}</Card.Text>
-                </Container>
                
                 
                 </>
                  : null}
                 {setChild === 'panel-pompa' ? 
                   <>
-                <Card.Text>Current R = {getData[item].currentR}</Card.Text>
-                <Card.Text>Current S = {getData[item].currentS}</Card.Text>
-                <Card.Text>CurrentT = { getData[item].currentT}</Card.Text>
-                <Card.Text>Frequency = {getData[item].frequency}</Card.Text>
-                <Card.Text>Power = {getData[item].power}</Card.Text>
-                <Card.Text>Power Factor = {getData[item].powerFactor}</Card.Text>
-                <Card.Text> Volt R = {getData[item].voltR}</Card.Text> 
-                <Card.Text>Volt S = {getData[item].voltS}</Card.Text> 
-                <Card.Text>Volt T = {getData[item].voltT}</Card.Text> 
+                  <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                        <th>Current R</th>
+                        <th>Current S</th>
+                        <th>Current T</th>
+                        <th>Frequency</th>
+                        <th>Power</th>
+                        <th>Power Factor</th>
+                        <th>Volt R</th>
+                        <th>Volt S</th>
+                        <th>Volt T</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>{getData[item].currentR}</td>
+                        <td>{getData[item].currentS}</td>
+                        <td>{ getData[item].currentT}</td>
+                        <td>{getData[item].frequency}</td>
+                        <td>{getData[item].power}</td>
+                        <td>{getData[item].powerFactor}</td>
+                        <td>{getData[item].voltR}</td>
+                        <td>{getData[item].voltS}</td>
+                        <td>{getData[item].voltT}</td>
+                     
+                        </tr>
+                    </tbody>
+                    </Table> 
                 { getData[item].led1 && getData[item].led2 && getData[item].led3 && getData[item].led4 && getData[item].led5 && getData[item].led6 ?
                     <>
-                <Card.Text>{'Nama : '+ getData[item].led1.nama +' Status : '+ getData[item].led1.value}</Card.Text>
-                <Card.Text>{'Nama : '+ getData[item].led2.nama +' Status : '+ getData[item].led2.value}</Card.Text>
-                <Card.Text>{'Nama : '+ getData[item].led3.nama +' Status : '+ getData[item].led3.value}</Card.Text>
-                <Card.Text>{'Nama : '+ getData[item].led4.nama +' Status : '+ getData[item].led4.value}</Card.Text>
-                <Card.Text>{'Nama : '+ getData[item].led5.nama +' Status : '+ getData[item].led5.value}</Card.Text>
-                <Card.Text>{'Nama : '+ getData[item].led6.nama +' Status : '+ getData[item].led6.value}</Card.Text>  
+                    <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                        <th>{getData[item].led1.nama}</th>
+                        <th>{getData[item].led2.nama}</th>
+                        <th>{getData[item].led3.nama}</th>
+                        <th>{getData[item].led4.nama}</th>
+                        <th>{getData[item].led5.nama}</th>
+                        <th>{ getData[item].led6.nama}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>{+getData[item].led1.value}</td>
+                        <td>{+getData[item].led2.value}</td>
+                        <td>{+getData[item].led3.value}</td>
+                        <td>{+getData[item].led4.value}</td>
+                        <td>{+getData[item].led5.value}</td>
+                        <td>{+getData[item].led6.value}</td>
+                        </tr>
+                    </tbody>
+                    </Table>  
                     </>
             : null }
+            {getData[item].relay1 || getData[item].relay2 ? 
+            <> 
+         <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                        <th>{getData[item].relay1.nama}</th>
+                        <th>{getData[item].relay2.nama}</th>
+                 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>{+getData[item].relay1.trigger}</td>
+                        <td>{+getData[item].relay2.trigger}</td>
+                  
+                        </tr>
+                    </tbody>
+                    </Table>  
+        </> : null}
             <Container>
             <Chart 
                                     width={200}
@@ -179,10 +253,26 @@ const Riwayat = () => {
                 { setChild === 'pressure-solar' 
                 ? 
                   <>
-                <Card.Text>Current = {getData[item].current}</Card.Text>
-                <Card.Text>Pressure Bar = {getData[item].pressureBar}</Card.Text>
-                <Card.Text>Pressure Psi = { getData[item].pressurePsi}</Card.Text>
-                <Card.Text>Voltage = {getData[item].voltage}</Card.Text>
+                  <Container>
+                  <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                        <th>Current</th>
+                        <th>Pressure Bar</th>
+                        <th>Pressure Psi</th>
+                        <th>Voltage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>{getData[item].current}</td>
+                        <td>{getData[item].pressureBar}</td>
+                        <td>{ getData[item].pressurePsi}</td>
+                        <td>{getData[item].voltage}</td>
+                        </tr>
+                    </tbody>
+                    </Table>
+                    </Container>
                 <Container>
                 <Chart              width={200}
                                     height={200}

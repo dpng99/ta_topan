@@ -1,11 +1,13 @@
 import React,{useState} from 'react'
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
+import { Navbar, Container, Nav, Offcanvas, Image, NavDropdown} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from '../Handler/AuthContext';
 import { useHistory } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
+import { RiMapPinAddLine } from "react-icons/ri";
+import { BsFiles } from "react-icons/bs";
+import { IoPhonePortraitOutline } from "react-icons/io5";
+import { MdLogout } from "react-icons/md";
 function Navbarx() {
     const[error, setError]= useState();
     const{currentUser, logout} = useAuth();
@@ -20,13 +22,12 @@ function Navbarx() {
             setError('logout failed');
         }
     }
-    
 
     return (
         <>
-        <Navbar className="bg-primary" expand="lg">
-        <Container fluid className="">
-        <Navbar.Brand href="/" className='text-white'>
+  <Navbar style={{ backgroundImage: 'url(/img/bgbaru.png)' }} expand={false}>
+  <Container fluid>
+  <Navbar.Brand href="/" className='text-white'>
               <img
                 alt=""
                 src="img/pdam4.png"
@@ -36,34 +37,28 @@ function Navbarx() {
               />{' '}
             DASHBOARD PDAM KABUPATEN MADIUN
             </Navbar.Brand>
-           
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <NavDropdown title="Menu" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/edit">Data Lokasi Portable APP</NavDropdown.Item>
-                <NavDropdown.Item href="/adddata">Add New Data</NavDropdown.Item>
-                <NavDropdown.Item href="/history">Monitoring EWS APP</NavDropdown.Item>
-                <NavDropdown.Item href="/monitoring">Monitoring Portable APP</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-            
-          </Navbar.Collapse>
-          <Navbar.Brand onClick={handleLogout} className='text-white'>
-              <img
-                alt=""
-                src="img/logout.png"
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-              />{' '}
-              Logout
-            </Navbar.Brand>
-            
-        </Container>
-      </Navbar>
+    <Navbar.Toggle aria-controls="offcanvasNavbar" className='bg-white' />
+    <Navbar.Offcanvas
+      id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel"
+      placement="start"
+    >
+      <Offcanvas.Header className='p-0'>
+      <Image fluid src='/img/BG.png'/>
+      </Offcanvas.Header>
+      <Offcanvas.Body>
+        <Nav className="justify-content-end flex-grow-1 pe-3">
+          <Nav.Link  className='text-black' href="/edit"><BsFiles className='m-1'/> Portable APP</Nav.Link>
+          <Nav.Link className='text-black'  href="/adddata"><RiMapPinAddLine className='m-1' /> Add New Data</Nav.Link>
+          <Nav.Link className='text-black'  href="/history"><IoPhonePortraitOutline className='m-1'/> EWS APP</Nav.Link>
+          <Nav.Link className='text-black'  href="/monitoring"><IoPhonePortraitOutline className='m-1'/>Monitoring Portable APP</Nav.Link>
+          <NavDropdown.Divider />
+          <Nav.Link className='text-black'  onClick={handleLogout} ><MdLogout className='m-1'/>Logout</Nav.Link>
+        </Nav>
+      </Offcanvas.Body>
+    </Navbar.Offcanvas>
+  </Container>
+</Navbar>
       </>
     );
 }
