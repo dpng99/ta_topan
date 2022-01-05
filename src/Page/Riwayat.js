@@ -3,7 +3,7 @@ import { Button, Card, Container, Accordion, Table } from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import ReactSpeedometer from "react-d3-speedometer"
 import {Chart} from 'react-google-charts'
 const Riwayat = () => {
     const [getData, setGetData] = useState([])
@@ -40,7 +40,7 @@ const Riwayat = () => {
             {Object.keys(getData) ? Object.keys(getData).map((item,index) => ( 
             
               <Accordion defaultActiveKey={index}>
-                  <Accordion.Item eventKey={index}>›
+                  <Accordion.Item eventKey={index}>
                   <Accordion.Header>{getData[item].nama}</Accordion.Header>
                   <Accordion.Body>
                   
@@ -53,7 +53,7 @@ const Riwayat = () => {
                 <>
                 
                 <Container className='align-items-start justify-form-content-right '>
-                <Table striped bordered hover>
+                <Table responsive striped bordered hover>
                     <thead>
                         <tr>
                         <th>Energy Flow</th>
@@ -80,46 +80,116 @@ const Riwayat = () => {
                     </tbody>
                     </Table>
                 </Container>
-                <Container className='align-items-center justify-content-center d-flex'>
-                    <Chart 
-                                    width={200}
-                                    height={200}
-                                    chartType="Gauge"
-                                    data={[
-                                    ['Label', 'Value'],
-                                    ['temperature Inlet', parseFloat(getData[item].tempInlet)],
-                                    ['temperature Outlet', parseFloat(getData[item].tempOutlet)],
-                                    ['flow Rate', parseFloat(getData[item].flowRate)],
-                                    ]}
-                                    options={{
-                                        redFrom: 90,
-                                        redTo: 100,
-                                        yellowFrom: 75,
-                                        yellowTo: 90,
-                                        minorTicks: 5,
-                                    }}
-                                    />
-                                     <Chart 
-                                    width={200}
-                                    height={200}
-                                    chartType="Gauge"
-                                    data={[
-                                        ['Label', 'Value'],
-                                    ['Energy flow', parseFloat(getData[item].energyFlow)],
-                                    ['Fluid Soud', parseFloat(getData[item].fluidSoundSpeed)],
+                <Container>
+                            <Container>
+                                    <p>Energy Flow</p>
+                                     <ReactSpeedometer
+                                      width={200}
+                                      height={200}
+                                            maxValue={300}
+                                            minValue={0}
+                                            value={parseFloat(getData[item].energyFlow)}
+                                            segments={5}
+                                                segmentColors={[
+                                                    "#264b96",
+                                                    "#27b376",
+                                                    "#006f3c",
+                                                    "#f9a73e",
+                                                    "#bf212f",
+                                                ]}
+                                            />
+                                            </Container>
+                                            <Container>
+                                    <p>Fluid Sound Speed</p>
+                                     <ReactSpeedometer
+                                      width={200}
+                                      height={200}
+                                            maxValue={300}
+                                            minValue={0}
+                                            value={parseFloat(getData[item].fluidSoundSpeed)}
+                                            segments={5}
+                                                segmentColors={[
+                                                    "#264b96",
+                                                    "#27b376",
+                                                    "#006f3c",
+                                                    "#f9a73e",
+                                                    "#bf212f",
+                                                ]}
+                                            />
+                                            </Container>
+                                            <Container>
+                                    <p>Flowrate</p>
+                                     <ReactSpeedometer
+                                      width={200}
+                                      height={200}
+                                            maxValue={300}
+                                            minValue={0}
+                                            value={parseFloat(getData[item].flowRate)}
+                                            segments={5}
+                                                segmentColors={[
+                                                    "#264b96",
+                                                    "#27b376",
+                                                    "#006f3c",
+                                                    "#f9a73e",
+                                                    "#bf212f",
+                                                ]}
+                                            />
+                                            </Container>
+                                            <Container>
+                                    <p>Velocity</p>
+                                     <ReactSpeedometer
+                                      width={200}
+                                      height={200}
+                                            maxValue={300}
+                                            minValue={0}
+                                            value={parseFloat(getData[item].velocity)}
+                                            segments={5}
+                                                segmentColors={[
+                                                    "#264b96",
+                                                    "#27b376",
+                                                    "#006f3c",
+                                                    "#f9a73e",
+                                                    "#bf212f",
+                                                ]}
+                                            />
+                                            </Container>
+                                            <Container>
+                                    <p>Temp Inlet</p>
+                                     <ReactSpeedometer
+                                      width={200}
+                                      height={200}
+                                            maxValue={75}
+                                            minValue={0}
+                                            value={parseFloat(getData[item].tempInlet)}
+                                            segments={5}
+                                                segmentColors={[
+                                                    "#264b96",
+                                                    "#27b376",
+                                                    "#006f3c",
+                                                    "#f9a73e",
+                                                    "#bf212f",
+                                                ]}
+                                            />
+                                            </Container>
+                                            <Container>
+                                    <p>Temp Outlet</p>
+                                     <ReactSpeedometer
+                                      width={200}
+                                      height={200}
+                                            maxValue={75}
+                                            minValue={0}
+                                            value={parseFloat(getData[item].tempOutlet)}
+                                            segments={5}
+                                                segmentColors={[
+                                                    "#264b96",
+                                                    "#27b376",
+                                                    "#006f3c",
+                                                    "#f9a73e",
+                                                    "#bf212f",
+                                                ]}
+                                            />
+                                            </Container>
                                     
-                                   
-                                    ]}
-                                    options={{
-                                        max: 300,
-                                        redFrom: 250,
-                                        redTo: 300,
-                                        yellowFrom: 225,
-                                        yellowTo: 250,
-                                        minorTicks: 100,
-                                        min: 100
-                                    }}
-                                    />
                 </Container>
                
                 
@@ -127,7 +197,7 @@ const Riwayat = () => {
                  : null}
                 {setChild === 'panel-pompa' ? 
                   <>
-                  <Table striped bordered hover>
+                  <Table responsive striped bordered hover>
                     <thead>
                         <tr>
                         <th>Current R</th>
@@ -158,7 +228,7 @@ const Riwayat = () => {
                     </Table> 
                 { getData[item].led1 && getData[item].led2 && getData[item].led3 && getData[item].led4 && getData[item].led5 && getData[item].led6 ?
                     <>
-                    <Table striped bordered hover>
+                    <Table responsive striped bordered hover>
                     <thead>
                         <tr>
                         <th>{getData[item].led1.nama}</th>
@@ -184,7 +254,7 @@ const Riwayat = () => {
             : null }
             {getData[item].relay1 || getData[item].relay2 ? 
             <> 
-         <Table striped bordered hover>
+         <Table responsive striped bordered hover>
                     <thead>
                         <tr>
                         <th>{getData[item].relay1.nama}</th>
@@ -202,48 +272,114 @@ const Riwayat = () => {
                     </Table>  
         </> : null}
             <Container>
-            <Chart 
-                                    width={200}
-                                    height={200}
-                                    chartType="Gauge"
-                                    data={[
-                                        ['Label', 'Value'],
-                                    ['Power', parseFloat(getData[item].power) ],
-                                    ['volt R', parseFloat(getData[item].voltR) ],
-                                    ['volt S', parseFloat(getData[item].voltS) ],
-                                    ['volt T', parseFloat(getData[item].voltT) ],
-                              
-                                    ]}
-                                    options={{
-                                        max: 300,
-                                        redFrom: 275,
-                                        redTo: 300,
-                                        yellowFrom: 250,
-                                        yellowTo: 275,
-                                        minorTicks: 100,
-                                        min: 100,
-                                    }}
-                                    />
-                                    <Chart 
-                                    width={200}
-                                    height={200}
-                                    chartType="Gauge"
-                                    data={[
-                                        ['Label', 'Value'],
-                                    ['current T', parseFloat(getData[item].currentT)],
-                                    ['current S', parseFloat(getData[item].currentS)],
-                                    ['current R', parseFloat(getData[item].currentR)],
-                                    ]}
-                                    options={{
-                                        max: 3000,
-                                        min: 100,
-                                        redFrom: 2750,
-                                        redTo: 3000,
-                                        yellowFrom: 2500,
-                                        yellowTo: 2750,
-                                        minorTicks: 100,
-                                    }}
-                                    />
+                                    <Container>
+                                    <p>Current R</p>
+                                     <ReactSpeedometer
+                                      width={200}
+                                      height={200}
+                                            maxValue={3000}
+                                            minValue={500}
+                                            value={parseFloat(getData[item].currentR)}
+                                            segments={5}
+                                                segmentColors={[
+                                                    "#264b96",
+                                                    "#27b376",
+                                                    "#006f3c",
+                                                    "#f9a73e",
+                                                    "#bf212f",
+                                                ]}
+                                            />
+                                            </Container>
+                                            <Container>
+                                    <p>Current S</p>
+                                     <ReactSpeedometer
+                                      width={200}
+                                      height={200}
+                                      maxValue={3000}
+                                      minValue={500}
+                                            value={parseFloat(getData[item].currentS)}
+                                            segments={5}
+                                                segmentColors={[
+                                                    "#264b96",
+                                                    "#27b376",
+                                                    "#006f3c",
+                                                    "#f9a73e",
+                                                    "#bf212f",
+                                                ]}
+                                            />
+                                            </Container>
+                                            <Container>
+                                    <p>Current S</p>
+                                     <ReactSpeedometer
+                                      width={200}
+                                      height={200}
+                                      maxValue={3000}
+                                      minValue={500}
+                                            value={parseFloat(getData[item].currentT)}
+                                            segments={5}
+                                                segmentColors={[
+                                                    "#264b96",
+                                                    "#27b376",
+                                                    "#006f3c",
+                                                    "#f9a73e",
+                                                    "#bf212f",
+                                                ]}
+                                            />
+                                            </Container>
+                                            <Container>
+                                    <p>Volt R</p>
+                                     <ReactSpeedometer
+                                      width={200}
+                                      height={200}
+                                            maxValue={300}
+                                            minValue={100}
+                                            value={parseFloat(getData[item].voltR)}
+                                            segments={5}
+                                                segmentColors={[
+                                                    "#264b96",
+                                                    "#27b376",
+                                                    "#006f3c",
+                                                    "#f9a73e",
+                                                    "#bf212f",
+                                                ]}
+                                            />
+                                            </Container>
+                                            <Container>
+                                    <p>Volt S</p>
+                                     <ReactSpeedometer
+                                      width={200}
+                                      height={200}
+                                            maxValue={300}
+                                            minValue={100}
+                                            value={parseFloat(getData[item].voltS)}
+                                            segments={5}
+                                                segmentColors={[
+                                                    "#264b96",
+                                                    "#27b376",
+                                                    "#006f3c",
+                                                    "#f9a73e",
+                                                    "#bf212f",
+                                                ]}
+                                            />
+                                            </Container>
+                                            <Container>
+                                    <p>Volt T</p>
+                                     <ReactSpeedometer
+                                      width={200}
+                                      height={200}
+                                            maxValue={300}
+                                            minValue={100}
+                                            value={parseFloat(getData[item].voltT)}
+                                            segments={5}
+                                                segmentColors={[
+                                                    "#264b96",
+                                                    "#27b376",
+                                                    "#006f3c",
+                                                    "#f9a73e",
+                                                    "#bf212f",
+                                                ]}
+                                            />
+                                            </Container>
                                      </Container>
 
 
@@ -254,7 +390,7 @@ const Riwayat = () => {
                 ? 
                   <>
                   <Container>
-                  <Table striped bordered hover>
+                  <Table responsive striped bordered hover>
                     <thead>
                         <tr>
                         <th>Current</th>
@@ -273,42 +409,43 @@ const Riwayat = () => {
                     </tbody>
                     </Table>
                     </Container>
-                <Container>
-                <Chart              width={200}
-                                    height={200}
-                                    chartType="Gauge"
-                                    data={[
-                                    ['Label', 'Value'],
-                                    ['pressure Bar', parseFloat(getData[item].pressureBar)],
-                                    ]}
-                                    options={{
-                                        max: 10.0,
-                                        redFrom: 9.0,
-                                        redTo: 10.0,
-                                        yellowFrom: 8.0,
-                                        yellowTo: 9.0,
-                                        minorTicks: 0.0,
-                                        min: 0.0,
-                                    }}
-                                    />
-                                    <Chart 
-                                    width={200}
-                                    height={200}
-                                    chartType="Gauge"
-                                    data={[
-                                    ['Label', 'Value'],
-                                    ['pressure Psi', parseFloat(getData[item].pressurePsi)],
-                                    ]}
-                                    options={{
-                                        max: 200,
-                                        redFrom: 175,
-                                        redTo: 200,
-                                        yellowFrom: 150,
-                                        yellowTo: 175,
-                                        minorTicks: 0,
-                                        min: 0.0,
-                                    }}
-                                    />
+                        <Container fluid>
+                                    <Container>
+                                    <p>Pressure Bar</p>
+                                     <ReactSpeedometer
+                                      width={200}
+                                      height={200}
+                                            maxValue={10}
+                                            minValue={0}
+                                            value={parseFloat(getData[item].pressureBar)}
+                                            segments={5}
+                                                segmentColors={[
+                                                    "#264b96",
+                                                    "#27b376",
+                                                    "#006f3c",
+                                                    "#f9a73e",
+                                                    "#bf212f",
+                                                ]}
+                                            />
+                                            </Container>
+                                    <Container>
+                                    <p>Pressure Psi</p>
+                                     <ReactSpeedometer
+                                      width={200}
+                                      height={200}
+                                            maxValue={200}
+                                            minValue={0}
+                                            value={parseFloat(getData[item].pressurePsi)}
+                                            segments={5}
+                                                segmentColors={[
+                                                    "#264b96",
+                                                    "#27b376",
+                                                    "#006f3c",
+                                                    "#f9a73e",
+                                                    "#bf212f",
+                                                ]}
+                                            />
+                                            </Container>
                                     </Container>
                 </>
                 : null}         
