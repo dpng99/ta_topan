@@ -43,6 +43,10 @@ const AddData = () => {
         <>
         <Navbarx/>
         <Container>
+        <Card fluid className="p-4 shadow" style={{ marginTop: '20px' , background: 'white'}}>
+       <Card.Header>
+        <h1 className="fs-3 text">ADD Data Location EWS</h1> 
+     </Card.Header>
             <Container className="align-items-center justify-content-center d-flex">
                 <Button  style={{ margin: '10px 10px 10px 10px' }} onClick={() => setGetAlat('flow-meter')}>Flow meter</Button>
                 <Button style={{ margin: '10px 10px 10px 10px' }}  onClick={() => setGetAlat('panel-pompa')}>Panel Pompa</Button>
@@ -97,6 +101,7 @@ const AddData = () => {
              </Form>
              </Card>
              </Container>
+             </Card>
         </Container>
         </>
     )

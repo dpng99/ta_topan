@@ -114,10 +114,12 @@ const Monitoring = () => {
                                <Col>
                              <Card fluid key={i} className='shadow rounded-3 border-2 border-primary' style={{ margin: '10px 10px 10px 10px' , width:'20rem' }} >
                              <Card.Body >
-                                 <Card.Title>
-                                 {item.pipa||item.sumur}
-                                 </Card.Title>
+                                 <Card.Header>
+                                 PIPA {item.pipa||item.sumur}
+                                 </Card.Header>
                              
+                                 <Container className='align-items-start justify-form-content-right '>
+                                     
                                  <Card.Text>Tanggal : {item.date}</Card.Text>
                                      <Card.Text>Waktu : {item.time}</Card.Text>
                                      <Card.Text>Temperature = {item.temperature }</Card.Text>
@@ -138,6 +140,7 @@ const Monitoring = () => {
                                     
                                  </>
                                  :''}
+                                  </Container>
                              </Card.Body>
                          </Card>
                          </Col>

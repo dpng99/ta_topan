@@ -40,7 +40,7 @@ const Riwayat = () => {
             {Object.keys(getData) ? Object.keys(getData).map((item,index) => ( 
             
               <Accordion defaultActiveKey={index}>
-                  <Accordion.Item eventKey={index}>
+                  <Accordion.Item eventKey={index}>›
                   <Accordion.Header>{getData[item].nama}</Accordion.Header>
                   <Accordion.Body>
                   

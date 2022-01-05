@@ -87,20 +87,21 @@ const MapContainer = () => {
         >
           {activeMarker === dataSet[data] ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
           ><div style={divStyle}>
-            <p>{dataSet[data].nama}</p>
-            <p>{dataSet[data].alamat}</p>
+            <p>PORTABLE DEBIT</p>
+            <p>Lokasi : {dataSet[data].nama}</p>
+            <p>Alamat : {dataSet[data].alamat}</p>
             {dataSet[data].LastSubmit ?
            <>
         
-            <p>{dataSet[data].LastSubmit.date}</p>
-            <p>{dataSet[data].LastSubmit.flowestimasi}</p>
-            <p>{dataSet[data].LastSubmit.flowRate}</p>
-            <p>{dataSet[data].LastSubmit.fss}</p>
-            <p>{dataSet[data].LastSubmit.pipa}</p>
-            <p>{dataSet[data].LastSubmit.temperature}</p>
-            <p>{dataSet[data].LastSubmit.time}</p>
-            <p>{dataSet[data].LastSubmit.velocity}</p>
-            <p>{dataSet[data].LastSubmit.dynamicpressure}</p>
+            <p>Tanggal : {dataSet[data].LastSubmit.date}</p>
+            <p>Waktu : {dataSet[data].LastSubmit.time}</p>
+            <p>Pipa : {dataSet[data].LastSubmit.pipa}</p>
+            <p>Flowestimasi : {dataSet[data].LastSubmit.flowestimasi}</p>
+            <p>Flowrate : {dataSet[data].LastSubmit.flowrate}</p>
+            <p>FSS : {dataSet[data].LastSubmit.fss}</p>
+            <p>Temperature : {dataSet[data].LastSubmit.temperature}</p>
+            <p>Velocity : {dataSet[data].LastSubmit.velocity}</p>
+            <p>Dynamicpressure : {dataSet[data].LastSubmit.dynamicpressure}</p>
                 </>
            : null }
             </div>
@@ -114,24 +115,25 @@ const MapContainer = () => {
         {Object.keys(dataSet2).map((data, index) =>
           
           <>
-          <Marker icon='img/marker2.png' key={index} position={{lat: parseFloat(dataSet2[data].latitude), lng: parseFloat(dataSet2[data].longitude)}}
+          <Marker icon='img/marker.png' key={index} position={{lat: parseFloat(dataSet2[data].latitude), lng: parseFloat(dataSet2[data].longitude)}}
           onClick={() => handleActiveMarker(dataSet2[data])}
           >
             {activeMarker === dataSet2[data] ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
             ><div style={divStyle}>
-              <p>{dataSet2[data].nama}</p>
-              <p>{dataSet2[data].alamat}</p>
+              <p>PORTABLE QUALITY</p>
+              <p>Lokasi : {dataSet2[data].nama}</p>
+              <p>Alamat : {dataSet2[data].alamat}</p>
               {dataSet2[data].LastSubmit ?
            <>
         
-            <p>Tanggal  :{dataSet2[data].LastSubmit.date}</p>
-            <p>Klorin   :{dataSet2[data].LastSubmit.klorin}</p>
-            <p>ORP      :{dataSet2[data].LastSubmit.orp}</p>
-            <p>Sumur    :{dataSet2[data].LastSubmit.sumur}</p>
-            <p>TDS      :{dataSet2[data].LastSubmit.tds}</p>
-            <p>temperature:{dataSet2[data].LastSubmit.temperature}</p>
-            <p>Waktu    :{dataSet2[data].LastSubmit.time}</p>
-            <p>Turbidity:{dataSet2[data].LastSubmit.turbidity}</p>
+            <p>Tanggal  : {dataSet2[data].LastSubmit.date}</p>
+            <p>Sumur    : {dataSet2[data].LastSubmit.sumur}</p>
+            <p>Klorin   : {dataSet2[data].LastSubmit.klorin}</p>
+            <p>ORP      : {dataSet2[data].LastSubmit.orp}</p>
+            <p>TDS      : {dataSet2[data].LastSubmit.tds}</p>
+            <p>temperature: {dataSet2[data].LastSubmit.temperature}</p>
+            <p>Waktu    : {dataSet2[data].LastSubmit.time}</p>
+            <p>Turbidity: {dataSet2[data].LastSubmit.turbidity}</p>
                 </>
            : null }
           </div>
@@ -145,7 +147,7 @@ const MapContainer = () => {
           {Object.keys(ews).map((data, index) =>
           
           <>
-          <Marker key={index} position={{lat: parseFloat(ews[data].latitude), lng: parseFloat(ews[data].longitude)}}
+          <Marker  key={index} position={{lat: parseFloat(ews[data].latitude), lng: parseFloat(ews[data].longitude)}}
           onClick={() => handleActiveMarker(ews[data])}
           >
             {activeMarker === ews[data] ? (<InfoWindow onCloseClick={() => setActiveMarker(null)}
