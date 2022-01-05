@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import { Button, Card, Container, Accordion, Table } from 'react-bootstrap'
+import { Button, Card, Container, Accordion, Table, Row, Col } from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -80,9 +80,11 @@ const Riwayat = () => {
                     </tbody>
                     </Table>
                 </Container>
-                <Container>
-                            <Container>
-                                    <p>Energy Flow</p>
+                <Container fluid>
+                    <Row xs={'auto'} md={'auto'} lg={'auto'}>
+                                    <Col>
+                                    
+                                    <p className='text-center'>Energy Flow</p>
                                      <ReactSpeedometer
                                       width={200}
                                       height={200}
@@ -98,9 +100,9 @@ const Riwayat = () => {
                                                     "#bf212f",
                                                 ]}
                                             />
-                                            </Container>
-                                            <Container>
-                                    <p>Fluid Sound Speed</p>
+                                               </Col>
+                                           <Col>
+                                    <p className='text-center'>Fluid Sound Speed</p>
                                      <ReactSpeedometer
                                       width={200}
                                       height={200}
@@ -116,9 +118,9 @@ const Riwayat = () => {
                                                     "#bf212f",
                                                 ]}
                                             />
-                                            </Container>
-                                            <Container>
-                                    <p>Flowrate</p>
+                                            </Col>
+                                            <Col>
+                                    <p className='text-center'>Flowrate</p>
                                      <ReactSpeedometer
                                       width={200}
                                       height={200}
@@ -134,9 +136,9 @@ const Riwayat = () => {
                                                     "#bf212f",
                                                 ]}
                                             />
-                                            </Container>
-                                            <Container>
-                                    <p>Velocity</p>
+                                            </Col>
+                                            <Col>
+                                    <p className='text-center'>Velocity</p>
                                      <ReactSpeedometer
                                       width={200}
                                       height={200}
@@ -152,9 +154,9 @@ const Riwayat = () => {
                                                     "#bf212f",
                                                 ]}
                                             />
-                                            </Container>
-                                            <Container>
-                                    <p>Temp Inlet</p>
+                                            </Col>
+                                            <Col>
+                                    <p className='text-center'>Temp Inlet</p>
                                      <ReactSpeedometer
                                       width={200}
                                       height={200}
@@ -170,9 +172,9 @@ const Riwayat = () => {
                                                     "#bf212f",
                                                 ]}
                                             />
-                                            </Container>
-                                            <Container>
-                                    <p>Temp Outlet</p>
+                                            </Col>
+                                            <Col>
+                                    <p className='text-center'>Temp Outlet</p>
                                      <ReactSpeedometer
                                       width={200}
                                       height={200}
@@ -188,7 +190,9 @@ const Riwayat = () => {
                                                     "#bf212f",
                                                 ]}
                                             />
-                                            </Container>
+                                            </Col>
+                                         
+                                            </Row>
                                     
                 </Container>
                
@@ -272,8 +276,9 @@ const Riwayat = () => {
                     </Table>  
         </> : null}
             <Container>
-                                    <Container>
-                                    <p>Current R</p>
+            <Row xs={'auto'} md={'auto'} lg={'auto'}>
+                                    <Col>
+                                    <p className='text-center'>Current R</p>
                                      <ReactSpeedometer
                                       width={200}
                                       height={200}
@@ -289,9 +294,9 @@ const Riwayat = () => {
                                                     "#bf212f",
                                                 ]}
                                             />
-                                            </Container>
-                                            <Container>
-                                    <p>Current S</p>
+                                            </Col>
+                                            <Col>
+                                    <p className='text-center'>Current S</p>
                                      <ReactSpeedometer
                                       width={200}
                                       height={200}
@@ -307,9 +312,9 @@ const Riwayat = () => {
                                                     "#bf212f",
                                                 ]}
                                             />
-                                            </Container>
-                                            <Container>
-                                    <p>Current S</p>
+                                            </Col>
+                                            <Col>
+                                    <p className='text-center'>Current S</p>
                                      <ReactSpeedometer
                                       width={200}
                                       height={200}
@@ -325,9 +330,9 @@ const Riwayat = () => {
                                                     "#bf212f",
                                                 ]}
                                             />
-                                            </Container>
-                                            <Container>
-                                    <p>Volt R</p>
+                                            </Col>
+                                            <Col>
+                                    <p className='text-center'>Volt R</p>
                                      <ReactSpeedometer
                                       width={200}
                                       height={200}
@@ -343,9 +348,9 @@ const Riwayat = () => {
                                                     "#bf212f",
                                                 ]}
                                             />
-                                            </Container>
-                                            <Container>
-                                    <p>Volt S</p>
+                                            </Col>
+                                            <Col>
+                                    <p className='text-center'>Volt S</p>
                                      <ReactSpeedometer
                                       width={200}
                                       height={200}
@@ -361,9 +366,9 @@ const Riwayat = () => {
                                                     "#bf212f",
                                                 ]}
                                             />
-                                            </Container>
-                                            <Container>
-                                    <p>Volt T</p>
+                                            </Col>
+                                            <Col>
+                                    <p className='text-center'>Volt T</p>
                                      <ReactSpeedometer
                                       width={200}
                                       height={200}
@@ -379,7 +384,8 @@ const Riwayat = () => {
                                                     "#bf212f",
                                                 ]}
                                             />
-                                            </Container>
+                                            </Col>
+                                            </Row>
                                      </Container>
 
 
@@ -409,9 +415,10 @@ const Riwayat = () => {
                     </tbody>
                     </Table>
                     </Container>
-                        <Container fluid>
-                                    <Container>
-                                    <p>Pressure Bar</p>
+                        <Container fluid className="d-flex justify-content-center align-items-center">
+                            <Row xs={'auto'} md={'auto'} lg={'auto'}>
+                                    <Col>
+                                    <p className='text-center'>Pressure Bar</p>
                                      <ReactSpeedometer
                                       width={200}
                                       height={200}
@@ -427,9 +434,9 @@ const Riwayat = () => {
                                                     "#bf212f",
                                                 ]}
                                             />
-                                            </Container>
-                                    <Container>
-                                    <p>Pressure Psi</p>
+                                            </Col>
+                                    <Col>
+                                    <p className='text-center'>Pressure Psi</p>
                                      <ReactSpeedometer
                                       width={200}
                                       height={200}
@@ -445,7 +452,8 @@ const Riwayat = () => {
                                                     "#bf212f",
                                                 ]}
                                             />
-                                            </Container>
+                                            </Col>
+                                            </Row>
                                     </Container>
                 </>
                 : null}         
