@@ -54,9 +54,9 @@ const Edit = () => {
                              <Card className='border-2 border-primary p-3 shadow rounded-3 ' style={{ margin: '10px 10px 10px 10px' , width:'20rem' }} fluid key={i}>
                                
                              <Card.Body>
-                                 <Card.Title>
+                                 <Card.Header >
                                      {item.nama}
-                                 </Card.Title>
+                                 </Card.Header>
                                  <Card.Text>Latitude = {item.latitude}</Card.Text>
                                  <Card.Text>Longitude = {item.longitude}</Card.Text>
                              </Card.Body>

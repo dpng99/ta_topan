@@ -34,6 +34,7 @@ function Navbarx() {
                 width="30"
                 height="30"
                 className="d-inline-block align-top"
+               
               />{' '}
             DASHBOARD PDAM KABUPATEN MADIUN
             </Navbar.Brand>
