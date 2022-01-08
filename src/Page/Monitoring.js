@@ -8,6 +8,7 @@ const Monitoring = () => {
     const [DataSet, setDataSet] = useState('')
     const [ DataKey, setDataKey] = useState('')
     const [currentIndex, setCurrentIndex] = useState('')
+    const [currentIndex2, setCurrentIndex2] = useState('')
 
     const settDataEdit = (index) => {
         
@@ -30,11 +31,11 @@ const Monitoring = () => {
         const dataBind = CRUDHandler.getMonitor()
         dataBind.on('value', (snapshot) => {
             const DataBinning = snapshot.child('LokasiQuality').child(index).child('Submitted').val()
-           const currentIndex = []
+           const currentIndex2 = []
             for(let id in DataBinning) {
-                    currentIndex.push(DataBinning[id])      
+                    currentIndex2.push(DataBinning[id])      
             }
-            setCurrentIndex(currentIndex)
+            setCurrentIndex2(currentIndex2)
             
         })
         
@@ -77,8 +78,8 @@ const Monitoring = () => {
         <Container >
     <Card className="p-4 shadow" style={{ marginTop: '20px' , background: 'white'}}>
         <Container className="d-flex align-content-start justify-content-start position-relative ">
-   <h1 className="fs-3 text">Portable Monitoring</h1> 
-   </Container>
+        <h1 className="fs-3 text">Portable Monitoring</h1> 
+        </Container>
    <Container fluid className="d-flex align-content-end justify-content-end">
             <Dropdown fluid >
             <Dropdown.Toggle  variant="primary" id="dropdown-basic" className="m-1">
@@ -86,7 +87,7 @@ const Monitoring = () => {
              </Dropdown.Toggle>
 
          <Dropdown.Menu >
-             {Object.keys(DataSet).map((item, index) => (
+             {Object.keys(DataSet).map((item) => (
              <Dropdown.Item key={item} onClick={() => settDataEdit(DataSet[item].nama)
             }>
                 {DataSet[item].nama}
@@ -94,31 +95,11 @@ const Monitoring = () => {
          ))}
         </Dropdown.Menu>
         </Dropdown>
-        <Dropdown fluid  >
-            <Dropdown.Toggle variant="primary" id="dropdown-basic" className="m-1" >
-             Lokasi Quality
-             </Dropdown.Toggle>
-
-         <Dropdown.Menu>
-             {Object.keys(DataKey).map((item, index) => (
-                <Dropdown.Item key={index} onClick={() => settingDataEdit(DataKey[item].nama)
-                } >{DataKey[item].nama}</Dropdown.Item>
-             ))}
         
-        </Dropdown.Menu>
-        </Dropdown>
        
         </Container>
-
-        <Table>
-       
-                {Object.keys(currentIndex) ? Object.keys(currentIndex).map((item, index)=>
-                
-                 <>
-                
-                
-                    { currentIndex[item].pipa && currentIndex[item].date && currentIndex[item].time && currentIndex[item].temperature && currentIndex[item].flowrate && currentIndex[item].fss && currentIndex[item].velocity && currentIndex[item].flowestimasi ?
-                    <>
+        <Table responsive striped bordered hover>
+        
                      <thead>
                         <tr>
                       <th>No</th>
@@ -132,6 +113,14 @@ const Monitoring = () => {
                       <th>Flowestimasi</th>
                       </tr>
                   </thead>
+              
+       
+                {Object.keys(currentIndex) ? Object.keys(currentIndex).map((item, index)=>
+                 <>
+                    { currentIndex[item].pipa && currentIndex[item].date && currentIndex[item].time && currentIndex[item].temperature && currentIndex[item].flowrate && currentIndex[item].fss && currentIndex[item].velocity && currentIndex[item].flowestimasi ?
+                    <>
+                  
+                    
                   <tbody>
                     <tr>
                     <td>{index + 1}</td>
@@ -145,13 +134,33 @@ const Monitoring = () => {
                     <td>{currentIndex[item].flowestimasi}</td>
                     </tr>
                   </tbody>
-                 
                   </>
                    : null }
-                    { currentIndex[item].orp && currentIndex[item].ph && currentIndex[item].tds ?
-                      <>
-                      <thead>
-                          <tr>
+                   
+                    
+                        </>
+                )
+               
+
+                : null}
+                     </Table> 
+         <Container fluid className="d-flex align-content-end justify-content-end ">
+            <Dropdown fluid  >
+            <Dropdown.Toggle variant="primary" id="dropdown-basic" className="m-1 align-self-end" >
+             Lokasi Quality
+             </Dropdown.Toggle>
+                <Dropdown.Menu>
+                    {Object.keys(DataKey).map((item) => (
+                        <Dropdown.Item key={item} onClick={() => settingDataEdit(DataKey[item].nama)
+                        } >{DataKey[item].nama}</Dropdown.Item>
+                    ))}
+                
+                </Dropdown.Menu>
+                </Dropdown>
+                </Container>
+                     <Table responsive striped bordered hover>
+                     <thead>
+                        <tr>
                       <th>No</th>
                        <th>Sumur</th>
                        <th>Tanggal</th>
@@ -162,28 +171,30 @@ const Monitoring = () => {
                        <th>TDS</th>
                        </tr>
                        </thead>
-                       <tbody>
+                {Object.keys(currentIndex2) ? Object.keys(currentIndex2).map((item, index)=>
+                <>
+              
+                     
+                      
+                       <tbody key={currentIndex2[item]}>
                         <tr>
                         <td>{index + 1}</td>
-                        <td>{currentIndex[item].sumur}</td>
-                        <td>{currentIndex[item].date}</td>
-                        <td>{currentIndex[item].time}</td>
-                        <td>{currentIndex[item].temperature}</td>
-                        <td>{currentIndex[item].orp}</td>
-                        <td>{currentIndex[item].ph}</td>
-                        <td>{currentIndex[item].tds}</td>
+                        <td>{currentIndex2[item].sumur}</td>
+                        <td>{currentIndex2[item].date}</td>
+                        <td>{currentIndex2[item].time}</td>
+                        <td>{currentIndex2[item].temperature}</td>
+                        <td>{currentIndex2[item].orp}</td>
+                        <td>{currentIndex2[item].ph}</td>
+                        <td>{currentIndex2[item].tds}</td>
                         </tr>
                       </tbody>
-                      </>
-                  : null  }
                     
-                        </>
-                )
-               
+                      </>
 
-                : null}
-               </Table> 
 
+                  ): null}
+                  </Table>
+      
         </Card>
         </Container>
         </>
