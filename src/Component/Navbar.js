@@ -8,6 +8,7 @@ import { RiMapPinAddLine } from "react-icons/ri";
 import { BsFiles } from "react-icons/bs";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
+import { BiHome} from "react-icons/bi";
 function Navbarx() {
     const[error, setError]= useState();
     const{currentUser, logout} = useAuth();
@@ -33,7 +34,8 @@ function Navbarx() {
                 src="img/pdam4.png"
                 width="30"
                 height="30"
-                className="d-inline-block align-top"
+                className="d-inline-block align-top border-2"
+                
                
               />{' '}
             DASHBOARD PDAM KABUPATEN MADIUN
@@ -44,11 +46,12 @@ function Navbarx() {
       aria-labelledby="offcanvasNavbarLabel"
       placement="start"
     >
-      <Offcanvas.Header className='p-0'>
+      <Offcanvas.Header className='p-0' >
       <Image fluid src='/img/BG.png'/>
       </Offcanvas.Header>
-      <Offcanvas.Body>
+      <Offcanvas.Body className='we'>
         <Nav className="justify-content-end flex-grow-1 pe-3">
+          <Nav.Link  className='text-black' href="/"><BiHome className='m-1'/> Home</Nav.Link>
           <Nav.Link  className='text-black' href="/edit"><BsFiles className='m-1'/> Portable APP</Nav.Link>
           <Nav.Link className='text-black'  href="/adddata"><RiMapPinAddLine className='m-1' /> Add New Data</Nav.Link>
           <Nav.Link className='text-black'  href="/history"><IoPhonePortraitOutline className='m-1'/> EWS APP</Nav.Link>
