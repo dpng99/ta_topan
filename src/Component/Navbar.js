@@ -29,22 +29,19 @@ function Navbarx() {
 
     return (
         <>
-  <Navbar style={{ backgroundImage: 'url(/img/bgbaru.png)' }} expand={false}>
-  <Container fluid className='d-flex'>
-  <Navbar.Brand href="/" className='text-white'>
+  <Navbar style={{ backgroundImage: 'url(/img/bgbaru.png)' }} expand={false} className='d-flex justify-content-start'>
+  <Navbar.Toggle aria-controls="offcanvasNavbar" className='bg-white m-2'/>
+  <Navbar.Brand href="/" className='text-white align-self-start flex-grow-1 m-2'>
               <img
                 alt=""
                 src="img/pdam4.png"
                 width="30"
                 height="30"
-                className="d-inline-block align-top border-2"
-                
-               
+                className="d-inline align-top"            
               />{' '}
             DASHBOARD PDAM KABUPATEN MADIUN
-            </Navbar.Brand>
-            <Button className='align-self-end h-25 w-25'><FaUser/>{currentUser.email}</Button>
-    <Navbar.Toggle aria-controls="offcanvasNavbar" className='bg-white' />
+    </Navbar.Brand>
+  
     <Navbar.Offcanvas
       id="offcanvasNavbar"
       aria-labelledby="offcanvasNavbarLabel"
@@ -65,8 +62,9 @@ function Navbarx() {
           <Nav.Link className='text-black'  onClick={handleLogout} ><MdLogout className='m-1'/>Logout</Nav.Link>
         </Nav>
       </Offcanvas.Body>
-    </Navbar.Offcanvas>  
-  </Container>
+    </Navbar.Offcanvas>
+    <Button className='align-self-end h-25 w-25 m-2'><FaUser/>{currentUser.email}</Button>  
+
 </Navbar>
       </>
     );
