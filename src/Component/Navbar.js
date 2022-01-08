@@ -28,24 +28,13 @@ function Navbarx() {
         <>
   <Navbar style={{ backgroundImage: 'url(/img/bgbaru.png)' }} expand={false}>
   <Container fluid>
-  <Navbar.Brand href="/" className='text-white'>
-              <img
-                alt=""
-                src="img/pdam4.png"
-                width="30"
-                height="30"
-                className="d-inline-block align-top border-2"
-                
-               
-              />{' '}
-            DASHBOARD PDAM KABUPATEN MADIUN
-            </Navbar.Brand>
-    <Navbar.Toggle aria-controls="offcanvasNavbar" className='bg-white' />
+  <Navbar.Toggle aria-controls="offcanvasNavbar"  className='bg-white ' />
+  
     <Navbar.Offcanvas
       id="offcanvasNavbar"
       aria-labelledby="offcanvasNavbarLabel"
       placement="start"
-      style={{ maxWidth: 250 }}
+      style={{ maxWidth: 300 }}
     >
       <Offcanvas.Header className='p-0' >
       <Image fluid src='/img/BG.png'/>
@@ -61,7 +50,24 @@ function Navbarx() {
           <Nav.Link className='text-black'  onClick={handleLogout} ><MdLogout className='m-1'/>Logout</Nav.Link>
         </Nav>
       </Offcanvas.Body>
+
+      
     </Navbar.Offcanvas>
+
+  <Navbar.Brand href="/" className='text-white'>
+              <img
+                alt=""
+                src="img/pdam4.png"
+                width="30"
+                height="30"
+                className="d-inline-block align-top border-2"
+                
+               
+              />{' '}
+            DASHBOARD PDAM KABUPATEN MADIUN
+            </Navbar.Brand>
+       
+   
   </Container>
 </Navbar>
       </>
