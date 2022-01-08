@@ -111,7 +111,7 @@ const Monitoring = () => {
        
         <Row xs={1} md={2} xl={'auto'} xxl={'auto'} className="p-0" >
                            {currentIndex ? currentIndex.map((item, i) => (
-                               <Col>
+                            <Col>
                              <Card fluid key={i} className='shadow rounded-3 border-2 border-primary m-3'  >
                              <Card.Body >
                                  <Card.Header>
