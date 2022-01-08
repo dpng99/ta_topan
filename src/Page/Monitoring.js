@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-import { Container, Dropdown, Row,Col, Card} from 'react-bootstrap'
+import { Container, Dropdown, Row,Col, Card, Table} from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
 
@@ -69,6 +69,7 @@ const Monitoring = () => {
      
 
     }, [])
+
     
     return (
         <>
@@ -108,47 +109,81 @@ const Monitoring = () => {
         </Dropdown>
        
         </Container>
+
+        <Table>
        
-        <Row xs={1} md={2} xl={'auto'} xxl={'auto'} className="p-0" >
-                           {currentIndex ? currentIndex.map((item, i) => (
-                            <Col>
-                             <Card fluid key={i} className='shadow rounded-3 border-2 border-primary m-3'  >
-                             <Card.Body >
-                                 <Card.Header>
-                                 PIPA {item.pipa||item.sumur}
-                                 </Card.Header>
-                             
-                                 <Container className='align-items-start justify-form-content-right '>
-                                     
-                                 <Card.Text>Tanggal : {item.date}</Card.Text>
-                                     <Card.Text>Waktu : {item.time}</Card.Text>
-                                     <Card.Text>Temperature = {item.temperature }</Card.Text>
-                                     { item.flowrate && item.fss && item.velocity && item.flowestimasi ?
-                                     <>
-                                     <Card.Text>Flowrate = {item.flowrate}</Card.Text>
-                                     <Card.Text>FFS = {item.fss }</Card.Text>
-                                    <Card.Text>Velocity = {item.velocity}</Card.Text>
-                                    <Card.Text>Flowestimasi = {item.flowestimasi}</Card.Text>
-                                    </>
-                                : null}
-                                 {  item.orp && item.ph && item.tds ? 
-                                 <>
-                                  <Card.Text>PH = { item.ph}</Card.Text>
-                                  <Card.Text> TDS = { item.tds}</Card.Text>
-                                  <Card.Text>ORP = { item.orp}</Card.Text>
-                                  <Card.Text>Turbidity = { item.turbidity}</Card.Text>
-                                    
-                                 </>
-                                 :''}
-                                  </Container>
-                             </Card.Body>
-                         </Card>
-                         </Col>
-                           )): ''}
-                           </Row>
-              
+                {Object.keys(currentIndex) ? Object.keys(currentIndex).map((item, index)=>
                 
-        
+                 <>
+                
+                
+                    { currentIndex[item].pipa && currentIndex[item].date && currentIndex[item].time && currentIndex[item].temperature && currentIndex[item].flowrate && currentIndex[item].fss && currentIndex[item].velocity && currentIndex[item].flowestimasi ?
+                    <>
+                     <thead>
+                        <tr>
+                      <th>No</th>
+                      <th>Pipa</th>
+                      <th>Tanggal</th>
+                      <th>Waktu</th>
+                      <th>Temperature</th>
+                      <th>Flowrate</th>
+                      <th>FSS</th>
+                      <th>Velocity</th>
+                      <th>Flowestimasi</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                    <td>{index + 1}</td>
+                    <td>{currentIndex[item].pipa}</td>
+                    <td>{currentIndex[item].date}</td>
+                    <td>{currentIndex[item].time}</td>
+                    <td>{currentIndex[item].temperature}</td>
+                    <td>{currentIndex[item].flowrate}</td>
+                    <td>{currentIndex[item].fss}</td>
+                    <td>{currentIndex[item].velocity}</td>
+                    <td>{currentIndex[item].flowestimasi}</td>
+                    </tr>
+                  </tbody>
+                 
+                  </>
+                   : null }
+                    { currentIndex[item].orp && currentIndex[item].ph && currentIndex[item].tds ?
+                      <>
+                      <thead>
+                          <tr>
+                      <th>No</th>
+                       <th>Sumur</th>
+                       <th>Tanggal</th>
+                       <th>Waktu</th>
+                       <th>Temperature</th>
+                       <th>orp</th>
+                       <th>PH</th>
+                       <th>TDS</th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                        <tr>
+                        <td>{index + 1}</td>
+                        <td>{currentIndex[item].sumur}</td>
+                        <td>{currentIndex[item].date}</td>
+                        <td>{currentIndex[item].time}</td>
+                        <td>{currentIndex[item].temperature}</td>
+                        <td>{currentIndex[item].orp}</td>
+                        <td>{currentIndex[item].ph}</td>
+                        <td>{currentIndex[item].tds}</td>
+                        </tr>
+                      </tbody>
+                      </>
+                  : null  }
+                    
+                        </>
+                )
+               
+
+                : null}
+               </Table> 
+
         </Card>
         </Container>
         </>
