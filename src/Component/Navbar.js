@@ -30,7 +30,7 @@ function Navbarx() {
     return (
         <>
   <Navbar style={{ backgroundImage: 'url(/img/bgbaru.png)' }} expand={false}>
-  <Container fluid>
+  <Container fluid className='d-flex'>
   <Navbar.Brand href="/" className='text-white'>
               <img
                 alt=""
@@ -49,7 +49,7 @@ function Navbarx() {
       id="offcanvasNavbar"
       aria-labelledby="offcanvasNavbarLabel"
       placement="start"
-      style={{ maxWidth: 250 }}
+      style={{ maxWidth: 300 }}
     >
       <Offcanvas.Header className='p-0' >
       <Image fluid src='/img/BG.png'/>
@@ -65,7 +65,7 @@ function Navbarx() {
           <Nav.Link className='text-black'  onClick={handleLogout} ><MdLogout className='m-1'/>Logout</Nav.Link>
         </Nav>
       </Offcanvas.Body>
-    </Navbar.Offcanvas>
+    </Navbar.Offcanvas>  
   </Container>
 </Navbar>
       </>
