@@ -30,11 +30,11 @@ function Navbarx() {
     return (
         <>
   <Navbar style={{ backgroundImage: 'url(/img/bgbaru.png)' }} expand={false} className='d-flex justify-content-start'>
-  <Navbar.Toggle aria-controls="offcanvasNavbar" className='bg-white m-2'/>
+  <Navbar.Toggle  aria-controls="offcanvasNavbar" className=' m-2'/>
   <Navbar.Brand href="/" className='text-white align-self-start flex-grow-1 m-2'>
               <img
                 alt=""
-                src="img/pdam4.png"
+                src="img/putihpdam.png"
                 width="30"
                 height="30"
                 className="d-inline align-top"            
@@ -63,7 +63,7 @@ function Navbarx() {
         </Nav>
       </Offcanvas.Body>
     </Navbar.Offcanvas>
-    <Button className='align-self-end h-25 w-25 m-2'><FaUser/>{currentUser.email}</Button>  
+    <Button className='align-self-end h-25 w-20 m-2'><FaUser/>{currentUser.email}</Button>  
 
 </Navbar>
       </>
