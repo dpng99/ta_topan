@@ -45,6 +45,7 @@ function Navbarx() {
       id="offcanvasNavbar"
       aria-labelledby="offcanvasNavbarLabel"
       placement="start"
+      style={{ maxWidth: 250 }}
     >
       <Offcanvas.Header className='p-0' >
       <Image fluid src='/img/BG.png'/>
