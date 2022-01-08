@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { Navbar, Container, Nav, Offcanvas, Image, NavDropdown} from 'react-bootstrap'
+import { Navbar, Container, Nav, Offcanvas, Image, NavDropdown, Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from '../Handler/AuthContext';
 import { useHistory } from 'react-router';
@@ -9,6 +9,8 @@ import { BsFiles } from "react-icons/bs";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
 import { BiHome} from "react-icons/bi";
+import { FaUser} from "react-icons/fa";
+
 function Navbarx() {
     const[error, setError]= useState();
     const{currentUser, logout} = useAuth();
@@ -23,6 +25,7 @@ function Navbarx() {
             setError('logout failed');
         }
     }
+
 
     return (
         <>
@@ -40,6 +43,7 @@ function Navbarx() {
               />{' '}
             DASHBOARD PDAM KABUPATEN MADIUN
             </Navbar.Brand>
+            <Button className='align-self-end h-25 w-25'><FaUser/>{currentUser.email}</Button>
     <Navbar.Toggle aria-controls="offcanvasNavbar" className='bg-white' />
     <Navbar.Offcanvas
       id="offcanvasNavbar"
