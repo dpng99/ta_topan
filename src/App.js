@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import FormSignup from './FormSignup';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import FormLogin from './FormLogin';
 import Dashboard from './Page/Dashboard';
 import {AuthProvider} from './Handler/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,7 +9,6 @@ import PrivateRouter from './PrivateRouter';
 import Edit from './Page/Edit';
 import AddData from './Page/AddData';
 import Riwayat from './Page/Riwayat';
-import Riwayat2 from './Page/Riwayat2';
 import Monitoring from './Page/Monitoring';
 import FormLogin2 from './FormLogin2';
 

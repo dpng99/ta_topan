@@ -78,9 +78,9 @@ const Monitoring = () => {
         <Container className="d-flex align-content-start justify-content-start position-relative ">
    <h1 className="fs-3 text">Portable Monitoring</h1> 
    </Container>
-   <Container className="d-flex align-content-end justify-content-end">
+   <Container fluid className="d-flex align-content-end justify-content-end">
             <Dropdown fluid >
-            <Dropdown.Toggle  variant="primary" id="dropdown-basic" style={{width: '150px', height: '40px',margin: '5px 10px 10px 10px'}}>
+            <Dropdown.Toggle  variant="primary" id="dropdown-basic" className="m-1">
              Lokasi Debit
              </Dropdown.Toggle>
 
@@ -94,7 +94,7 @@ const Monitoring = () => {
         </Dropdown.Menu>
         </Dropdown>
         <Dropdown fluid  >
-            <Dropdown.Toggle variant="primary" id="dropdown-basic" style={{width: '150px', height: '40px', margin: '5px 10px 10px 10px'}}>
+            <Dropdown.Toggle variant="primary" id="dropdown-basic" className="m-1" >
              Lokasi Quality
              </Dropdown.Toggle>
 
@@ -109,10 +109,10 @@ const Monitoring = () => {
        
         </Container>
        
-        <Row xs={1} md={2} xl={'auto'} xxl={'auto'} className="g-4" style={{ marginTop:'10px' }}>
+        <Row xs={1} md={2} xl={'auto'} xxl={'auto'} className="p-0" >
                            {currentIndex ? currentIndex.map((item, i) => (
                                <Col>
-                             <Card fluid key={i} className='shadow rounded-3 border-2 border-primary' style={{ margin: '10px 10px 10px 10px' , width:'20rem' }} >
+                             <Card fluid key={i} className='shadow rounded-3 border-2 border-primary m-3'  >
                              <Card.Body >
                                  <Card.Header>
                                  PIPA {item.pipa||item.sumur}

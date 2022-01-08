@@ -32,8 +32,8 @@ const FormSignup = () => {
   return (
     <>
     <>
-        <Container fluid className='p-5 m-auto shadow-lg'>
-            <Container className='position-relative rounded-3 p-5 shadow-lg align-align-items-center justify-content-center' style={{ background: 'linear-gradient(90deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%)'}} >
+        <Container fluid className='p-5 m-auto shadow-lg' style={{ backgroundImage: 'url(/img/bgbaru.png)' }}>
+            <Container className='position-relative rounded-3 p-5 shadow-lg align-items-center justify-content-center' style={{ background: 'linear-gradient(90deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%)'}} >
             <Container className='align-items-center justify-content-center d-flex'>
             <Image className='img-fluid w-25' src='img/pdam4.png' alt='image/png'/>
             </Container>
@@ -41,6 +41,7 @@ const FormSignup = () => {
                 {error && <Alert variant="danger">{error}</Alert>}
                     <h1 className='text-white text-center m-3'> Selamat Datang!</h1>
                     <h1 className='text-white text-center'>Dashboard Website PDAM Madiun</h1>
+                    <Form.Group className='d-grid justify-content-center align-items-center'>
                     <Form.Group className='m-3'>
                         <Form.Label>Email</Form.Label>
                         <Form.Control type='email' placeholder='Masukan Email' ref={emailRef}/>
@@ -56,9 +57,10 @@ const FormSignup = () => {
                     <Form.Group className='m-3'>
                     <Button type='submit' className='m-auto h-100 w-100' style={{ background: 'linear-gradient(90deg,rgb(39, 176, 255) 0%,rgb(0, 232, 236) 100%)' }}>SignUp</Button>
                     </Form.Group>
+                    </Form.Group>
                 </Form>
                 <span className=' text-white justify-content-center align-items-center d-flex fs-5'>
-                        Belum punya akun? Login<a href='/login'> disini</a>
+                         Sudah punya akun? Login <a href='/login'> disini</a>
                          </span>
             </Container>    
         </Container>

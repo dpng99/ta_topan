@@ -26,7 +26,7 @@ const FormLogin2 = () => {
     return (
         <>
         <Container fluid className='p-5 m-auto' style={{ backgroundImage: 'url(/img/bgbaru.png)' }}> 
-            <Container className='rounded-3 p-3 shadow-lg align-items-center justify-content-center' style={{ background: 'linear-gradient(90deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%)'}} >
+            <Container className='position-relative rounded-3 p-5 shadow-lg align-items-center justify-content-center' style={{ background: 'linear-gradient(90deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%)'}} >
             <Container className='align-items-center justify-content-center d-flex'>
             <Image className='img-fluid w-25' src='img/pdam4.png' alt='image/png'/>
             </Container>
@@ -49,7 +49,7 @@ const FormLogin2 = () => {
                     </Form.Group>
                 </Form>
                 <span className=' text-white justify-content-center align-items-center d-flex fs-5'>
-                        Belum punya akun?SignUp<a href='/signup'>disini</a>
+                        Belum punya akun? SignUp <a href='/signup' > disini</a>
                          </span>
             </Container>
         </Container>
