@@ -110,7 +110,7 @@ const Monitoring = () => {
        
         </Container>
 
-        <Table>
+        <Table responsive striped bordered hover >
        
                 {Object.keys(currentIndex) ? Object.keys(currentIndex).map((item, index)=>
                 
@@ -118,6 +118,7 @@ const Monitoring = () => {
                 
                 
                     { currentIndex[item].pipa && currentIndex[item].date && currentIndex[item].time && currentIndex[item].temperature && currentIndex[item].flowrate && currentIndex[item].fss && currentIndex[item].velocity && currentIndex[item].flowestimasi ?
+                    
                     <>
                      <thead>
                         <tr>
