@@ -140,10 +140,13 @@ const Monitoring = () => {
       order: 'asc'
   }]
   const columns2 = [{
-      dataField: 'id',
-      text: 'no',
-      sort: true
-    }, {
+    dataField: 'id.no' ,
+    text: 'Nomor', 
+    formatter: (cell, row, rowIndex, formatExtraData) => {
+      return rowIndex + 1;
+    },
+    sort: true
+  }, {
       dataField: 'pipa',
       text: 'Pipa',
       sort: true
@@ -230,7 +233,7 @@ const Monitoring = () => {
         
        
         </Container>
-        <BootstrapTable bootstrap4 keyField='id' data={ currentIndex } columns={ columns2 }  defaultSorted={defaultSort2} pagination={ paginationFactory() } />
+        <BootstrapTable bootstrap4 keyField='id.no' data={ currentIndex } columns={ columns2 }  defaultSorted={defaultSort2} pagination={ paginationFactory() } />
                      
          <Container fluid className="d-flex align-content-end justify-content-end ">
             <Dropdown fluid  >
