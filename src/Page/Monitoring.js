@@ -10,127 +10,9 @@ const Monitoring = () => {
     const [ DataKey, setDataKey] = useState('')
     const [currentIndex, setCurrentIndex] = useState('')
     const [currentIndex2, setCurrentIndex2] = useState('')
+    const [nomor, setNomor] = useState('')
 
-    const columns = [{
-        dataField: 'id' ,
-        text: 'Nomor',
-        sort: true
-      }, {
-        dataField: 'sumur',
-        text: 'Sumur',
-        sort: true
-      }, {
-        dataField: 'date',
-        text: 'Tanggal',
-        sort: true
-      }, {
-        dataField: 'time',
-        text: 'Waktu',
-        sort: true
-      }, {
-        dataField: 'temperature',
-        text: 'Suhu',
-        sort: true
-      }, {
-        dataField: 'ph',
-        text: 'PH',
-        sort: true
-      }, {
-        dataField: 'tds',
-        text: 'TDS',
-        sort: true
-      }, {
-        dataField: 'orp',
-        text: 'ORP',
-        sort: true
-      }
-    ];
-    const defaultSort = [{
-        dataField: 'date',
-        order: 'asc'
-    },{
-        dataField: 'sumur',
-        order: 'asc'
-    },{
-        dataField: 'time',
-        order: 'asc'
-    },{
-        dataField: 'temperature',
-        order: 'asc'
-    },{
-        dataField: 'ph',
-        order: 'asc'
-    },{
-        dataField: 'tds',
-        order: 'asc'
-    },{
-        dataField: 'orp',
-        order: 'asc'
-    }]
-    const columns2 = [{
-        dataField: 'index',
-        text: 'no',
-        sort: true
-      }, {
-        dataField: 'pipa',
-        text: 'Pipa',
-        sort: true
-      }, {
-        dataField: 'date',
-        text: 'Tanggal',
-        sort: true
-      }, {
-        dataField: 'time',
-        text: 'Waktu',
-        sort: true
-      }, {
-        dataField: 'temperature',
-        text: 'Suhu',
-        sort: true
-      }, {
-        dataField: 'flowrate',
-        text: 'Flowrate',
-        sort: true
-      }, {
-        dataField: 'fss',
-        text: 'FSS',
-        sort: true
-      }, {
-        dataField: 'velocity',
-        text: 'Velocity',
-        sort: true
-      }
-      , {
-        dataField: 'flowestimasi',
-        text: 'Flowestimasi',
-        sort: true
-      }
-    ];
-    const defaultSort2 = [{
-        dataField: 'date',
-        order: 'asc'
-    },{
-        dataField: 'pipa',
-        order: 'asc'
-    },{
-        dataField: 'time',
-        order: 'asc'
-    },{
-        dataField: 'temperature',
-        order: 'asc'
-    },{
-        dataField: 'flowrate',
-        order: 'asc'
-    },{
-        dataField: 'fss',
-        order: 'asc'
-    },{
-        dataField: 'velocity',
-        order: 'asc'
-    },{
-        dataField: 'flowestimasi',
-        order: 'asc'
-    }]
+  
 
 
     const settDataEdit = (index) => {
@@ -156,12 +38,14 @@ const Monitoring = () => {
         dataBind.on('value', (snapshot) => {
             const DataBinning = snapshot.child('LokasiQuality').child(index).child('Submitted').val()
            const currentIndex2 = []
+ 
             for(let id in DataBinning) {
-                    currentIndex2.push(DataBinning[id])      
+                    currentIndex2.push(DataBinning[id])
+               
             }
             setCurrentIndex2(currentIndex2)
-            console.log(currentIndex2)
-            
+          
+      
         })
         
         
@@ -195,7 +79,130 @@ const Monitoring = () => {
      
 
     }, [])
-
+   
+    const columns = [{
+      dataField: 'id.no' ,
+      text: 'Nomor', 
+      formatter: (cell, row, rowIndex, formatExtraData) => {
+        return rowIndex + 1;
+      },
+      sort: true
+    }, {
+      dataField: 'sumur',
+      text: 'Sumur',
+      sort: true
+    }, {
+      dataField: 'date',
+      text: 'Tanggal',
+      sort: true
+    }, {
+      dataField: 'time',
+      text: 'Waktu',
+      sort: true
+    }, {
+      dataField: 'temperature',
+      text: 'Suhu',
+      sort: true
+    }, {
+      dataField: 'ph',
+      text: 'PH',
+      sort: true
+    }, {
+      dataField: 'tds',
+      text: 'TDS',
+      sort: true
+    }, {
+      dataField: 'orp',
+      text: 'ORP',
+      sort: true
+    }
+  ];
+  const defaultSort = [{
+      dataField: 'id.no',
+      order: 'asc'
+  },{
+      dataField: 'sumur',
+      order: 'asc'
+  },{
+      dataField: 'time',
+      order: 'asc'
+  },{
+      dataField: 'temperature',
+      order: 'asc'
+  },{
+      dataField: 'ph',
+      order: 'asc'
+  },{
+      dataField: 'tds',
+      order: 'asc'
+  },{
+      dataField: 'orp',
+      order: 'asc'
+  }]
+  const columns2 = [{
+      dataField: 'id',
+      text: 'no',
+      sort: true
+    }, {
+      dataField: 'pipa',
+      text: 'Pipa',
+      sort: true
+    }, {
+      dataField: 'date',
+      text: 'Tanggal',
+      sort: true
+    }, {
+      dataField: 'time',
+      text: 'Waktu',
+      sort: true
+    }, {
+      dataField: 'temperature',
+      text: 'Suhu',
+      sort: true
+    }, {
+      dataField: 'flowrate',
+      text: 'Flowrate',
+      sort: true
+    }, {
+      dataField: 'fss',
+      text: 'FSS',
+      sort: true
+    }, {
+      dataField: 'velocity',
+      text: 'Velocity',
+      sort: true
+    }
+    , {
+      dataField: 'flowestimasi',
+      text: 'Flowestimasi',
+      sort: true
+    }
+  ];
+  const defaultSort2 = [{
+      dataField: 'date',
+      order: 'asc'
+  },{
+      dataField: 'pipa',
+      order: 'asc'
+  },{
+      dataField: 'time',
+      order: 'asc'
+  },{
+      dataField: 'temperature',
+      order: 'asc'
+  },{
+      dataField: 'flowrate',
+      order: 'asc'
+  },{
+      dataField: 'fss',
+      order: 'asc'
+  },{
+      dataField: 'velocity',
+      order: 'asc'
+  },{
+      dataField: 'flowestimasi',
+      order: 'asc'
+  }]
     
     return (
         <>
@@ -223,7 +230,7 @@ const Monitoring = () => {
         
        
         </Container>
-        <BootstrapTable bootstrap4 keyField='no' data={ currentIndex } columns={ columns2 }  defaultSorted={defaultSort2} pagination={ paginationFactory() } />
+        <BootstrapTable bootstrap4 keyField='id' data={ currentIndex } columns={ columns2 }  defaultSorted={defaultSort2} pagination={ paginationFactory() } />
                      
          <Container fluid className="d-flex align-content-end justify-content-end ">
             <Dropdown fluid  >
@@ -239,7 +246,7 @@ const Monitoring = () => {
                 </Dropdown.Menu>
                 </Dropdown>
                 </Container>
-                      <BootstrapTable bootstrap4 keyField='id' data={ currentIndex2 } columns={ columns } defaultSorted={defaultSort} pagination={ paginationFactory() } />
+                      <BootstrapTable bootstrap4 keyField='id.no'  data={ currentIndex2 } columns={ columns } defaultSorted={defaultSort} pagination={ paginationFactory() } />
                 </Card>
                 </Container>
                 </>
