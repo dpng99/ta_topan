@@ -6,17 +6,19 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 const Monitoring = () => {
-    const columns = [ {
+    const [DataSet, setDataSet] = useState('')
+    const [ DataKey, setDataKey] = useState('')
+    const [currentIndex, setCurrentIndex] = useState('')
+    const [currentIndex2, setCurrentIndex2] = useState('')
+
+    const columns = [{
+        dataField: 'id' ,
+        text: 'Nomor',
+        sort: true
+      }, {
         dataField: 'sumur',
         text: 'Sumur',
-        sort: true,
-        sortFunc: (a, b, order, dataField, rowA, rowB) => {
-            if (order === 'asc') {
-              return b - a;
-            }
-            return a - b; // desc
-          }
-
+        sort: true
       }, {
         dataField: 'date',
         text: 'Tanggal',
@@ -43,40 +45,93 @@ const Monitoring = () => {
         sort: true
       }
     ];
+    const defaultSort = [{
+        dataField: 'date',
+        order: 'asc'
+    },{
+        dataField: 'sumur',
+        order: 'asc'
+    },{
+        dataField: 'time',
+        order: 'asc'
+    },{
+        dataField: 'temperature',
+        order: 'asc'
+    },{
+        dataField: 'ph',
+        order: 'asc'
+    },{
+        dataField: 'tds',
+        order: 'asc'
+    },{
+        dataField: 'orp',
+        order: 'asc'
+    }]
     const columns2 = [{
         dataField: 'index',
-        text: 'no'
+        text: 'no',
+        sort: true
       }, {
         dataField: 'pipa',
-        text: 'Pipa'
+        text: 'Pipa',
+        sort: true
       }, {
         dataField: 'date',
-        text: 'Tanggal'
+        text: 'Tanggal',
+        sort: true
       }, {
         dataField: 'time',
-        text: 'Waktu'
+        text: 'Waktu',
+        sort: true
       }, {
         dataField: 'temperature',
-        text: 'Suhu'
+        text: 'Suhu',
+        sort: true
       }, {
         dataField: 'flowrate',
-        text: 'Flowrate'
+        text: 'Flowrate',
+        sort: true
       }, {
         dataField: 'fss',
-        text: 'FSS'
+        text: 'FSS',
+        sort: true
       }, {
         dataField: 'velocity',
-        text: 'Velocity'
+        text: 'Velocity',
+        sort: true
       }
       , {
         dataField: 'flowestimasi',
-        text: 'Flowestimasi'
+        text: 'Flowestimasi',
+        sort: true
       }
     ];
-    const [DataSet, setDataSet] = useState('')
-    const [ DataKey, setDataKey] = useState('')
-    const [currentIndex, setCurrentIndex] = useState('')
-    const [currentIndex2, setCurrentIndex2] = useState('')
+    const defaultSort2 = [{
+        dataField: 'date',
+        order: 'asc'
+    },{
+        dataField: 'pipa',
+        order: 'asc'
+    },{
+        dataField: 'time',
+        order: 'asc'
+    },{
+        dataField: 'temperature',
+        order: 'asc'
+    },{
+        dataField: 'flowrate',
+        order: 'asc'
+    },{
+        dataField: 'fss',
+        order: 'asc'
+    },{
+        dataField: 'velocity',
+        order: 'asc'
+    },{
+        dataField: 'flowestimasi',
+        order: 'asc'
+    }]
+
 
     const settDataEdit = (index) => {
         
@@ -89,6 +144,7 @@ const Monitoring = () => {
             }
             setCurrentIndex(currentIndex)
             console.log(currentIndex)
+
         })
         
         
@@ -104,6 +160,7 @@ const Monitoring = () => {
                     currentIndex2.push(DataBinning[id])      
             }
             setCurrentIndex2(currentIndex2)
+            console.log(currentIndex2)
             
         })
         
@@ -166,7 +223,7 @@ const Monitoring = () => {
         
        
         </Container>
-        <BootstrapTable keyField='no' data={ currentIndex } columns={ columns2 } pagination={ paginationFactory() } />
+        <BootstrapTable bootstrap4 keyField='no' data={ currentIndex } columns={ columns2 }  defaultSorted={defaultSort2} pagination={ paginationFactory() } />
                      
          <Container fluid className="d-flex align-content-end justify-content-end ">
             <Dropdown fluid  >
@@ -182,18 +239,10 @@ const Monitoring = () => {
                 </Dropdown.Menu>
                 </Dropdown>
                 </Container>
-                  
-                
-                      <BootstrapTable keyField='sumur' data={ currentIndex2 } columns={ columns } pagination={ paginationFactory() } />
-                     
-
-             
-               
-                  
-
-        </Card>
-        </Container>
-        </>
+                      <BootstrapTable bootstrap4 keyField='id' data={ currentIndex2 } columns={ columns } defaultSorted={defaultSort} pagination={ paginationFactory() } />
+                </Card>
+                </Container>
+                </>
     )
 }
 
