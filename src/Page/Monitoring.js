@@ -2,9 +2,77 @@ import React,{useState, useEffect} from 'react'
 import { Container, Dropdown, Row,Col, Card, Table} from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
-
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
 const Monitoring = () => {
-    
+    const columns = [ {
+        dataField: 'sumur',
+        text: 'Sumur',
+        sort: true,
+        sortFunc: (a, b, order, dataField, rowA, rowB) => {
+            if (order === 'asc') {
+              return b - a;
+            }
+            return a - b; // desc
+          }
+
+      }, {
+        dataField: 'date',
+        text: 'Tanggal',
+        sort: true
+      }, {
+        dataField: 'time',
+        text: 'Waktu',
+        sort: true
+      }, {
+        dataField: 'temperature',
+        text: 'Suhu',
+        sort: true
+      }, {
+        dataField: 'ph',
+        text: 'PH',
+        sort: true
+      }, {
+        dataField: 'tds',
+        text: 'TDS',
+        sort: true
+      }, {
+        dataField: 'orp',
+        text: 'ORP',
+        sort: true
+      }
+    ];
+    const columns2 = [{
+        dataField: 'index',
+        text: 'no'
+      }, {
+        dataField: 'pipa',
+        text: 'Pipa'
+      }, {
+        dataField: 'date',
+        text: 'Tanggal'
+      }, {
+        dataField: 'time',
+        text: 'Waktu'
+      }, {
+        dataField: 'temperature',
+        text: 'Suhu'
+      }, {
+        dataField: 'flowrate',
+        text: 'Flowrate'
+      }, {
+        dataField: 'fss',
+        text: 'FSS'
+      }, {
+        dataField: 'velocity',
+        text: 'Velocity'
+      }
+      , {
+        dataField: 'flowestimasi',
+        text: 'Flowestimasi'
+      }
+    ];
     const [DataSet, setDataSet] = useState('')
     const [ DataKey, setDataKey] = useState('')
     const [currentIndex, setCurrentIndex] = useState('')
@@ -20,7 +88,7 @@ const Monitoring = () => {
                     currentIndex.push(DataBinning[id])      
             }
             setCurrentIndex(currentIndex)
-            
+            console.log(currentIndex)
         })
         
         
@@ -98,52 +166,8 @@ const Monitoring = () => {
         
        
         </Container>
-        <Table responsive striped bordered hover>
-        
-                     <thead>
-                        <tr>
-                      <th>No</th>
-                      <th>Pipa</th>
-                      <th>Tanggal</th>
-                      <th>Waktu</th>
-                      <th>Temperature</th>
-                      <th>Flowrate</th>
-                      <th>FSS</th>
-                      <th>Velocity</th>
-                      <th>Flowestimasi</th>
-                      </tr>
-                  </thead>
-              
-       
-                {Object.keys(currentIndex) ? Object.keys(currentIndex).map((item, index)=>
-                 <>
-                    { currentIndex[item].pipa && currentIndex[item].date && currentIndex[item].time && currentIndex[item].temperature && currentIndex[item].flowrate && currentIndex[item].fss && currentIndex[item].velocity && currentIndex[item].flowestimasi ?
-                    <>
-                  
-                    
-                  <tbody>
-                    <tr>
-                    <td>{index + 1}</td>
-                    <td>{currentIndex[item].pipa}</td>
-                    <td>{currentIndex[item].date}</td>
-                    <td>{currentIndex[item].time}</td>
-                    <td>{currentIndex[item].temperature}</td>
-                    <td>{currentIndex[item].flowrate}</td>
-                    <td>{currentIndex[item].fss}</td>
-                    <td>{currentIndex[item].velocity}</td>
-                    <td>{currentIndex[item].flowestimasi}</td>
-                    </tr>
-                  </tbody>
-                  </>
-                   : null }
-                   
-                    
-                        </>
-                )
-               
-
-                : null}
-                     </Table> 
+        <BootstrapTable keyField='no' data={ currentIndex } columns={ columns2 } pagination={ paginationFactory() } />
+                     
          <Container fluid className="d-flex align-content-end justify-content-end ">
             <Dropdown fluid  >
             <Dropdown.Toggle variant="primary" id="dropdown-basic" className="m-1 align-self-end" >
@@ -158,43 +182,15 @@ const Monitoring = () => {
                 </Dropdown.Menu>
                 </Dropdown>
                 </Container>
-                     <Table responsive striped bordered hover>
-                     <thead>
-                        <tr>
-                      <th>No</th>
-                       <th>Sumur</th>
-                       <th>Tanggal</th>
-                       <th>Waktu</th>
-                       <th>Temperature</th>
-                       <th>orp</th>
-                       <th>PH</th>
-                       <th>TDS</th>
-                       </tr>
-                       </thead>
-                {Object.keys(currentIndex2) ? Object.keys(currentIndex2).map((item, index)=>
-                <>
-              
+                  
+                
+                      <BootstrapTable keyField='sumur' data={ currentIndex2 } columns={ columns } pagination={ paginationFactory() } />
                      
-                      
-                       <tbody key={currentIndex2[item]}>
-                        <tr>
-                        <td>{index + 1}</td>
-                        <td>{currentIndex2[item].sumur}</td>
-                        <td>{currentIndex2[item].date}</td>
-                        <td>{currentIndex2[item].time}</td>
-                        <td>{currentIndex2[item].temperature}</td>
-                        <td>{currentIndex2[item].orp}</td>
-                        <td>{currentIndex2[item].ph}</td>
-                        <td>{currentIndex2[item].tds}</td>
-                        </tr>
-                      </tbody>
-                    
-                      </>
 
+             
+               
+                  
 
-                  ): null}
-                  </Table>
-      
         </Card>
         </Container>
         </>
