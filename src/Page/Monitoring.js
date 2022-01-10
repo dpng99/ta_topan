@@ -6,8 +6,8 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { CSVExport,Search  } from 'react-bootstrap-table2-toolkit';
-
-
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
+import { AiFillPrinter } from "react-icons/ai";
 const Monitoring = () => {
     const [DataSet, setDataSet] = useState('')
     const [ DataKey, setDataKey] = useState('')
@@ -231,15 +231,17 @@ const Monitoring = () => {
                               defaultSorted={defaultSort2} 
                               
                               search
-                              exportCSV
+                              exportCSV={ { onlyExportFiltered: true, exportAll: false } }
                             >
                               {
                                 props => (
                                   <div>
-                                    <SearchBar { ...props.searchProps } />
-                                    <ExportCSVButton { ...props.csvProps }>Export CSV!!</ExportCSVButton>
-                                    <hr />
-                                    <BootstrapTable { ...props.baseProps } pagination={ paginationFactory() }/>
+                               <Container fluid className='d-flex p-3 align-content-between justify-content-between'>
+                                <SearchBar { ...props.searchProps } />
+                                <ExportCSVButton { ...props.csvProps } className="btn btn-primary align-self-end"><AiFillPrinter/>Export Data Csv</ExportCSVButton>
+                                </Container>
+                                <hr />
+                                <BootstrapTable { ...props.baseProps } filter={ filterFactory() } pagination={ paginationFactory() }/>
                                   </div>
                                 )
                               }
@@ -268,17 +270,19 @@ const Monitoring = () => {
                   data={ currentIndex2 }
                   columns={ columns }
                   defaultSorted={defaultSort} 
-                  pagination={ paginationFactory() }
+             
                   search
                   exportCSV
                 >
                   {
                     props => (
                       <div>
+                        <Container fluid className='d-flex p-3 align-content-between justify-content-between'>
                         <SearchBar { ...props.searchProps } />
-                        <ExportCSVButton { ...props.csvProps }>Export CSV!!</ExportCSVButton>
+                        <ExportCSVButton { ...props.csvProps } className="btn btn-primary align-self-end"><AiFillPrinter/>Export Data Csv</ExportCSVButton>
+                        </Container>
                         <hr />
-                        <BootstrapTable { ...props.baseProps } pagination={ paginationFactory() }/>
+                        <BootstrapTable { ...props.baseProps } filter={ filterFactory() } pagination={ paginationFactory() }/>
                       </div>
                     )
                   }
