@@ -86,10 +86,6 @@ const Monitoring = () => {
     const columns = [{
       dataField: 'id' ,
       text: 'Nomor', 
-
-      formatter: (cell, row, rowIndex, formatExtraData) => {
-        return rowIndex + 1;
-      },
       sort: true
     }, {
       dataField: 'sumur',
@@ -231,7 +227,29 @@ const Monitoring = () => {
         
        
         </Container>
-        <BootstrapTable bootstrap4 keyField='id.no' data={ currentIndex } columns={ columns2 }  defaultSorted={defaultSort2} pagination={ paginationFactory() } />
+                                    { currentIndex ?           
+                              <ToolkitProvider
+                              bootstrap4
+                              keyField="id"
+                              data={ currentIndex }
+                              columns={ columns2 }
+                              defaultSorted={defaultSort2} 
+                              pagination={ paginationFactory() }
+                              search
+                              exportCSV
+                            >
+                              {
+                                props => (
+                                  <div>
+                                    <SearchBar { ...props.searchProps } />
+                                    <ExportCSVButton { ...props.csvProps }>Export CSV!!</ExportCSVButton>
+                                    <hr />
+                                    <BootstrapTable { ...props.baseProps } />
+                                  </div>
+                                )
+                              }
+                            </ToolkitProvider>
+                            : null}
                      
          <Container fluid className="d-flex align-content-end justify-content-end ">
             <Dropdown fluid  >
@@ -248,28 +266,29 @@ const Monitoring = () => {
                 </Dropdown>
                 </Container>
              
-         { currentIndex2 ?           
-  <ToolkitProvider
-  keyField="id"
-  data={ currentIndex2 }
-  columns={ columns }
-  defaultSorted={defaultSort} 
-  pagination={ paginationFactory() }
-  search
-  exportCSV
->
-  {
-    props => (
-      <div>
-        <SearchBar { ...props.searchProps } />
-        <ExportCSVButton { ...props.csvProps }>Export CSV!!</ExportCSVButton>
-        <hr />
-        <BootstrapTable { ...props.baseProps } />
-      </div>
-    )
-  }
-</ToolkitProvider>
-: null}
+                  { currentIndex2 ?           
+                  <ToolkitProvider
+                  bootstrap4
+                  keyField="id.no"
+                  data={ currentIndex2 }
+                  columns={ columns }
+                  defaultSorted={defaultSort} 
+                  pagination={ paginationFactory() }
+                  search
+                  exportCSV
+                >
+                  {
+                    props => (
+                      <div>
+                        <SearchBar { ...props.searchProps } />
+                        <ExportCSVButton { ...props.csvProps }>Export CSV!!</ExportCSVButton>
+                        <hr />
+                        <BootstrapTable { ...props.baseProps } />
+                      </div>
+                    )
+                  }
+                </ToolkitProvider>
+                : null}
 
                 </Card>
                 </Container>
