@@ -59,7 +59,7 @@ const FormSignup = () => {
                     </Form.Group>
                     </Form.Group>
                 </Form>
-                <span className=' text-white justify-content-center align-items-center d-flex fs-5'>
+                <span className=' text-white justify-content-center align-items-center d-flex fs-6'>
                          Sudah punya akun? Login <a href='/login'> disini</a>
                          </span>
             </Container>    

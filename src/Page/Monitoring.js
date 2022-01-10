@@ -115,6 +115,10 @@ const Monitoring = () => {
       dataField: 'orp',
       text: 'ORP',
       sort: true
+    }, {
+      dataField: 'submitter',
+      text: 'Submitter',
+      sort: true
     }
   ];
   const defaultSort = [{
@@ -138,7 +142,10 @@ const Monitoring = () => {
   },{
       dataField: 'orp',
       order: 'asc'
-  }]
+  },{
+    dataField: 'submitter',
+    order: 'asc'
+}]
   const columns2 = [{
     dataField: 'id.no' ,
     text: 'Nomor', 
@@ -150,7 +157,7 @@ const Monitoring = () => {
       dataField: 'pipa',
       text: 'Pipa',
       sort: true
-    }, {
+    },{
       dataField: 'date',
       text: 'Tanggal',
       sort: true
@@ -179,8 +186,11 @@ const Monitoring = () => {
       dataField: 'flowestimasi',
       text: 'Flowestimasi',
       sort: true
-    }
-  ];
+    },{
+      dataField: 'submitter',
+      text: 'Submitter',
+      sort: true
+    }];
   const defaultSort2 = [{
       dataField: 'date',
       order: 'asc'
@@ -205,6 +215,10 @@ const Monitoring = () => {
   },{
       dataField: 'flowestimasi',
       order: 'asc'
+  },{
+    dataField: 'submitter',
+    text: 'Submitter',
+    sort: true
   }]
     
     return (
