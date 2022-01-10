@@ -93,11 +93,11 @@ const Riwayat = () => {
                                             value={parseFloat(getData[item].energyFlow)}
                                             segments={5}
                                                 segmentColors={[
-                                                    "#264b96",
-                                                    "#27b376",
-                                                    "#006f3c",
-                                                    "#f9a73e",
-                                                    "#bf212f",
+                                                    "#B7D6ED",
+                                                    "#809FFF",
+                                                    "#BFCFFF",
+                                                    "#002DB3",
+                                                    "#0000FF",
                                                 ]}
                                             />
                                                </Col>
@@ -111,11 +111,11 @@ const Riwayat = () => {
                                             value={parseFloat(getData[item].fluidSoundSpeed)}
                                             segments={5}
                                                 segmentColors={[
-                                                    "#264b96",
-                                                    "#27b376",
-                                                    "#006f3c",
-                                                    "#f9a73e",
-                                                    "#bf212f",
+                                                    "#B7D6ED",
+                                                    "#809FFF",
+                                                    "#BFCFFF",
+                                                    "#002DB3",
+                                                    "#0000FF",
                                                 ]}
                                             />
                                             </Col>
@@ -129,11 +129,11 @@ const Riwayat = () => {
                                             value={parseFloat(getData[item].flowRate)}
                                             segments={5}
                                                 segmentColors={[
-                                                    "#264b96",
-                                                    "#27b376",
-                                                    "#006f3c",
-                                                    "#f9a73e",
-                                                    "#bf212f",
+                                                    "#B7D6ED",
+                                                    "#809FFF",
+                                                    "#BFCFFF",
+                                                    "#002DB3",
+                                                    "#0000FF",
                                                 ]}
                                             />
                                             </Col>
@@ -147,11 +147,11 @@ const Riwayat = () => {
                                             value={parseFloat(getData[item].velocity)}
                                             segments={5}
                                                 segmentColors={[
-                                                    "#264b96",
-                                                    "#27b376",
-                                                    "#006f3c",
-                                                    "#f9a73e",
-                                                    "#bf212f",
+                                                    "#B7D6ED",
+                                                    "#809FFF",
+                                                    "#BFCFFF",
+                                                    "#002DB3",
+                                                    "#0000FF",
                                                 ]}
                                             />
                                             </Col>
@@ -165,11 +165,11 @@ const Riwayat = () => {
                                             value={parseFloat(getData[item].tempInlet)}
                                             segments={5}
                                                 segmentColors={[
-                                                    "#264b96",
-                                                    "#27b376",
-                                                    "#006f3c",
-                                                    "#f9a73e",
-                                                    "#bf212f",
+                                                    "#B7D6ED",
+                                                    "#809FFF",
+                                                    "#BFCFFF",
+                                                    "#002DB3",
+                                                    "#0000FF",
                                                 ]}
                                             />
                                             </Col>
@@ -183,11 +183,11 @@ const Riwayat = () => {
                                             value={parseFloat(getData[item].tempOutlet)}
                                             segments={5}
                                                 segmentColors={[
-                                                    "#264b96",
-                                                    "#27b376",
-                                                    "#006f3c",
-                                                    "#f9a73e",
-                                                    "#bf212f",
+                                                    "#B7D6ED",
+                                                    "#809FFF",
+                                                    "#BFCFFF",
+                                                    "#002DB3",
+                                                    "#0000FF",
                                                 ]}
                                             />
                                             </Col>
@@ -287,11 +287,11 @@ const Riwayat = () => {
                                             value={parseFloat(getData[item].currentR)}
                                             segments={5}
                                                 segmentColors={[
-                                                    "#264b96",
-                                                    "#27b376",
-                                                    "#006f3c",
-                                                    "#f9a73e",
-                                                    "#bf212f",
+                                                    "#B7D6ED",
+                                                    "#809FFF",
+                                                    "#BFCFFF",
+                                                    "#002DB3",
+                                                    "#0000FF",
                                                 ]}
                                             />
                                             </Col>
@@ -305,11 +305,11 @@ const Riwayat = () => {
                                             value={parseFloat(getData[item].currentS)}
                                             segments={5}
                                                 segmentColors={[
-                                                    "#264b96",
-                                                    "#27b376",
-                                                    "#006f3c",
-                                                    "#f9a73e",
-                                                    "#bf212f",
+                                                    "#B7D6ED",
+                                                    "#809FFF",
+                                                    "#BFCFFF",
+                                                    "#002DB3",
+                                                    "#0000FF",
                                                 ]}
                                             />
                                             </Col>
@@ -323,11 +323,11 @@ const Riwayat = () => {
                                             value={parseFloat(getData[item].currentT)}
                                             segments={5}
                                                 segmentColors={[
-                                                    "#264b96",
-                                                    "#27b376",
-                                                    "#006f3c",
-                                                    "#f9a73e",
-                                                    "#bf212f",
+                                                    "#B7D6ED",
+                                                    "#809FFF",
+                                                    "#BFCFFF",
+                                                    "#002DB3",
+                                                    "#0000FF",
                                                 ]}
                                             />
                                             </Col>
@@ -341,11 +341,11 @@ const Riwayat = () => {
                                             value={parseFloat(getData[item].voltR)}
                                             segments={5}
                                                 segmentColors={[
-                                                    "#264b96",
-                                                    "#27b376",
-                                                    "#006f3c",
-                                                    "#f9a73e",
-                                                    "#bf212f",
+                                                    "#B7D6ED",
+                                                    "#809FFF",
+                                                    "#BFCFFF",
+                                                    "#002DB3",
+                                                    "#0000FF",
                                                 ]}
                                             />
                                             </Col>
@@ -359,11 +359,11 @@ const Riwayat = () => {
                                             value={parseFloat(getData[item].voltS)}
                                             segments={5}
                                                 segmentColors={[
-                                                    "#264b96",
-                                                    "#27b376",
-                                                    "#006f3c",
-                                                    "#f9a73e",
-                                                    "#bf212f",
+                                                    "#B7D6ED",
+                                                    "#809FFF",
+                                                    "#BFCFFF",
+                                                    "#002DB3",
+                                                    "#0000FF",
                                                 ]}
                                             />
                                             </Col>
@@ -377,11 +377,11 @@ const Riwayat = () => {
                                             value={parseFloat(getData[item].voltT)}
                                             segments={5}
                                                 segmentColors={[
-                                                    "#264b96",
-                                                    "#27b376",
-                                                    "#006f3c",
-                                                    "#f9a73e",
-                                                    "#bf212f",
+                                                    "#B7D6ED",
+                                                    "#809FFF",
+                                                    "#BFCFFF",
+                                                    "#002DB3",
+                                                    "#0000FF",
                                                 ]}
                                             />
                                             </Col>
@@ -427,11 +427,11 @@ const Riwayat = () => {
                                             value={parseFloat(getData[item].pressureBar)}
                                             segments={5}
                                                 segmentColors={[
-                                                    "#264b96",
-                                                    "#27b376",
-                                                    "#006f3c",
-                                                    "#f9a73e",
-                                                    "#bf212f",
+                                                    "#B7D6ED",
+                                                    "#809FFF",
+                                                    "#BFCFFF",
+                                                    "#002DB3",
+                                                    "#0000FF",
                                                 ]}
                                             />
                                             </Col>
@@ -445,11 +445,11 @@ const Riwayat = () => {
                                             value={parseFloat(getData[item].pressurePsi)}
                                             segments={5}
                                                 segmentColors={[
-                                                    "#264b96",
-                                                    "#27b376",
-                                                    "#006f3c",
-                                                    "#f9a73e",
-                                                    "#bf212f",
+                                                    "#B7D6ED",
+                                                    "#809FFF",
+                                                    "#BFCFFF",
+                                                    "#002DB3",
+                                                    "#0000FF",
                                                 ]}
                                             />
                                             </Col>

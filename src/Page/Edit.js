@@ -1,12 +1,16 @@
 import React,{useState, useEffect} from 'react'
-import {Container, Card,Button, Row, Col} from 'react-bootstrap'
+import {Container, Card,Button, Row, Col, Table} from 'react-bootstrap'
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
 
 const Edit = () => {
     const [getAlat,setGetAlat ] = useState(null)
     const [getKota, setGetKota] = useState('')
+    const [nomor, setNomor] = useState('')
 
     
     useEffect(() => {
@@ -23,17 +27,44 @@ const Edit = () => {
        
            
             
-        })
-     
-        
-        
-        
-    
-        
-             
-        
+        })   
     
     }, [getAlat]);
+
+    const columns = [{
+        dataField: 'id.no' ,
+        text: 'Nomor', 
+        formatter: (cell, row, rowIndex, formatExtraData) => {
+          return rowIndex + 1;
+        },
+        sort: true
+      }, {
+        dataField: 'nama',
+        text: 'Nama',
+        sort: true
+      }, {
+        dataField: 'latitude',
+        text: 'Langitude',
+        sort: true
+      }, {
+        dataField: 'longitude',
+        text: 'Longitude'
+      }
+    ];
+    const defaultSort = [{
+        dataField: 'id.no',
+        order: 'asc'
+    },{
+        dataField: 'nama',
+        order: 'asc'
+    },{
+        dataField: 'latitude',
+        order: 'asc'
+    },{
+        dataField: 'longitude',
+        order: 'asc'
+    }]
+    
     
     return (
         <>
@@ -47,26 +78,8 @@ const Edit = () => {
            <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px', width: '150px', height: '40px',margin: '5px 10px 10px 10px' }}  onClick={() => setGetAlat('LokasiDebit')}>Debit</Button>
            <Button className='btn rounded-3 ' style={{ margin: '10px 10px 10px 10px', width: '150px', height: '40px',margin: '5px 10px 10px 10px'}}  onClick={() => setGetAlat('LokasiQuality')}>Quality</Button>
            </Container>
-                    <Card className="p-4" fluid='xxl' >
-                        <Row  xs={'auto'} md={'auto'} xl={'auto'} xxl={'auto'} >
-                           {getKota && getKota.map((item, i) => (
-                               <Col>
-                             <Card className='border-2 border-primary p-3 shadow rounded-3 m-2'  fluid key={i}>
-                               
-                             <Card.Body>
-                                 <Card.Header >
-                                     {item.nama}
-                                 </Card.Header>
-                                 <Card.Text>Latitude = {item.latitude}</Card.Text>
-                                 <Card.Text>Longitude = {item.longitude}</Card.Text>
-                             </Card.Body>
-                         </Card>
-                         </Col>
-                           ))}
-                            </Row>
-                           </Card> 
-                          
-                      
+      
+           <BootstrapTable bootstrap4 keyField='id.no'  data={ getKota } columns={ columns } defaultSorted={defaultSort} pagination={ paginationFactory() } /> 
                 
                      </Card>
                    
