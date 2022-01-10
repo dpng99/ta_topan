@@ -124,7 +124,7 @@ const Monitoring = () => {
     }
   ];
   const defaultSort = [{
-      dataField: 'id',
+      dataField: 'date',
       order: 'asc'
   }]
   
@@ -225,7 +225,7 @@ const Monitoring = () => {
                                     { currentIndex ?           
                               <ToolkitProvider
                               bootstrap4
-                              keyField="id"
+                              keyField="date"
                               data={ currentIndex }
                               columns={ columns2 }
                               defaultSorted={defaultSort2} 
@@ -264,7 +264,7 @@ const Monitoring = () => {
                   {  currentIndex2 ?          
                   <ToolkitProvider
                   bootstrap4
-                  keyField="index"
+                  keyField="date"
                   data={ currentIndex2 }
                   columns={ columns }
                   defaultSorted={defaultSort} 
