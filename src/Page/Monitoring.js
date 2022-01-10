@@ -13,6 +13,8 @@ const Monitoring = () => {
     const [ DataKey, setDataKey] = useState('')
     const [currentIndex, setCurrentIndex] = useState('')
     const [currentIndex2, setCurrentIndex2] = useState('')
+    const [data, setData] = useState([])
+    const [arrayan] = useState([])
     const { ExportCSVButton } = CSVExport;
     const { SearchBar } = Search;
   
@@ -47,6 +49,10 @@ const Monitoring = () => {
                
             }
             setCurrentIndex2(currentIndex2)
+            
+            console.log(currentIndex2)
+      
+
           
       
         })
@@ -83,19 +89,15 @@ const Monitoring = () => {
 
     }, [])
    
-    const columns = [{
-      dataField: 'id' ,
-      text: 'Nomor', 
+    const columns = [ {
+      dataField: 'date',
+      text: 'Tanggal',
       sort: true
     }, {
       dataField: 'sumur',
       text: 'Sumur',
       sort: true
-    }, {
-      dataField: 'date',
-      text: 'Tanggal',
-      sort: true
-    }, {
+    },{
       dataField: 'time',
       text: 'Waktu',
       sort: true
@@ -127,19 +129,12 @@ const Monitoring = () => {
   }]
   
   const columns2 = [{
-    dataField: 'id.no' ,
-    text: 'Nomor', 
-    formatter: (cell, row, rowIndex, formatExtraData) => {
-      return rowIndex + 1;
-    },
+    dataField: 'date',
+    text: 'Tanggal',
     sort: true
   }, {
       dataField: 'pipa',
       text: 'Pipa',
-      sort: true
-    },{
-      dataField: 'date',
-      text: 'Tanggal',
       sort: true
     }, {
       dataField: 'time',
@@ -234,7 +229,7 @@ const Monitoring = () => {
                               data={ currentIndex }
                               columns={ columns2 }
                               defaultSorted={defaultSort2} 
-                              pagination={ paginationFactory() }
+                              
                               search
                               exportCSV
                             >
@@ -244,7 +239,7 @@ const Monitoring = () => {
                                     <SearchBar { ...props.searchProps } />
                                     <ExportCSVButton { ...props.csvProps }>Export CSV!!</ExportCSVButton>
                                     <hr />
-                                    <BootstrapTable { ...props.baseProps } />
+                                    <BootstrapTable { ...props.baseProps } pagination={ paginationFactory() }/>
                                   </div>
                                 )
                               }
@@ -266,10 +261,10 @@ const Monitoring = () => {
                 </Dropdown>
                 </Container>
              
-                  { currentIndex2 ?           
+                  {  currentIndex2 ?          
                   <ToolkitProvider
                   bootstrap4
-                  keyField="id.no"
+                  keyField="index"
                   data={ currentIndex2 }
                   columns={ columns }
                   defaultSorted={defaultSort} 
@@ -283,12 +278,12 @@ const Monitoring = () => {
                         <SearchBar { ...props.searchProps } />
                         <ExportCSVButton { ...props.csvProps }>Export CSV!!</ExportCSVButton>
                         <hr />
-                        <BootstrapTable { ...props.baseProps } />
+                        <BootstrapTable { ...props.baseProps } pagination={ paginationFactory() }/>
                       </div>
                     )
                   }
                 </ToolkitProvider>
-                : null}
+            : null}
 
                 </Card>
                 </Container>
