@@ -5,13 +5,16 @@ import CRUDHandler from '../Handler/CRUDHandler'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
+import ToolkitProvider, { CSVExport,Search  } from 'react-bootstrap-table2-toolkit';
+
+
 const Monitoring = () => {
     const [DataSet, setDataSet] = useState('')
     const [ DataKey, setDataKey] = useState('')
     const [currentIndex, setCurrentIndex] = useState('')
     const [currentIndex2, setCurrentIndex2] = useState('')
-    const [nomor, setNomor] = useState('')
-
+    const { ExportCSVButton } = CSVExport;
+    const { SearchBar } = Search;
   
 
 
@@ -81,8 +84,9 @@ const Monitoring = () => {
     }, [])
    
     const columns = [{
-      dataField: 'id.no' ,
+      dataField: 'id' ,
       text: 'Nomor', 
+
       formatter: (cell, row, rowIndex, formatExtraData) => {
         return rowIndex + 1;
       },
@@ -119,24 +123,6 @@ const Monitoring = () => {
   ];
   const defaultSort = [{
       dataField: 'id.no',
-      order: 'asc'
-  },{
-      dataField: 'sumur',
-      order: 'asc'
-  },{
-      dataField: 'time',
-      order: 'asc'
-  },{
-      dataField: 'temperature',
-      order: 'asc'
-  },{
-      dataField: 'ph',
-      order: 'asc'
-  },{
-      dataField: 'tds',
-      order: 'asc'
-  },{
-      dataField: 'orp',
       order: 'asc'
   }]
   const columns2 = [{
@@ -249,7 +235,30 @@ const Monitoring = () => {
                 </Dropdown.Menu>
                 </Dropdown>
                 </Container>
-                      <BootstrapTable bootstrap4 keyField='id.no'  data={ currentIndex2 } columns={ columns } defaultSorted={defaultSort} pagination={ paginationFactory() } />
+             
+         { currentIndex2 ?           
+  <ToolkitProvider
+  keyField="id"
+  data={ currentIndex2 }
+  columns={ columns }
+  defaultSorted={defaultSort} 
+  pagination={ paginationFactory() }
+  search
+  exportCSV
+>
+  {
+    props => (
+      <div>
+        <SearchBar { ...props.searchProps } />
+        <ExportCSVButton { ...props.csvProps }>Export CSV!!</ExportCSVButton>
+        <hr />
+        <BootstrapTable { ...props.baseProps } />
+      </div>
+    )
+  }
+</ToolkitProvider>
+: null}
+
                 </Card>
                 </Container>
                 </>
