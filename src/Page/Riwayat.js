@@ -92,8 +92,8 @@ const Riwayat = () => {
                                     <ReactSpeedometer
                                       width={200}
                                       height={200}
-                                      maxValue={300}
-                                      minValue={0}
+                                      maxValue={4000}
+                                      minValue={100}
                                       value={parseFloat(getData[item].fluidSoundSpeed)}
                                       segments={5}
                                       segmentColors={["#B7D6ED", "#809FFF", "#BFCFFF", "#002DB3", "#0000FF"]}
