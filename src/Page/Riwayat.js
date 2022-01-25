@@ -20,7 +20,10 @@ const Riwayat = () => {
       }
       setGetData(getData);
     });
+    float fss1;
+    fss1 = parseFloat(getData[item].fluidSoundSpeed;
   }, [setChild, dataGauge]);
+
   return (
     <>
       <Navbarx />
@@ -88,13 +91,14 @@ const Riwayat = () => {
                                     <ReactSpeedometer width={200} height={200} maxValue={300} minValue={0} value={parseFloat(getData[item].energyFlow)} segments={5} segmentColors={["#B7D6ED", "#809FFF", "#BFCFFF", "#002DB3", "#0000FF"]} />
                                   </Col>
                                   <Col>
+                                 
                                     <p className="text-center">Fluid Sound Speed</p>
                                     <ReactSpeedometer
                                       width={200}
                                       height={200}
                                       maxValue={4000}
                                       minValue={100}
-                                      value={parseFloat(getData[item].fluidSoundSpeed)}
+                                      value={fss1)}
                                       segments={5}
                                       segmentColors={["#B7D6ED", "#809FFF", "#BFCFFF", "#002DB3", "#0000FF"]}
                                     />
