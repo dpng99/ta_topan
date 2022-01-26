@@ -9,7 +9,7 @@ const Riwayat = () => {
   const [getData, setGetData] = useState([]);
   const [setChild, setGetChild] = useState(null);
   const [dataGauge, setDataGauge] = useState([]);
-
+  const fss = useState(0)
   useEffect(() => {
     const ewsApp = CRUDHandler.getEws();
     ewsApp.on("value", (snapshot) => {
@@ -20,9 +20,17 @@ const Riwayat = () => {
       }
       setGetData(getData);
     });
-    float fss1;
-    fss1 = parseFloat(getData[item].fluidSoundSpeed;
+    return () => {
+      ewsApp.off();
+    };
+ 
+  
   }, [setChild, dataGauge]);
+
+
+  
+    
+  
 
   return (
     <>
@@ -44,15 +52,14 @@ const Riwayat = () => {
             </Button>
           </Container>
           <Container>
-            {Object.keys(getData)
-              ? Object.keys(getData).map((item, index) => (
+            { Object.keys(getData).map((item, index) => (
                   <Accordion defaultActiveKey={index}>
                     <Accordion.Item eventKey={index}>
                       <Accordion.Header>{getData[item].nama}</Accordion.Header>
                       <Accordion.Body>
                         <Card className="border-2 border-primary p-3 shadow rounded-3 d-flex">
                           <Card.Title>{getData[item].nama}</Card.Title>
-                          {setChild === "flow-meter" ? (
+                          {setChild === "flow-meter"  ? (
                             <>
                               <Container className="align-items-start justify-form-content-right ">
                                 <Table responsive striped bordered hover>
@@ -91,17 +98,21 @@ const Riwayat = () => {
                                     <ReactSpeedometer width={200} height={200} maxValue={300} minValue={0} value={parseFloat(getData[item].energyFlow)} segments={5} segmentColors={["#B7D6ED", "#809FFF", "#BFCFFF", "#002DB3", "#0000FF"]} />
                                   </Col>
                                   <Col>
-                                 
+                           
+                                  
+                                  
                                     <p className="text-center">Fluid Sound Speed</p>
                                     <ReactSpeedometer
                                       width={200}
                                       height={200}
                                       maxValue={4000}
                                       minValue={100}
-                                      value={fss1)}
+                                      value={parseFloat(getData[item].fluidSoundSpeed)}
                                       segments={5}
                                       segmentColors={["#B7D6ED", "#809FFF", "#BFCFFF", "#002DB3", "#0000FF"]}
+                                      forceRender={false}
                                     />
+                                   
                                   </Col>
                                   <Col>
                                     <p className="text-center">Flowrate</p>
@@ -122,7 +133,7 @@ const Riwayat = () => {
                                 </Row>
                               </Container>
                             </>
-                          ) : null}
+                          ):null}
                           {setChild === "panel-pompa" ? (
                             <>
                               <Table responsive striped bordered hover>
@@ -178,7 +189,7 @@ const Riwayat = () => {
                                     </tbody>
                                   </Table>
                                 </>
-                              ) : null}
+                              ) : '' }
                               {getData[item].relay1 || getData[item].relay2 ? (
                                 <>
                                   <Table responsive striped bordered hover>
@@ -196,7 +207,7 @@ const Riwayat = () => {
                                     </tbody>
                                   </Table>
                                 </>
-                              ) : null}
+                              ) : '' }
                               <Container>
                                 <Row xs={"auto"} md={"auto"} lg={"auto"}>
                                   <Col>
@@ -226,7 +237,7 @@ const Riwayat = () => {
                                 </Row>
                               </Container>
                             </>
-                          ) : null}
+                          ) :'' }
                           {setChild === "pressure-solar" ? (
                             <>
                               <Container>
@@ -262,13 +273,13 @@ const Riwayat = () => {
                                 </Row>
                               </Container>
                             </>
-                          ) : null}
+                          ) : '' }
                         </Card>
                       </Accordion.Body>
                     </Accordion.Item>
                   </Accordion>
                 ))
-              : null}
+              }
           </Container>
         </Card>
       </Container>

@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const MapContainer = () => {
   const [dataSet, setDataSet] = useState([]);
   const [dataSet2, setDataSet2] = useState([]);
-  const [dataSet3, setDataSet3] = useState([]);
+ 
   const [activeMarker, setActiveMarker] = useState(null);
   const [ews, setEwsEvents] = useState([]);
   const anjing = [];
@@ -26,7 +26,6 @@ const MapContainer = () => {
       const dataValue = snapshot.child("LokasiDebit").val();
       const DataValue2 = snapshot.child("LokasiQuality").val();
       const dataSet2 = [];
-      const dataSet3 = [];
       const dataSet = [];
       for (let id in dataValue) {
         dataSet.push(dataValue[id]);
@@ -37,7 +36,7 @@ const MapContainer = () => {
 
       setDataSet2(dataSet2);
       setDataSet(dataSet);
-      console.log(dataSet2);
+
     });
     Ews.on("value", (snapshot) => {
       const flowMeter = snapshot.child("flow-meter").val();
@@ -54,8 +53,12 @@ const MapContainer = () => {
         ews.push(pressureSolar[id]);
       }
       setEwsEvents(ews);
-      console.log(ews);
+    
     });
+    return() => {
+        Ews.off();
+        getData.off();
+    }
   }, []);
   const stylingMaps = {
     maxWidth: "3840px",
