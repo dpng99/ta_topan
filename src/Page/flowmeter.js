@@ -7,7 +7,7 @@ import ReactSpeedometer from "react-d3-speedometer";
 import AccordionHeader from "react-bootstrap/esm/AccordionHeader";
 import AccordionBody from "react-bootstrap/esm/AccordionBody";
 
-const flowmeter = () => {
+const Flowmeter = () => {
   const [getData, setGetData] = useState([]);
   const [dataGauge, setDataGauge] = useState([]);
   useEffect(() => {
@@ -23,7 +23,7 @@ const flowmeter = () => {
     return () => {
       ewsApp.off();
     };
-  }, [setChild, dataGauge]);
+  }, [ dataGauge]);
 
   return (
     <>
@@ -115,4 +115,4 @@ const flowmeter = () => {
   );
 };
 
-export default flowmeter;
+export default Flowmeter;
