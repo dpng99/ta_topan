@@ -9,12 +9,11 @@ import AccordionBody from "react-bootstrap/esm/AccordionBody";
 
 const flowmeter = () => {
   const [getData, setGetData] = useState([]);
-  const [setChild, setGetChild] = useState(null);
   const [dataGauge, setDataGauge] = useState([]);
   useEffect(() => {
     const ewsApp = CRUDHandler.getEws();
     ewsApp.on("value", (snapshot) => {
-      const DataIsi = snapshot.child(setChild).val();
+      const DataIsi = snapshot.child("flowmeter").val();
       const getData = [];
       for (let id in DataIsi) {
         getData.push(DataIsi[id]);
@@ -30,10 +29,10 @@ const flowmeter = () => {
     <>
       <Navbarx />
       <Container>
-      { Object.keys(getData).map((item, index) => (
-        <Accordion  defaultActiveKey={index}>
-          <Accordion.Item eventKey={index}> 
-            <AccordionHeader> {getData[item].nama}</AccordionHeader>
+        {Object.keys(getData).map((item, index) => (
+          <Accordion defaultActiveKey={index}>
+            <Accordion.Item eventKey={index}>
+              <AccordionHeader> {getData[item].nama}</AccordionHeader>
               <AccordionBody>
                 <Card className="border-2 border-primary p-3 shadow rounded-3 d-flex">
                   <Card.Title>{getData[item].nama}</Card.Title>
@@ -108,12 +107,11 @@ const flowmeter = () => {
                   </>
                 </Card>
               </AccordionBody>
-          </Accordion.Item>
-        </Accordion>
-          
+            </Accordion.Item>
+          </Accordion>
+        ))}
       </Container>
     </>
-  
   );
 };
 
