@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 
 import CRUDHandler from "../Handler/CRUDHandler";
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const MapContainer = () => {
@@ -137,52 +137,17 @@ const MapContainer = () => {
                     <p>{ews[data].nama}</p>
                     {ews[data].energyFlow || ews[data].flowRate || ews[data].fluidSoundSpeed || ews[data].negativeAcc || ews[data].positiveAcc || ews[data].tempInlet || ews[data].tempOutlet || ews[data].velocity ? (
                       <>
-                        <p>Energi Flow : {ews[data].energyFlow}</p>
-                        <p>Flow Rate :{ews[data].flowRate}</p>
-                        <p>Fluid Sound Speed : {ews[data].fluidSoundSpeed}</p>
-                        <p>Negative Acc : {ews[data].negativeAcc}</p>
-                        <p>Positif Acc : {ews[data].positiveAcc}</p>
-                        <p>TempInLet : {ews[data].tempInlet}</p>
-                        <p>TempOutLet : {ews[data].tempOutlet}</p>
-                        <p>Velocity : {ews[data].velocity}</p>
+                       <Button href='/flowmeter'>Go to Realtime Data</Button>
                       </>
                     ) : null}
                     {ews[data].currentR || ews[data].currentS || ews[data].currentT || ews[data].frequency || ews[data].power || ews[data].powerFactor || ews[data].voltR || ews[data].voltS || ews[data].voltT ? (
                       <>
-                        <p>Current R : {ews[data].currentR}</p>
-                        <p>Current S : {ews[data].currentS}</p>
-                        <p>Current T : {ews[data].currentT}</p>
-                        <p>Frequency :{ews[data].frequency}</p>
-                        <p>Power : {ews[data].power}</p>
-                        <p>Power Factor : {ews[data].powerFactor}</p>
-                        <p>Volt R : {ews[data].voltR}</p>
-                        <p>Volt S : {ews[data].voltS}</p>
-                        <p>Volt T : {ews[data].voltT}</p>
-                        {ews[data].led1 || ews[data].led2 || ews[data].led3 || ews[data].led4 || ews[data].led5 || ews[data].led6 ? (
-                          <>
-                            <p>{"Nama : " + ews[data].led1.nama + " Status : " + ews[data].led1.value}</p>
-                            <p>{"Nama : " + ews[data].led2.nama + " Status : " + ews[data].led2.value}</p>
-                            <p>{"Nama : " + ews[data].led3.nama + " Status : " + ews[data].led3.value}</p>
-                            <p>{"Nama : " + ews[data].led4.nama + " Status : " + ews[data].led4.value}</p>
-                            <p>{"Nama : " + ews[data].led5.nama + " Status : " + ews[data].led5.value}</p>
-                            <p>{"Nama : " + ews[data].led6.nama + " Status : " + ews[data].led6.value}</p>
-                          </>
-                        ) : null}
-                        {ews[data].relay1 || ews[data].relay2 ? (
-                          <>
-                            <p>{"Nama : " + ews[data].relay1.nama + " Status : " + ews[data].relay1.trigger}</p>
-                            <p>{"Nama : " + ews[data].relay2.nama + " Status : " + ews[data].relay2.trigger}</p>
-                          </>
-                        ) : null}
+                        <Button href='/panel'>Go to Realtime Data</Button>
                       </>
                     ) : null}
                     {ews[data].current || ews[data].pressureBar || ews[data].pressurePascal || ews[data].pressurePsi || ews[data].voltage ? (
                       <>
-                        <p>Current : {ews[data].current}</p>
-                        <p>Pressure Bar : {ews[data].pressureBar}</p>
-                        <p>Pressure Pascal : {ews[data].pressurePascal}</p>
-                        <p>Pressure Psi : {ews[data].pressurePsi}</p>
-                        <p>Volatage : {ews[data].voltage}</p>
+                         <Button href='/pressure'>Go to Realtime Data</Button>
                       </>
                     ) : null}
                   </div>
