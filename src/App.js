@@ -11,8 +11,9 @@ import AddData from "./Page/AddData";
 import Riwayat from "./Page/Riwayat";
 import Monitoring from "./Page/Monitoring";
 import FormLogin2 from "./FormLogin2";
-import Flowmeter from "./Page/Flowmeter";
-
+import Flowmeter from "./Page/flowmeter";
+import Panel from "./Page/Panel";
+import Pressure from "./Page/Pressure";
 function App() {
   return (
     <Router>
@@ -24,6 +25,8 @@ function App() {
           <PrivateRouter path="/history" component={Riwayat} />
           <PrivateRouter path="/monitoring" component={Monitoring} />
           <PrivateRouter path="/flowmeter" component={Flowmeter} />
+          <PrivateRouter path="/panel" component={Panel} />
+          <PrivateRouter path="/pressure" component={Pressure} />
           <Route path="/signup" component={FormSignup} />
           <Route path="/login" component={FormLogin2} />
         </Switch>

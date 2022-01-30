@@ -34,13 +34,13 @@ const Riwayat = () => {
             <h1 className="fs-3 text">Ews Monitoring</h1>
           </Container>
           <Container className="d-flex align-content-end justify-content-end">
-            <Button className="btn rounded-3 " style={{ margin: "10px 10px 10px 10px" }} onClick={() => setGetChild("flow-meter")}>
+            <Button href="/Flowmeter" className="btn rounded-3 " style={{ margin: "10px 10px 10px 10px" }} onClick={() => setGetChild("flow-meter")}>
               Flow Meter
             </Button>
-            <Button className="btn rounded-3 " style={{ margin: "10px 10px 10px 10px" }} onClick={() => setGetChild("panel-pompa")}>
+            <Button href="/Panel" className="btn rounded-3 " style={{ margin: "10px 10px 10px 10px" }} onClick={() => setGetChild("panel-pompa")}>
               Panel Pompa
             </Button>
-            <Button className="btn rounded-3 " style={{ margin: "10px 10px 10px 10px" }} onClick={() => setGetChild("pressure-solar")}>
+            <Button href="/Pressure" className="btn rounded-3 " style={{ margin: "10px 10px 10px 10px" }} onClick={() => setGetChild("pressure-solar")}>
               Pressure Solar
             </Button>
           </Container>
