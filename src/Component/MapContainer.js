@@ -143,6 +143,7 @@ const MapContainer = () => {
                     {ews[data].currentR || ews[data].currentS || ews[data].currentT || ews[data].frequency || ews[data].power || ews[data].powerFactor || ews[data].voltR || ews[data].voltS || ews[data].voltT ? (
                       <>
                         <Button href='/panel'>Go to Realtime Data</Button>
+                        
                       </>
                     ) : null}
                     {ews[data].current || ews[data].pressureBar || ews[data].pressurePascal || ews[data].pressurePsi || ews[data].voltage ? (
