@@ -1,13 +1,15 @@
-import { database } from "../Firebase";
+import { database, perf } from "../Firebase";
 
 const db = database.ref('/MonitoringDebitQualityApp/MonitoringDebit');
 const dblocation =  database.ref('MonitoringDebitQualityApp')
 const dbh= database.ref('MonitoringDebitQualityApp')
 const monitoring = database.ref('MonitoringDebitQualityApp')
 const Ews = database.ref('ewsApp')
-class CrudHandler{
 
+class CrudHandler{
+    
     getEws(){
+     
         return Ews
     }
     getAll(){

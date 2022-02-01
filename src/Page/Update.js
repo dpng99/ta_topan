@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import CRUDHandler from '../Handler/CRUDHandler';
 import {Container, Form , Card, Button} from 'react-bootstrap'
+import {perf} from '../Firebase'
+const Tracer = perf.trace('Update-trace')
+Tracer.start()
 export class Update extends Component {
-   
+     
+     
     constructor(props) {
         super(props);
         this.onChangeLatitude = this.onChangeLatitude.bind(this)
@@ -90,6 +94,7 @@ export class Update extends Component {
         });
 
     }
+  
 
     render() {
         const { currentData } = this.state;
@@ -117,3 +122,4 @@ export class Update extends Component {
 }
 
 export default Update
+Tracer.stop()

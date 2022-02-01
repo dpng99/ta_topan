@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker, InfoWindow } from "@react-google-maps/api";
-
+import { perf } from "../Firebase";
 import CRUDHandler from "../Handler/CRUDHandler";
 import { Button, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const MapContainer = () => {
+  const Tracer = perf.trace('map-tracer')
+  Tracer.start()
   const [dataSet, setDataSet] = useState([]);
   const [dataSet2, setDataSet2] = useState([]);
 
@@ -57,6 +59,7 @@ const MapContainer = () => {
       getData.off();
     };
   }, []);
+  Tracer.stop()
   const stylingMaps = {
     maxWidth: "3840px",
     height: "1080px",

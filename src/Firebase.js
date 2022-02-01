@@ -3,6 +3,8 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth'
 import 'firebase/compat/database'
 import 'firebase/compat/firestore'
+import  "firebase/compat/performance";
+
 import dotenv from 'dotenv'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -25,5 +27,7 @@ const app = firebase.initializeApp ({
 export const auth = app.auth();
 export const database = app.database();
 export const storage = app.firestore();
+export const perf = app.performance();
 export default app;
+
 // signup router

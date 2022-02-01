@@ -4,7 +4,11 @@ import { Container, Card, Form, Button, ToggleButton, Modal, Row, Col  } from 'r
 import Navbarx from '../Component/Navbar'
 import CRUDHandler from '../Handler/CRUDHandler'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { perf } from '../Firebase'
+
 const AddData = () => {
+    const Tracer = perf.trace('add-data')
+    Tracer.start()
     const [ getAlat, setGetAlat] = useState (null)
     const [formData, setFormData ]  = useState ({
         latitude: '',
@@ -39,6 +43,7 @@ const AddData = () => {
       
         
     }
+    Tracer.stop()
     return (
         <>
         <Navbarx/>

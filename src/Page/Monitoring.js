@@ -8,7 +8,10 @@ import paginationFactory from "react-bootstrap-table2-paginator";
 import ToolkitProvider, { CSVExport, Search } from "react-bootstrap-table2-toolkit";
 import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
 import { AiFillPrinter } from "react-icons/ai";
+import {perf} from '../Firebase'
 const Monitoring = () => {
+  const Tracer = perf.trace('Monitoring')
+  Tracer.start()
   const [DataSet, setDataSet] = useState("");
   const [DataKey, setDataKey] = useState("");
   const [currentIndex, setCurrentIndex] = useState("");
@@ -226,7 +229,7 @@ const Monitoring = () => {
       sort: true,
     },
   ];
-
+  Tracer.stop()
   return (
     <>
       <Navbarx />

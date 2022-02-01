@@ -6,8 +6,10 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
-
+import { perf } from '../Firebase';
 const Edit = () => {
+  const Trace = perf.trace('data-portable')
+  Trace.start()
     const [getAlat,setGetAlat ] = useState(null)
     const [getKota, setGetKota] = useState('')
     const [nomor, setNomor] = useState('')
@@ -65,7 +67,7 @@ const Edit = () => {
         order: 'asc'
     }]
     
-    
+    Trace.stop()
     return (
         <>
        <Navbarx/>
