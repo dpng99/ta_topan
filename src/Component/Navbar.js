@@ -36,7 +36,7 @@ function Navbarx() {
 
         <Navbar.Offcanvas id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" placement="start" style={{ maxWidth: 300 }}>
           <Offcanvas.Header className="p-0">
-            <Image fluid src="/img/BG.png" />
+            <Image fluid src="/img/pdam_new.png" />
           </Offcanvas.Header>
           <Offcanvas.Body className="we">
             <Nav className="justify-content-end flex-grow-1 pe-3">
